@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>读写分离 | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/74.673e240c.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable open"><span>数据层 🔥🔥🔥</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>mysql</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/%E6%95%B0%E6%8D%AE%E5%B1%82/mysql/" aria-current="page" class="sidebar-link">简介</a></li><li><a href="/mengqizhang/数据层/mysql/mysql集群.html" class="sidebar-link">集群</a></li><li><a href="/mengqizhang/数据层/mysql/读写分离.html" class="active sidebar-link">读写分离</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/mysql/读写分离.html#mycat读写分离" class="sidebar-link">Mycat读写分离</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/mysql/读写分离.html#sharding-proxy" class="sidebar-link">Sharding proxy</a></li></ul></li><li><a href="/mengqizhang/数据层/mysql/ApacheShardingSphere介绍.html" class="sidebar-link">ApacheShardingSphere</a></li><li><a href="/mengqizhang/数据层/mysql/binlog.html" class="sidebar-link">binlog</a></li><li><a href="/mengqizhang/数据层/mysql/分库分表.html" class="sidebar-link">分库分表</a></li><li><a href="/mengqizhang/数据层/mysql/SQL.html" class="sidebar-link">SQL优化</a></li><li><a href="/mengqizhang/数据层/mysql/redo.html" class="sidebar-link">redo日志</a></li><li><a href="/mengqizhang/数据层/mysql/mysql索引数据结构.html" class="sidebar-link">mysql索引数据结构</a></li><li><a href="/mengqizhang/数据层/mysql/面试题.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>mybatis</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>Redis</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="读写分离"><a href="#读写分离" class="header-anchor">#</a> 读写分离</h1> <h2 id="mycat读写分离"><a href="#mycat读写分离" class="header-anchor">#</a> Mycat读写分离</h2> <ul><li>环境准备：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    1. 需要安装java环境，配置JDK环境变量
+    2. 下载Mycat官方Server端软件包： Mycat-server-1.5.1-RELEASE-20161130213509-linux.tar.gz（linux服务器版）
+        可以按需下载对应的版本：   http://dl.mycat.org.cn/1.6.7.6/
+        官网： http://www.mycat.org.cn/
+    3. 安装mysql，配置好主从（冷备）环境！！！     
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>配置文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    1. schema.xml : 定义配置连接mysql的主机、端口、数据库，分片节点等
+    2. server.xml : 定义mycat的用户访问体系，mycat防火墙，mycat的端口等mycat系统配置
+    3. rule.xml :  定义分片规则
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>配置 server.xml</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mycat:server SYSTEM &quot;server.dtd&quot;&gt;
+&lt;mycat:server xmlns:mycat=&quot;http://io.mycat/&quot;&gt;
+	&lt;system&gt;
+		&lt;!-- mycat对外提供服务的端口--&gt;
+		&lt;property name=&quot;serverPort&quot;&gt;3306&lt;/property&gt;
+		&lt;!-- mycat管理端口--&gt;
+		&lt;property name=&quot;managerPort&quot;&gt;9066&lt;/property&gt;
+		&lt;!-- 0为需要密码登陆、1为不需要密码登陆 ,默认为0，设置为1则需要指定默认账户--&gt;
+		&lt;property name=&quot;nonePasswordLogin&quot;&gt;0&lt;/property&gt; 
+		&lt;property name=&quot;useHandshakeV10&quot;&gt;1&lt;/property&gt;
+		&lt;!-- 服务器有多个网卡，多个ip，指定要绑定的ip，0.0.0.0表示绑定所有--&gt;
+		&lt;property name=&quot;bindIp&quot;&gt;0.0.0.0&lt;/property&gt;
+		&lt;!-- 前端写队列的大小 --&gt;
+		&lt;property name=&quot;frontWriteQueueSize&quot;&gt;4096&lt;/property&gt;
+
+		&lt;!-- mycat默认字符集 --&gt;
+		&lt;property name=&quot;charset&quot;&gt;utf8&lt;/property&gt;
+		&lt;!-- 连接mysql使用的隔离级别1、2、3、4，分别代表读未提交、读已提交、可重复读、串行化 --&gt;
+		&lt;property name=&quot;txIsolation&quot;&gt;3&lt;/property&gt;
+		&lt;!-- mycat进程的数量，通常等于服务器CPU核数 --&gt;
+		&lt;property name=&quot;processors&quot;&gt;8&lt;/property&gt;
+		&lt;!-- 前台应用访问mycat最大空闲时间，单位是毫秒 --&gt;
+		&lt;property name=&quot;idleTimeout&quot;&gt;300000&lt;/property&gt;
+		&lt;!-- SQL执行超时时间，单位是秒 --&gt;
+		&lt;property name=&quot;sqlExecuteTimeout&quot;&gt;300&lt;/property&gt;
+		&lt;!-- 如果SQL中没有指定limit，则会使用该参数来限制返回的结果集行数 --&gt;
+		&lt;property name=&quot;defaultMaxLimit&quot;&gt;100&lt;/property&gt;
+		&lt;!-- mycat允许的最大packet大小 --&gt;
+		&lt;property name=&quot;maxPacketSize&quot;&gt;104857600&lt;/property&gt;
+		&lt;!-- 1为开启实时统计、0为关闭 --&gt;
+		&lt;property name=&quot;useSqlStat&quot;&gt;0&lt;/property&gt;  
+		&lt;!-- 1为开启全局表一致性检测、0为关闭 --&gt;
+		&lt;property name=&quot;useGlobleTableCheck&quot;&gt;0&lt;/property&gt;
+		&lt;!-- 全局ID类型 
+			0、本地文件方式
+			1、数据库方式
+			2、时间戳序列方式
+			3、分布式ZK ID生成器
+			4、ZK递增ID生成
+			--&gt;
+		&lt;property name=&quot;sequnceHandlerType&quot;&gt;2&lt;/property&gt;
+		
+		&lt;!-- 子查询中存在关联查询的情况下,检查关联字段中是否有分片字段 .默认 false --&gt;
+		&lt;property name=&quot;subqueryRelationshipCheck&quot;&gt;false&lt;/property&gt; 
+		&lt;!--1为开启mysql压缩协议--&gt;
+	    &lt;property name=&quot;useCompression&quot;&gt;1&lt;/property&gt;
+	    &lt;!--设置模拟的MySQL版本号--&gt;
+	    &lt;property name=&quot;fakeMySQLVersion&quot;&gt;5.7.30&lt;/property&gt;
+		&lt;property name=&quot;processorBufferChunk&quot;&gt;40960&lt;/property&gt;
+		&lt;property name=&quot;processorExecutor&quot;&gt;32&lt;/property&gt;
+	    &lt;!--默认为type 0: DirectByteBufferPool | type 1 ByteBufferArena | type 2 NettyBufferPool --&gt;
+		&lt;property name=&quot;processorBufferPoolType&quot;&gt;0&lt;/property&gt;
+		&lt;!--默认是65535 64K 用于sql解析时最大文本长度 --&gt;
+		&lt;property name=&quot;maxStringLiteralLength&quot;&gt;65535&lt;/property&gt;
+		&lt;property name=&quot;sequnceHandlerType&quot;&gt;0&lt;/property&gt;
+		&lt;property name=&quot;backSocketNoDelay&quot;&gt;1&lt;/property&gt;
+		&lt;property name=&quot;frontSocketNoDelay&quot;&gt;1&lt;/property&gt;
+		&lt;property name=&quot;processorExecutor&quot;&gt;16&lt;/property&gt;
+		
+		&lt;!--分布式事务开关
+			0、为不过滤分布式事务
+			1、为过滤分布式事务（如果分布式事务内只涉及全局表，则不过滤）
+			2、为不过滤分布式事务,但是记录分布式事务日志
+			--&gt;
+		&lt;property name=&quot;handleDistributedTransactions&quot;&gt;0&lt;/property&gt;
+		&lt;!-- off heap for merge/order/group/limit  1开启 0关闭--&gt;
+		&lt;property name=&quot;useOffHeapForMerge&quot;&gt;1&lt;/property&gt;
+        &lt;property name=&quot;memoryPageSize&quot;&gt;64k&lt;/property&gt;
+		&lt;!-- 单位为k --&gt;
+		&lt;property name=&quot;spillsFileBufferSize&quot;&gt;1k&lt;/property&gt;
+		&lt;property name=&quot;useStreamOutput&quot;&gt;0&lt;/property&gt;
+		&lt;!-- 单位为m--&gt;
+		&lt;property name=&quot;systemReserveMemorySize&quot;&gt;384m&lt;/property&gt;
+		&lt;!--是否采用zookeeper协调切换  --&gt;
+		&lt;property name=&quot;useZKSwitch&quot;&gt;false&lt;/property&gt;
+		&lt;!-- XA Recovery Log日志路径 --&gt;
+		&lt;property name=&quot;XARecoveryLogBaseDir&quot;&gt;./&lt;/property&gt;
+		&lt;!-- XA Recovery Log日志名称 --&gt;
+		&lt;property name=&quot;XARecoveryLogBaseName&quot;&gt;tmlog&lt;/property&gt;
+	&lt;/system&gt;
+	
+	&lt;!-- 全局SQL防火墙设置 --&gt;
+	&lt;!--白名单可以使用通配符%或着*--&gt;
+	&lt;!--例如&lt;host host=&quot;127.0.0.*&quot; user=&quot;root&quot;/&gt;--&gt;
+	&lt;!--例如&lt;host host=&quot;127.0.*&quot; user=&quot;root&quot;/&gt;--&gt;
+	&lt;!--例如&lt;host host=&quot;127.*&quot; user=&quot;root&quot;/&gt;--&gt;
+	&lt;!--例如&lt;host host=&quot;1*7.*&quot; user=&quot;root&quot;/&gt;--&gt;
+	&lt;!--这些配置情况下对于127.0.0.1都能以root账户登录--&gt;
+	&lt;!--
+	&lt;firewall&gt;
+	   &lt;whitehost&gt;
+	      &lt;host host=&quot;1*7.0.0.*&quot; user=&quot;root&quot;/&gt;
+	   &lt;/whitehost&gt;
+       &lt;blacklist check=&quot;false&quot;&gt;
+       &lt;/blacklist&gt;
+	&lt;/firewall&gt;
+	--&gt;
+
+	&lt;!--&lt;user name=&quot;root&quot; defaultAccount=&quot;true&quot;&gt;	--&gt;
+		&lt;!--&lt;property name=&quot;password&quot;&gt;123456&lt;/property&gt;	--&gt;
+		&lt;!-- 可以配置多个，逗号分割--&gt;
+		&lt;property name=&quot;schemas&quot;&gt;TESTDB,TESTDB1,TESTD2&lt;/property&gt;	--&gt;
+		&lt;!-- 表级 DML 权限设置 --&gt;
+		&lt;!-- check表示是否启用权限控制--&gt;	
+		&lt;!--&lt;privileges check=&quot;false&quot;&gt;	--&gt;
+			&lt;!-- dml四个bit位分别代表insert、update、select、delete--&gt;	
+			&lt;!--&lt;schema name=&quot;TESTDB&quot; dml=&quot;0110&quot; &gt;	--&gt;
+				&lt;!--&lt;table name=&quot;tb01&quot; dml=&quot;0000&quot;&gt;&lt;/table&gt;	--&gt;
+				&lt;!--&lt;table name=&quot;tb02&quot; dml=&quot;1111&quot;&gt;&lt;/table&gt;	--&gt;
+			&lt;!--&lt;/schema&gt;	--&gt;
+		&lt;!--&lt;/privileges&gt;			--&gt;
+	&lt;!--&lt;/user&gt;	--&gt;
+
+    &lt;!-- 配置mycat的用户账号密码及读取权限 --&gt;
+	&lt;user name=&quot;root&quot;&gt;
+		&lt;property name=&quot;password&quot;&gt;mengqizhang&lt;/property&gt;
+		&lt;property name=&quot;schemas&quot;&gt;mycat-database&lt;/property&gt;
+		&lt;property name=&quot;readOnly&quot;&gt;false&lt;/property&gt;
+	&lt;/user&gt;
+
+	&lt;user name=&quot;user&quot;&gt;
+		&lt;property name=&quot;password&quot;&gt;user&lt;/property&gt;
+		&lt;property name=&quot;schemas&quot;&gt;mycat-database&lt;/property&gt;
+		&lt;property name=&quot;readOnly&quot;&gt;true&lt;/property&gt;
+	&lt;/user&gt;
+
+
+&lt;/mycat:server&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br></div></div><ul><li>配置 schema.xml</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE mycat:schema SYSTEM &quot;schema.dtd&quot;&gt;
+&lt;mycat:schema xmlns:mycat=&quot;http://org.opencloudb/&quot; &gt;
+
+
+    &lt;!-- name=&quot;mycat-database&quot; 是mycat的对外数据库名  --&gt;
+    &lt;!-- dataNode=&quot;masterNode1&quot; 绑定的是dataNode的name的名称  --&gt;
+    &lt;schema name=&quot;mycat-database&quot; checkSQLschema=&quot;false&quot; sqlMaxLimit=&quot;100&quot; dataNode=&quot;masterNode1&quot;&gt;
+		    &lt;table name=&quot;sys_user&quot; primaryKey=&quot;id&quot; dataNode=&quot;masterNode1&quot;/&gt;
+	&lt;/schema&gt;
+	
+	&lt;!-- 设置dataNode 对应的数据库，name 和schema中对应 ,dataHost：自己定义的host配置 ，database是mysql实际数据库 --&gt;  
+    &lt;dataNode name=&quot;masterNode1&quot; dataHost=&quot;masterHost1&quot; database=&quot;master-a&quot; /&gt;  
+    &lt;!-- &lt;dataNode name=&quot;masterNode2&quot; dataHost=&quot;masterHost1&quot; database=&quot;master2&quot; /&gt;  --&gt;
+	&lt;!-- mycat 逻辑主机dataHost对应的物理主机.其中也设置对应的mysql登陆信息--&gt;  
+    &lt;dataHost name=&quot;masterHost1&quot; maxCon=&quot;1000&quot; minCon=&quot;10&quot; balance=&quot;1&quot; writeType=&quot;0&quot; dbType=&quot;mysql&quot; dbDriver=&quot;native&quot;&gt;  
+            &lt;!-- mycat对后端数据库进行心跳检测--&gt;
+            &lt;heartbeat&gt;select user()&lt;/heartbeat&gt;  
+            &lt;!-- 写 mysql --&gt;
+            &lt;writeHost host=&quot;server1&quot; url=&quot;192.168.2.9:3306&quot; user=&quot;root&quot; password=&quot;mengqizhang&quot;&gt;
+                &lt;!-- 读 mysql --&gt;  
+				&lt;readHost host=&quot;server1&quot; url=&quot;192.168.2.9:3305&quot; user=&quot;root&quot; password=&quot;mengqizhang&quot;/&gt;  			
+			&lt;/writeHost&gt;
+    &lt;/dataHost&gt;
+&lt;/mycat:schema&gt;
+
+
+----------------------------------------------------------------------------------------
+maxCon：MyCAT连接数的最大值
+minCon：MyCAT连接数的最大值最小值
+
+balance属性
+    balance=”0”, 不开启读写分离机制，所有读操作都发送到当前可用的 writeHost 上
+    balance=”1”，全部的 readHost 与 stand by writeHost 参与 select 语句的负载均衡
+    balance=”2”，所有读操作都随机的在 writeHost、 readhost 上分发。
+    balance=”3”， 所有读请求随机的分发到 wiriterHost 对应的 readhost 执行,writerHost 不负担读压力
+writeType：定义写操作的执行方式，可选值为0、1
+    0表示所有的写请求都由第一个writeHost来执行，只有当它不可用时，才会由下一个可用的writeHost来执行（适用于主从复制集群）
+    1表示写请求随机分发到writeHost来执行（适用于PXC集群）
+dbType： 定于数据库类型
+dbDriver： 可选值为native、jdbc
+    native表示mysql原生的通信协议
+    jdbc表示连接其他的关系型数据库或者非关系型数据库
+    
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br></div></div><ul><li>启动mycat</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    1. ./bin/mycat console ,其中console是可变参数，官方还提供了： { console | start | stop | restart | status | dump } 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>修改springboot连接数据库： 参考mysql-master项目，实现了读写分离效果！</li> <li>执行select接口发现请求的数据均来自slave库</li> <li>执行insert/update/delete均到了master库</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>server:
+  port: 2020
+
+spring:
+  datasource:
+    username: root
+    password: mengqizhang
+    driver-class-name: com.mysql.jdbc.Driver # com.mysql.cj.jdbc.Driver
+    # url: jdbc:mysql://192.168.2.9:3306/master-a
+    url: jdbc:mysql://192.168.2.9:8066/mycat-database    
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h2 id="sharding-proxy"><a href="#sharding-proxy" class="header-anchor">#</a> Sharding proxy</h2> <h3 id="sharding-proxy-作主从代理db-实现应用读写分离"><a href="#sharding-proxy-作主从代理db-实现应用读写分离" class="header-anchor">#</a> Sharding proxy 作主从代理DB，实现应用读写分离</h3> <h3 id="开始步骤"><a href="#开始步骤" class="header-anchor">#</a> 开始步骤：</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>     1.  ShardingSphere官方文档 ： https://shardingsphere.apache.org/document/legacy/3.x/document/cn/overview/
+         ShardingProxy下载： https://shardingsphere.apache.org/document/current/en/downloads/
+         下载官方服务端tar包，该项目使用的是ShardingProxy版本是： 4.1.1
+     2.  配置 conf/server.yaml 和 config-master_slave.yaml
+     3.  加入mysql连接驱动包到lib中     
+     3.  启动 sh /bin/start.sh
+     4.  日志输出cat logs/stdout.log , ShardingProxy默认的端口是3307
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="server-xml"><a href="#server-xml" class="header-anchor">#</a> server.xml</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>    
+    #项目连接ShardingProxy授权
+    authentication:
+      users:
+        root:#root是用户名
+          password: mengqizhang
+    
+    # props:
+    #   max.connections.size.per.query: 1
+    #   acceptor.size: 16  # The default value is available processors count * 2.
+    #   executor.size: 16  # Infinite by default.
+    #   proxy.frontend.flush.threshold: 128  # The default value is 128.
+    #     # LOCAL: Proxy will run with LOCAL transaction.
+    #     # XA: Proxy will run with XA transaction.
+    #     # BASE: Proxy will run with B.A.S.E transaction.
+    #   proxy.transaction.type: LOCAL
+    #   proxy.opentracing.enabled: false
+    #   proxy.hint.enabled: false
+    #   query.with.cipher.column: true
+    #   sql.show: false
+    #   allow.range.query.with.inline.sharding: false
+          
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><h3 id="config-master-slave-yaml"><a href="#config-master-slave-yaml" class="header-anchor">#</a> config-master-slave.yaml</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+# schema名称,每个文件都是单独的schema,多个schema则是多个yaml文件,
+# yaml文件命名要求是config-xxxx.yaml格式,虽然没有强制要求,但推荐名称中的xxxx与配置的schemaName保持一致,方便维护
+# 逻辑数据源名称，项目连接的数据库名
+schemaName: master_slave_db
+
+# 配置物理数据源信息（实际mysql连接）
+dataSources:
+  master_ds: #主dataSource名称
+    url: jdbc:mysql://xxxx:3306/binlog_user
+    username: root
+    password: xxxx
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 50
+  slave_ds_0: #从dataSource名称
+    url: jdbc:mysql://xxxx:3306/binlog_user
+    username: root
+    password: xxxx
+    connectionTimeoutMilliseconds: 30000
+    idleTimeoutMilliseconds: 60000
+    maxLifetimeMilliseconds: 1800000
+    maxPoolSize: 50
+
+# 这里配置这个规则的话,相当于是全局读写分离配置
+masterSlaveRule:
+  name: ms_ds
+  masterDataSourceName: master_ds # 主库的dataSource名称
+  slaveDataSourceNames: # 从的dataSource列表,至少需要有一个
+    - slave_ds_0 # 从dataSource名称
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/数据层/mysql/mysql集群.html" class="prev">
+        集群
+      </a></span> <span class="next"><a href="/mengqizhang/数据层/mysql/ApacheShardingSphere介绍.html">
+        ApacheShardingSphere
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/74.673e240c.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Spring依赖注入有几种方式，各自优缺点 | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/109.3339ffad.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/6.48810bdc.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>面试 📖🔥🔥</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/" aria-current="page" class="active sidebar-link">java</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#spring依赖注入有几种方式-各自优缺点" class="sidebar-link">Spring依赖注入有几种方式，各自优缺点</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#autowired-和-resource的区别" class="sidebar-link">@Autowired 和 @Resource的区别</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#spring中bean的生命周期" class="sidebar-link">Spring中Bean的生命周期</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#接口优化总结" class="sidebar-link">接口优化总结</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#如何实现一个用户一天内只能登录3次" class="sidebar-link">如何实现一个用户一天内只能登录3次 ？</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#mysql的btree索引和hash索引" class="sidebar-link">mysql的BTree索引和Hash索引</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#" class="sidebar-link"></a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#redis的相关问题" class="sidebar-link">Redis的相关问题</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#redis使用场景" class="sidebar-link">Redis使用场景，</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#redis的集群类型" class="sidebar-link">Redis的集群类型，</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#使用缓存一般会出现什么重大的问题-如何解决" class="sidebar-link">使用缓存一般会出现什么重大的问题，如何解决？</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#mybatis的sqlsession下的四大对象" class="sidebar-link">mybatis的SqlSession下的四大对象</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#nginx的高可用方案与集群方案" class="sidebar-link">Nginx的高可用方案与集群方案</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#你用过redis几大数据类型-都用在哪些场景" class="sidebar-link">你用过Redis几大数据类型？都用在哪些场景？</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E9%9D%A2%E8%AF%95%E9%A2%98/#设计模式" class="sidebar-link">设计模式</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable"><span>数据层 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="spring依赖注入有几种方式-各自优缺点"><a href="#spring依赖注入有几种方式-各自优缺点" class="header-anchor">#</a> Spring依赖注入有几种方式，各自优缺点</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code> 属性注入 (Field Injection)
+ setter方法注入 (Setter Injection)
+ 构造函数注入 (Constructor Injection)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>属性注入</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    @Autowired 
+    private UserService userService;
+   
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>优点 ：使用简单，只需要加入注解（@Autowired），在不用new对象的情况下就能获取spring的注入对象（Spring的DI特性及功能）</li> <li>缺点 ：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>  1. 无法注入一个不可变的对象（final对象） 
+        如果需要注入一个final对象，适用构造函数注入即可
+  2. 只能适用于IOC容器 
+  3. 容易违背了单一设计原则
+        属性注入的简单性，容易在一个类中注入多个对象，而这些对象是否有注入的必要？这些对象是否符合程序设计中的单一职责原则，就变成了
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>setter方法注入</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    private UserService userService;
+    
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+    
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ol><li>不能注入不可变对象（final 修饰的对象）；</li> <li>注入的对象可被修改。
+注入的对象可以在setter方法中改变注入的对象，所以setter的缺点问题是，被注入的对象可能随时被修改掉。</li></ol> <ul><li>构造函数注入 Spring官方4.x之后推荐的方式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>@RestController
+public class UserController {
+
+    private UserService userService;
+
+    // 构造方法注入
+    // 如果当前的类中只有一个构造方法，那么 @Autowired 也可以省略
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+    
+}    
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ol><li>可注入不可变对象；</li> <li>注入对象不会被修改；
+构造方法在对象创建时只会执行一次，因此它不存在注入对象被随时（调用）修改的情况。</li> <li>注入对象会被完全初始化；
+而构造方法是在对象创建之初执行的，因此被注入的对象在使用之前，会被完全初始化，这也是构造方法注入的优点之一</li> <li>通用性更好。
+构造方法和属性注入不同，构造方法注入可适用于任何环境，无论是 IoC 框架还是非 IoC 框架，构造方法注入的代码都是通用的，所以它的通用性更好。</li></ol> <h2 id="autowired-和-resource的区别"><a href="#autowired-和-resource的区别" class="header-anchor">#</a> @Autowired 和 @Resource的区别</h2> <ul><li>来源不同</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Autowired 是 Spring定义的注解
+@Resource 是 Java定义的注解，来自JSR-250规范提案
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>查找顺序不同</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>一来注入的功能，是通过先在 Spring的 IOC 容器中查找对象，再将对象引入到当前类。
+而查找对象分为两种方式： 按照名字查找、按照类型查找。
+@Resource 和 @Autowired 都使用了按名字查找、按类型查找的方式，但是二者查找的顺序不大相同
+
+
+@Resource 先按名称查找，若名称查找不到，再按类型查找
+
+@Autowired 先按照类型查找，若找出了多个，再根据名称查找
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>支持的参数不同</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Resource 
+    参数
+        name
+        lookup
+        type
+        authenticationType
+        shareable
+        mappedName
+        description
+        
+@Autowired
+    参数
+        required         
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><ul><li>依赖注入的方式不同</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Resource
+    只能支持属性注入、setter方法注入
+
+@Autowired 三种注入方式都支持
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>编译器idea的提示不同</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>当注入 Mapper 对象时，使用 @Autowired 注解编译器会提示错误，而使用 @Resource 注解则不会提示错误。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="spring中bean的生命周期"><a href="#spring中bean的生命周期" class="header-anchor">#</a> Spring中Bean的生命周期</h2> <p><a data-fancybox="" title="111" href="spring的bean的生命周期.png"><img src="spring%E7%9A%84bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="img.png"></a></p> <ol><li>实例化: 为Bean分配内存空间</li> <li>设置属性： 将当前类以来的 Bean 属性，进行注入和装配</li> <li>初始化：
+a. 执行各种通知
+b. 执行初始化的前置方法
+c. 执行初始化方法
+d. 执行初始化的后置方法</li> <li>使用 Bean : 在程序中使用 Bean对象</li> <li>销毁 Bean : 程序结束，对 Bean对象进行销毁操作</li></ol> <h2 id="接口优化总结"><a href="#接口优化总结" class="header-anchor">#</a> 接口优化总结</h2> <p>需要for查询数据库的操作，可以使用一次性查询出来</p> <ol><li>批量操作数据库 ：避免for循环里面进行数据库的操作，尽量只操作一次数据库，当作数组参数传入操作数据库
+优化前：</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>//for循环单笔入库
+for(TransDetail detail:transDetailList){
+  insert(detail);  
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>优化后：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>batchInsert(transDetailList);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="2"><li><p>异步思想： 耗时操作、非需要串行的操作，考虑放到（队列、多线程）里执行</p></li> <li><p>缓存思想： 常用的大量数据放到redis里缓存，比如：地区数据、</p></li> <li><p>预取思想： 就是提前把要计算查询的数据，初始化到缓存中，如果在未来的某个时间需要用到这些数据，再去数据库查询的话，
+可能耗时比较大，这个时候可以使用预取思想，提前把将来可能需要的数据计算好，放到缓存中。
+比如： 提前把直播间用户的积分数据、用户相关数据初始化到缓存中</p></li> <li><p>池化思想： 在使用多线程中，我们需要尽量使用线程池来操作，因为线程池帮助我们管理了线程，避免增加创建线程和销毁线程而造成了资源损耗
+线程池可以对线程进行复用，避免不必要的耗时操作、资源浪费。池化思想不仅仅指线程池，很多场景都有池化思想的体现，比如：Druid （数据库连接池）
+它的本质就是预分配和循环利用资源</p></li> <li><p>拒绝阻塞等待，使用事件回调思想： 如果A系统需要调用B系统，但是B系统处理的业务逻辑耗时非常长，若A系统调用B系统的话容易长时间等待，导致A系统长时间下不可用，
+此时可以考虑IO多路复用模型，即A系统不用等待阻塞你的B系统，可以去处理其他的逻辑，等B系统处理完成后，回调通知A系统，这样A系统收到
+回调后可以处理对应的逻辑。</p></li> <li><p>远程调用将串行改为并行： 这点和异步思想类似。</p></li> <li><p>锁的颗粒度避免过粗：</p></li> <li><p>大事务问题： 由于运行长时间的事务，由于事务一直没有提交，导致数据库连接被占用，即并发场景下，数据库连接池被占满，影响到了性能。</p></li></ol> <p>解决方法</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 事务里面不要放和事务无关的代码：比如RPC操作、查询操作
+2. 事务中尽量避免处理太多的数据            
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="如何实现一个用户一天内只能登录3次"><a href="#如何实现一个用户一天内只能登录3次" class="header-anchor">#</a> 如何实现一个用户一天内只能登录3次 ？</h2> <ol><li>redis 的 set或者hset数据结构： set是无序不能重复的 ！！</li></ol> <h2 id="mysql的btree索引和hash索引"><a href="#mysql的btree索引和hash索引" class="header-anchor">#</a> mysql的BTree索引和Hash索引</h2> <h2 id=""><a href="#" class="header-anchor">#</a></h2> <p>自我介绍下，有带队经验吗?</p> <p>2, 数据结构。</p> <p>3， 设计模式。</p> <p>互联网协议
+RPC，HTTP， HTTPS</p> <p>1, VO, TO, PO 一般怎么用
+锁的应用
+多线程</p> <h2 id="redis的相关问题"><a href="#redis的相关问题" class="header-anchor">#</a> Redis的相关问题</h2> <h2 id="redis使用场景"><a href="#redis使用场景" class="header-anchor">#</a> Redis使用场景，</h2> <h2 id="redis的集群类型"><a href="#redis的集群类型" class="header-anchor">#</a> Redis的集群类型，</h2> <h2 id="使用缓存一般会出现什么重大的问题-如何解决"><a href="#使用缓存一般会出现什么重大的问题-如何解决" class="header-anchor">#</a> 使用缓存一般会出现什么重大的问题，如何解决？</h2> <ol><li>缓存雪崩： 缓存在同一个时间过期了，或者redis宕机，导致大量的请求达到数据库</li> <li>缓存穿透： 查询缓存中没有、数据库中也没有的数据，一般是恶意攻击</li> <li>缓存击穿： 缓存中不存在（key过期了），直接查询数据库了</li></ol> <p>缓存雪崩解决：
+redis方面：
+1. 做redis高可用： redis主从+哨兵、 redis cluster集群
+2. 需要做业务缓存：比如 ehcache做缓存，避免只有redis一个缓存
+3. redis需要做持久化配置，redis宕机、崩溃后重启完数据还能恢复
+4. 限流：避免所有的请求都到达数据库
+key在同一个时间过期：
+1. key的抖动设置，随机过期时间，避免在同一个时间大量过期</p> <p>2， Spring相关问题
+依赖注入的几种方式？
+AOP的应用
+如果我需要往一个没有被Spring管理的Bean里引用一个Spring的bean，应该怎么做？</p> <p>Spring的生命周期
+Spring的context保存的bean是用了什么数据结构或者哪个类</p> <p>Springboot与tomcat是怎么集成的。
+Servlet的Filter加入到内置的Tomcat应该如何做？</p> <p>SpringMVC的Servlet分发器是什么？</p> <p>Tomcat原理相关问题
+Tomcat是如何处理请求的？
+Tomcat与Apache的区别与联系</p> <p>nginx相关问题
+nginx的负载均衡是怎么实现的？他是客户端负载均衡还是服务器端负载均衡
+nginx的集群配置</p> <p>Mybatis相关问题
+Mybatis的一级缓存与两级缓存，能说明一下么？
+Mybatis的延迟加载的机制</p> <h2 id="mybatis的sqlsession下的四大对象"><a href="#mybatis的sqlsession下的四大对象" class="header-anchor">#</a> mybatis的SqlSession下的四大对象</h2> <p>Executor: 负责执行调用下面的四个对象
+StatementHandler : sql的预编译、设置参数
+ResultSetHandler : 结果集转换，把mybatis转换成java ： resultSet 转为 list
+ParameterHandler : 参数转换、参数处理
+TypeHandler: 数据类型转换：把mysql的数据类型转换为java的数据类型</p> <p>如果我需要自动转换int类型为枚举类型，应该从何入手</p> <p>Mysql的索引用的是什么类型的数据结构？</p> <p>Shiro相关问题
+Shiro是如何在tomcat里实现认证与授权的？
+你对Jwt, Jws有了解么？ Oauth2有了解么？
+单点登录</p> <p>dubbo的底层框架用的是什么？基于什么协议？
+CAP,BASE理论</p> <p>前端相关问题
+你对前端框架有了解么？
+Vue，</p> <p>你现在做的项目实现难度最高的一个功能，讲解一下
+项目多节点场景通过redis保证数据一致的功能的开发</p> <p>如果我需要查询快，又能一直都可以快速插入和删除，你会选择什么样的数据结构？</p> <p>同步锁 的区别</p> <p>TCP/IP属于网络七层协议里面的第几层，TCP协议报文数据格式可以分成简单几个部分？TCP的四次挥手请说明一下</p> <p>源码问题
+Spring 三级缓存， 生命周期， Spring bean的注入方式？
+Shiro源码</p> <p>Spring cloud问题</p> <p>Kafka 与 rabbitMQ</p> <p>数据库
+我现在遇到了一个运行了很长时间的SQL，如果是你，你会考虑是哪几方面问题？从哪几方面入手优化？
+分布式数据库，分页你是如何处理的？主键你生成你用什么方案？
+我需要搭一个mysql的数据库集群，且需要分库分表，你的设想是怎么样？</p> <h2 id="nginx的高可用方案与集群方案"><a href="#nginx的高可用方案与集群方案" class="header-anchor">#</a> Nginx的高可用方案与集群方案</h2> <p>KeepAlived + Nginx</p> <p>分布式锁的概念与应用
+你用过Redis几大数据类型？都用在哪些场景？
+Zookeeper基于什么协议？CAP理论，强一致性还是最终一致性？ZAB</p> <p>1, 统一预约平台的限流方案处理
+2， 灰度环境是如何实现
+3， Oauth2的JWT， JWS 签名，安全性
+4， 重复调用的解决方案
+理解 JVM 底层原理， JMM 内存模型， 垃圾回收机制， GC 算法
+懂得 Linux 常用命令， 有 Linux 的相关运维经验</p> <p>源码问题
+Spring 三级缓存， 生命周期， Spring bean的注入方式？</p> <h2 id="你用过redis几大数据类型-都用在哪些场景"><a href="#你用过redis几大数据类型-都用在哪些场景" class="header-anchor">#</a> 你用过Redis几大数据类型？都用在哪些场景？</h2> <p>String ：基本数据存储</p> <p>set\zset:
+一个用户24小时内不允许超过3次登录 、
+排行榜 、
+好友关系，白黑名单、点赞列表、互相关注列表</p> <p>geo： 定位、周围的人</p> <p>increment : 计数器 、 分布式id生成</p> <p>其他 ：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>分布式锁： redlock 、 redissoin
+消息队列：发布订阅模式
+分布式会话： session 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="设计模式"><a href="#设计模式" class="header-anchor">#</a> 设计模式</h2> <p>单例模式：
+策略模式：多供应商短信
+代理模式：事务、aop等
+门面模式：slf4j日志框架</p> <p>适配器模式：
+责任链模式：</p> <p>工厂方法模式	
+抽象工厂模式：
+模版方法模式：
+建造者模式：
+原型模式：
+中介者模式：
+命令模式：
+装饰模式：</p> <p>迭代器模式：
+组合模式：
+观察者模式：
+备忘录模式：
+访问者模式：
+状态模式：
+解释器模式：
+享元模式：	
+桥梁模式：</p> <div data-v-1f2b5245></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/109.3339ffad.js" defer></script><script src="/mengqizhang/assets/js/6.48810bdc.js" defer></script>
+  </body>
+</html>

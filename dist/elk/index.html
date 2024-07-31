@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ELK （Elastic stack） | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/9.70c1c418.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable"><span>数据层 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>ELK 🔍</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/elk/" aria-current="page" class="active sidebar-link">介绍</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/elk/#elasticsearch" class="sidebar-link">Elasticsearch :</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/elk/#logstash" class="sidebar-link">logstash</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/elk/#kibana" class="sidebar-link">Kibana</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/elk/#filebeat" class="sidebar-link">Filebeat</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/elk/#分布式系统elk的使用" class="sidebar-link">分布式系统ELK的使用</a></li></ul></li><li><a href="/mengqizhang/elk/elasticsearch.html" class="sidebar-link">elasticsearch</a></li><li><a href="/mengqizhang/elk/filebeat.html" class="sidebar-link">filebeat</a></li><li><a href="/mengqizhang/elk/kibana.html" class="sidebar-link">kibana</a></li><li><a href="/mengqizhang/elk/logstash.html" class="sidebar-link">logstash</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="elk-elastic-stack"><a href="#elk-elastic-stack" class="header-anchor">#</a> ELK （Elastic stack）</h1> <div class="language- line-numbers-mode"><pre class="language-text"><code>ELK是Elasticsearch、Logstash、Kibana三大开源框架首字母大写简称
+(但是后期出现的filebeat(beats中的一种)可以用来替代logstash的数据收集功能，比较轻量级)。市面上也被成为Elastic Stack。
+- Elasticsearch: 分布式搜索和分析引擎，用于全文检索结构化检索及分析，基于Lucene开发 （源于创始人为妻子做一个菜谱功能）
+- Logstash:实时数据传输管道，负责将数据从管道输入端传入管道的输出端，并且对这些数据可以进行筛选，清洗的操作
+- Kibana:可视化操作平台，是用于Elasticsearch的使用，搜索查看索引的数据，地图、图表，kibana能够很轻易的展示高级数据分析与可视化
+- Filebeat: 用于转发和集中收集数据的轻量级传送器，作为代理安装在服务器上，filebeat作为监控指定日志文件，收集日志事件，并且将其转发到Elasticsearch或Logstash进行索引
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>为什么要使用elk （ Elastic stack ）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 分布式系统下不同模块部署在不同的服务器上，出现问题时需要及时根据日志定位到具体的服务，所以需要构建一套集中式的日志系统，可以提高定位问题效率
+2. 相比于传统的 grep、tail、awk工具，无法对日志实现更高要求的查询、排序、统计等
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>有啥子用</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 问题定位排查 ： 
+2. 监控和预警：日志的监控预警是相辅相成的，基于日志的监控，预警使得运维有自己的机械战队，大大节省人力运维 
+3. 数据分析
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="elasticsearch"><a href="#elasticsearch" class="header-anchor">#</a> Elasticsearch :</h2> <h4 id="定义"><a href="#定义" class="header-anchor">#</a> 定义：</h4> <div class="language- extra-class"><pre><code>· 分布式的 Restful 风格的搜索和数据分析引擎
+</code></pre></div><h4 id="特点"><a href="#特点" class="header-anchor">#</a> 特点：</h4> <div class="language- extra-class"><pre><code>查询：允许执行和合并多种类型的搜索 — 结构化、非结构化、地理位置、度量指标 — 搜索方式随心而变。
+分析：Elasticsearch 聚合让您能够从大处着眼，探索数据的趋势和模式。
+速度：很快，可以做到亿万级的数据，毫秒级返回。
+可扩展性：可以在笔记本电脑上运行，也可以在承载了 PB 级数据的成百上千台服务器上运行。
+弹性：运行在一个分布式的环境中，从设计之初就考虑到了这一点。
+灵活性：具备多个案例场景。支持数字、文本、地理位置、结构化、非结构化，所有的数据类型都欢迎。
+</code></pre></div><h4 id="健康检测-localhost-9200-cluster-health-返回"><a href="#健康检测-localhost-9200-cluster-health-返回" class="header-anchor">#</a> 健康检测： localhost:9200/_cluster/health，返回：</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+  &quot;cluster_name&quot;: &quot;docker-cluster&quot;,
+  &quot;status&quot;: &quot;yellow&quot;,
+  &quot;timed_out&quot;: false,
+  &quot;number_of_nodes&quot;: 1,
+  &quot;number_of_data_nodes&quot;: 1,
+  &quot;active_primary_shards&quot;: 11,
+  &quot;active_shards&quot;: 11,
+  &quot;relocating_shards&quot;: 0,
+  &quot;initializing_shards&quot;: 0,
+  &quot;unassigned_shards&quot;: 4,
+  &quot;delayed_unassigned_shards&quot;: 0,
+  &quot;number_of_pending_tasks&quot;: 0,
+  &quot;number_of_in_flight_fetch&quot;: 0,
+  &quot;task_max_waiting_in_queue_millis&quot;: 0,
+  &quot;active_shards_percent_as_number&quot;: 73.33333333333333
+}     
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h4 id="安装ik分词器"><a href="#安装ik分词器" class="header-anchor">#</a> 安装IK分词器：</h4> <div class="language- extra-class"><pre><code>  1. docker exec -it 容器id /bin/bash
+  2. ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.13.2/elasticsearch-analysis-ik-7.13.2.z
+  3. docker restart 容器id
+</code></pre></div><h4 id="集群"><a href="#集群" class="header-anchor">#</a> 集群：</h4> <p>-集群：
+1. 一个运行中的 Elasticsearch 实例称为一个节点，而集群是由一个或者多个拥有相同 cluster.name 配置的节点组成，
+它们共同承担数据和负载的压力。当有节点加入集群中或者从集群中移除节点时，集群将会重新平均分布所有的数据。
+2. 主节点负责管理集群范围内增加、删除索引等操作！ 任何节点都可以选举为主节点，当只有一个es实例的时候</p> <ul><li>集群健康：</li></ul> <ol><li>GET /_cluster/health
+返回json信息：</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    &quot;cluster_name&quot;: &quot;docker-cluster&quot;,
+    &quot;status&quot;: &quot;yellow&quot;,
+    &quot;timed_out&quot;: false,
+    &quot;number_of_nodes&quot;: 1,
+    &quot;number_of_data_nodes&quot;: 1,
+    &quot;active_primary_shards&quot;: 25,
+    &quot;active_shards&quot;: 25,
+    &quot;relocating_shards&quot;: 0,
+    &quot;initializing_shards&quot;: 0,
+    &quot;unassigned_shards&quot;: 18,
+    &quot;delayed_unassigned_shards&quot;: 0,
+    &quot;number_of_pending_tasks&quot;: 0,
+    &quot;number_of_in_flight_fetch&quot;: 0,
+    &quot;task_max_waiting_in_queue_millis&quot;: 0,
+    &quot;active_shards_percent_as_number&quot;: 58.139534883720934
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>其中状态值status：
+green 所有的主分片和副本分片都正常运行。
+yellow 所有的主分片都正常运行，但不是所有的副本分片都正常运行。
+red 有主分片没能正常运行。</p> <h4 id="索引-类型-文档-分片-副本"><a href="#索引-类型-文档-分片-副本" class="header-anchor">#</a> 索引，类型，文档，分片，副本：</h4> <div class="language- extra-class"><pre><code>1 索引： = mysql数据库
+   倒排索引： =mysql的索引，提升检索的速度
+2 类型： = mysql表
+3 文档： = mysql中的记录
+4 分片： 把数据分成多个在不同节点上
+        a 一个分片是一个Lucene实例
+        b Elasticsearch 是利用分片将数据分发到集群内各处的，分片是数据的容器，文档保存在分片内，分片又被分配到集群内的各个节点里。
+        c 主分片 和 副分片，通过接口查询es的健康状态，其中的 &quot;unassigned_shards&quot;代表副分片未分配的数量（在同一个节点上既保存原始数据又保存副本是没有意义的）
+5 副本： 索引的备份机制
+
+
+
+倒排索引：
+    例如，假设我们有两个文档，每个文档的 content 域包含如下内容：
+        The quick brown fox jumped over the lazy dog
+        Quick brown foxes leap over lazy dogs in summer
+    为了创建倒排索引，我们首先将每个文档的 content 域拆分成单独的 词（我们称它为 词条 或 tokens ），
+    创建一个包含所有不重复词条的排序列表，然后列出每个词条出现在哪个文档。结果如下所示：
+        Term      Doc_1  Doc_25
+        -------------------------
+        Quick   |       |  X
+        The     |   X   |
+        brown   |   X   |  X
+        dog     |   X   |
+        dogs    |       |  X
+        fox     |   X   |
+        foxes   |       |  X
+        in      |       |  X
+        jumped  |   X   |
+        lazy    |   X   |  X
+        leap    |       |  X
+        over    |   X   |  X
+        quick   |   X   |
+        summer  |       |  X
+        the     |   X   |
+        ------------------------
+
+    现在，如果我们想搜索 quick brown ，我们只需要查找包含每个词条的文档：
+        
+        Term      Doc_1  Doc_2
+        -------------------------
+        brown   |   X   |  X
+        quick   |   X   |
+        ------------------------
+        Total   |   2   |  1
+    两个文档都匹配，但是第一个文档比第二个匹配度更高。如果我们使用仅计算匹配词条数量的简单 相似性算法 ，那么，我们可以说，对于我们查询的相关性来讲，第一个文档比第二个文档更佳。
+
+
+
+
+
+文档的如何存储的：
+    
+    1. 当索引一个文档的时候，文档会存到主分片中。ES如何知道这个文档是在哪个分片里，依据的公式：
+        分片  = hash(默认文档的id) % 主分片的数量
+        shard = hash(routing) % number_of_primary_shards
+            
+            - routing 是一个可变值，默认是文档的 _id ，也可以设置成一个自定义的值。
+            - routing 通过 hash 函数生成一个数字，然后这个数字再除以 number_of_primary_shards （主分片的数量）后得到 余数 。
+            - 这个分布在 0到 number_of_primary_shards-1 之间的余数，就是我们所寻求的文档所在分片的位置。
+            这就解释了为什么我们要在创建索引的时候就确定好主分片的数量 并且永远不会改变这个数量：因为如果数量变化了，那么所有之前路由的值都会无效，文档也再也找不到了。
+        
+
+
+文档的操作：
+
+    1.新增一个文档
+        PUT poem/test/1
+        {
+            &quot;id&quot;: &quot;1&quot;,
+            &quot;userRemark&quot;: &quot;索引中的version字段-相同的id就是update文档&quot;,
+            &quot;content&quot;: &quot;是乐观锁，保证数据并发情况下的准确性-相同的id就是update文档&quot;
+        }
+        解析： 1是文档的id，若id=1该文档不在索引内，则是新建，返回如下result=created，并且有个一version字段，
+              在Elasticsearch中每个文档都有一个版本号。当每次对文档进行修改时（包括删除），_version 的值会递增。在处理冲突中，
+              我们讨论了怎样使用 _version号码确保你的应用程序中的一部分修改不会覆盖另一部分所做的修改。
+
+        {
+            &quot;_index&quot; : &quot;poem&quot;,
+            &quot;_type&quot; : &quot;test&quot;,
+            &quot;_id&quot; : &quot;6&quot;,
+            &quot;_version&quot; : 1,
+            &quot;result&quot; : &quot;created&quot;,
+            &quot;_shards&quot; : {
+            &quot;total&quot; : 2,
+            &quot;successful&quot; : 1,
+            &quot;failed&quot; : 0
+            },
+            &quot;_seq_no&quot; : 1,
+            &quot;_primary_term&quot; : 1
+        }
+
+    2.查询指定id的文档
+      GET poem/test/1?pretty
+      返回：
+            {
+                &quot;_index&quot; : &quot;poem&quot;,
+                &quot;_type&quot; : &quot;test&quot;,
+                &quot;_id&quot; : &quot;1&quot;,
+                &quot;_version&quot; : 1,
+                &quot;_seq_no&quot; : 0,
+                &quot;_primary_term&quot; : 1,
+                &quot;found&quot; : true,
+                &quot;_source&quot; : {
+                &quot;id&quot; : &quot;demoData&quot;,
+                &quot;userRemark&quot; : &quot;demoData&quot;,
+                &quot;content&quot; : &quot;demoData&quot;
+                }
+            }
+        
+      #查询指定id的文档并且返回指定部分
+      GET poem/test/1/_source
+      返回：
+            {
+                &quot;id&quot; : &quot;demoData&quot;,
+                &quot;userRemark&quot; : &quot;demoData&quot;,
+                &quot;content&quot; : &quot;demoData&quot;
+            }
+</code></pre></div><h2 id="logstash"><a href="#logstash" class="header-anchor">#</a> logstash</h2> <h4 id="同行"><a href="#同行" class="header-anchor">#</a> 同行</h4> <div class="language- extra-class"><pre><code>filebeat ： 
+        1. golang，轻量，消耗内存资源较小，
+        2. 分布式服务可以考虑日志传送使用filebeat传送到logstash再转发Redis、mq，或者直接到Es
+logtash：
+        1. filter功能，过滤筛选日志格式
+</code></pre></div><h4 id="定义-2"><a href="#定义-2" class="header-anchor">#</a> 定义</h4> <ul><li>Logstash 主要用于收集服务器日志，它是一个开源数据收集引擎，具有实时管道(pipeline)功能。Logstash 可以动态地将来自不同数据源的数据统一起来，并将数据标准化到您所选择的目的地。</li></ul> <h4 id="结构"><a href="#结构" class="header-anchor">#</a> 结构</h4> <ul><li>输入： 数据（包含但不限于日志）往往都是以不同的形式、格式存储在不同的系统中，而 Logstash 支持从多种数据源中收集数据（File、Syslog、MySQL、消息中间件等等）。</li> <li>过滤器： 实时解析和转换数据，识别已命名的字段以构建结构，并将它们转换成通用格式。</li> <li>输出：Elasticsearch 并非存储的唯一选择，Logstash 提供很多输出选择。</li></ul> <h4 id="常用数据涞源"><a href="#常用数据涞源" class="header-anchor">#</a> 常用数据涞源：</h4> <ul><li>file ： 从一个文件读取（*.log）</li> <li>tcp :</li></ul> <h4 id="数据源案例"><a href="#数据源案例" class="header-anchor">#</a> 数据源案例：</h4> <ul><li>file：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>input
+    file {
+        # 日志文件地址
+        path =&gt; [&quot;/var/log/*.log&quot;, &quot;/var/log/message&quot;]
+        # 默认一小时
+        close_older =&gt; 3600
+        # 设置新行分隔符，默认为“ \ n”。
+        delimiter =&gt; &quot;\n&quot;
+        # 此参数配合stat_interval，此值用来发现新文件，最终频率为discover_interval × stat_interval。默认15
+        discover_interval =&gt;
+        # 默认为1秒
+        stat_interval =&gt; &quot;1 second&quot;
+        # 忽略压缩包
+        exclude =&gt; exclude =&gt; &quot;*.gz&quot;
+        # 默认为false
+        exit_after_read =&gt; false
+        # 默认为4611686018427387903，是为了保证在读取下一个文件前保证当前文件已经读取完毕
+        file_chunk_count =&gt; 4611686018427387903
+        # 默认为32kb
+        file_chunk_size =&gt; 32768
+        # 默认值为delete，可选值：delete，log，log_and_delete
+        file_completed_action =&gt; delete
+        # 将完全读取的文件路径附加到哪个文件，此内容没有默认值
+        file_completed_log_path =&gt; &quot;/usr/local/log2/completed.log&quot;
+        # 默认值last_modified，可设置内容：last_modified, path
+        file_sort_by =&gt; last_modified
+        # 默认值asc，可设置的值asc, desc
+        file_sort_direction =&gt;
+        # 设置了忽略1000秒之前修改的文件，此内容没有默认值
+        ignore_older =&gt; 1000
+        # 设置最多打开文件量，此值没有默认值，但是存在一个内部限制4095
+        max_open_files =&gt; 4095
+        # 设置了输入模式为tail
+        # tail模式下，start_position 和close_older参数将被忽略。start_position始终从头开始读取文件，close_older到达EOF时文件自动关闭
+        # read模式下需要设置ignore_older 、file_completed_action 、file_completed_log_path 参数
+        mode =&gt; tail
+        # 默认值2周
+        sincedb_clean_after =&gt; &quot;2 weeks&quot;
+        # 此为默认值，此值为文件路径而不是目录路径
+        sincedb_path =&gt; path.data&gt;/plugins/inputs/file
+        # 默认值15秒
+        sincedb_write_interval =&gt; &quot;15 seconds&quot;
+        # 默认值&quot;end&quot;，可选值beginning，end。如果启动logstash的时候需要读取旧数据需要设置为beginning
+        start_position =&gt; &quot;end&quot;
+        # 下面是公共配置
+        # 设置了type为system
+        type =&gt; &quot;system&quot;
+        # 默认line
+        codec =&gt; &quot;json&quot;
+        # 默认值为true
+        enable_metric =&gt; false
+        # 指定此数据输入id为input1
+        id =&gt; input1
+        # 添加了键位key值为value的数据到时间
+        add_field =&gt; {
+        &quot;key&quot; =&gt; &quot;value&quot;
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br></div></div><ul><li>tcp:</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>input {
+  tcp {
+      # 主机地址
+      host =&gt; &quot;192.168.0.2&quot;
+      # 此时需要监听客户端
+      mode =&gt; &quot;server&quot;
+      # 要监听的端口
+      port =&gt; 8081
+      # 默认值为false
+      tcp_keep_alive =&gt; false
+      # 默认值为true
+      dns_reverse_lookup_enabled =&gt; true
+      # 下面是公共配置
+      # 设置了type为system
+      type =&gt; &quot;system&quot;
+      # 默认line
+      codec =&gt; &quot;json&quot;
+      # 默认值为true
+      enable_metric =&gt; false
+      # 指定此数据输入id为input1
+      id =&gt; input1
+      # 添加了键位key值为value的数据到时间
+      add_field =&gt; {
+      &quot;key&quot; =&gt; &quot;value&quot;
+      }
+  }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><ul><li>rabbitMq:</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>  input {
+    rabbitmq {
+      # 队列的主机
+      host =&gt; &quot;192.168.1.2&quot;
+      # 默认为guest
+      password =&gt; &quot;guest&quot;
+      # 消息服务器端口，默认为5672
+      port =&gt; 5672
+      # 默认为&quot;&quot;
+      queue =&gt; &quot;&quot;
+      # 默认值为true
+      ack =&gt; true
+      # 默认值为{}
+      arguments =&gt; { &quot;x-ha-policy&quot; =&gt; &quot;all&quot; }
+      # 默认值为false
+      auto_delete =&gt; false
+      # 默认值为true
+      automatic_recovery =&gt; true
+      # 默认值为1秒
+      connect_retry_interval =&gt; 1
+      # 没有默认值，超时时间为无限
+      connection_timeout =&gt; 1000
+      # 默认值为false
+      durable =&gt; false
+      # 队列的交换器信息
+      exchange =&gt; &quot;log.exchange&quot;
+      # 队列的交换器信息
+      exchange_type =&gt; &quot;direct&quot;
+      # 默认值为false
+      exclusive =&gt; false
+      # 没有默认值，但是不指定的时候未60秒，秒为单位
+      heartbeat =&gt; 60
+      # 默认值为logstash，路由键
+      key =&gt; logstash
+      # 默认值为false，启动此功能保存元数据会影响性能
+      metadata_enabled =&gt; false
+      # 默认值为false，当设置true的时候表明为被动队列，则在消息服务器上，此队列已经存在
+      passive =&gt; false
+      # 默认为256
+      prefetch_count =&gt; 256
+      # 下面是公共配置
+      # 设置了type为system
+      type =&gt; &quot;system&quot; 
+      # 默认line
+      codec =&gt; &quot;json&quot;
+      # 默认值为true
+      enable_metric =&gt; false
+      # 指定此数据输入id为input1
+      id =&gt; input1
+      # 添加了键位key值为value的数据到时间
+      add_field =&gt; {
+        &quot;key&quot; =&gt; &quot;value&quot;
+      }
+    }
+  }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br></div></div><ul><li>redis:</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>input {
+  redis {
+  # 默认值为 125
+  batch_count =&gt; 125
+  # 没有默认值，但其可选内容list，channel，pattern_channel
+  data_type =&gt; list
+  # 默认值为 0
+  db =&gt; 0
+  # 默认值为 &quot;127.0.0.1&quot;
+  host =&gt; &quot;127.0.0.1&quot;
+  # 指定channel，没有默认值
+  key =&gt; &quot;channel&quot;
+  # redis的用户密码
+  password =&gt; &quot;password&quot;
+  # redis服务器端口，默认值为 6379
+  port =&gt; 6379
+  # 默认不开启SSL
+  ssl =&gt; false
+  # 初始超时为1秒
+  timeout =&gt; 1
+  }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h2 id="kibana"><a href="#kibana" class="header-anchor">#</a> Kibana</h2> <p>Elasticsearch可视化web数据仪表台，数据分析面板</p> <h2 id="filebeat"><a href="#filebeat" class="header-anchor">#</a> Filebeat</h2> <ul><li><p>用于转发和集中收集数据的轻量级传送器，作为代理安装在服务器上，filebeat作为监控指定日志文件，收集日志事件，并且将其转发到Elasticsearch或Logstash进行索引</p></li> <li><p>工作原理
+当您启动 Filebeat 时，它会启动一个或多个输入，这些输入会在您为日志数据指定的位置中查找。对于 Filebeat 定位的每个日志，Filebeat 都会启动一个收割机。
+每个harvester 读取单个日志以获取新内容并将新日志数据发送到libbeat，libbeat 聚合事件并将聚合数据发送到您为Filebeat 配置的输出。
+<a data-fancybox="" title="111" href="filebeat工作原理.png"><img src="filebeat%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png" alt="img.png"></a></p></li></ul> <h2 id="分布式系统elk的使用"><a href="#分布式系统elk的使用" class="header-anchor">#</a> 分布式系统ELK的使用</h2> <p>（filebeat收集推并送日志给logstash）</p> <ul><li>总结：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>  之前是应用直接在logback-dev.yml的配置中指定logstash地址，直接走tcp推送日志到logstash，然后适当筛选转送到es中生成索引和文档。
+  但是随着系统的分化为分布式系统后，各个应用均要使用到内存等资源，并且logstash是java应用（JVM）非常消耗内存和CPU资源，filebeat是golang开发的，轻便并且消耗较小资源
+  所以logstash安装在应用部署的机器上显得非常的笨重。最常见的做法是用filebeat部署在应用的机器上，logstash单独部署，然后由
+  filebeat将应用日志收集给logstash解析，解析完由logstash再传给elasticsearch。   
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li><p>流程：
+<a data-fancybox="" title="111" href="分布式系统中ELK流程4.png"><img src="%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%ADELK%E6%B5%81%E7%A8%8B4.png" alt="img.png"></a></p></li> <li><p>配置：</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>  1. 配置docker文件： ./filebeat/docker-filebeat.yml
+      注意挂载日志文件到容器内！
+
+  2. 配置filebeat配置文件： ./filebeat/conf/filebeat.yml
+      这里有logstash推送地址，以及需要推送的日志文件 （也可以直接推送到ES）
+
+  3. 配置logstash接收 ： ./logstash/pipeline/logstash.conf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/maven/nexus私服.html" class="prev">
+        nexus私服
+      </a></span> <span class="next"><a href="/mengqizhang/elk/elasticsearch.html">
+        elasticsearch
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/9.70c1c418.js" defer></script>
+  </body>
+</html>

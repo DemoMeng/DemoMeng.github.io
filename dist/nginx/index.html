@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>nginx | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/33.a8272e84.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable"><span>数据层 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>nginx 🇷🇺</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/nginx/" aria-current="page" class="active sidebar-link">首页</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/nginx/#是什么" class="sidebar-link">是什么</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/nginx/#location-匹配" class="sidebar-link">location 匹配</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/nginx/#配置文件解析" class="sidebar-link">配置文件解析</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/nginx/#反向代理" class="sidebar-link">反向代理</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/nginx/#负载均衡" class="sidebar-link">负载均衡</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/nginx/#负载均衡策略" class="sidebar-link">负载均衡策略</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/nginx/#重定向" class="sidebar-link">重定向</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/nginx/#nginx安装" class="sidebar-link">nginx安装</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/nginx/#keepalived-nginx-高可用" class="sidebar-link">keepalived + nginx 高可用</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/nginx/#nginx80-443问题" class="sidebar-link">nginx80-443问题</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/nginx/#nginx静态文件服务器" class="sidebar-link">nginx静态文件服务器</a></li></ul></li><li><a href="/mengqizhang/nginx/nginx.conf.html" class="sidebar-link">nginx.conf</a></li><li><a href="/mengqizhang/nginx/Nginx.html" class="sidebar-link">增强版</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="nginx"><a href="#nginx" class="header-anchor">#</a> nginx</h1> <h2 id="是什么"><a href="#是什么" class="header-anchor">#</a> 是什么</h2> <ul><li>1.Nginx 能做什么？</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+
+    a.反向代理：在本地使用 www.glmapper1.com 的域名去访问www.taobao.com。那么这个时候我们就可以通过nginx去实现。
+    b.负载均衡：就是说应用部署在不同的服务器上，但是通过统一的域名进入，nginx则对请求进行分发，
+              将请求分发到不同的服务器上去处理，这样就可以有效的减轻了单台服务器的压力。
+              LB -&gt; Load Balance :负载均衡
+    c.静态资源服务器：通过本地文件系统提供服务
+    d.缓存服务
+              
+ 注：在上面这两种情况下，nginx服务器的作用都只是作为分发服务器，真正的内容，我们可以放在其他的服务器上，这样来，还能起到一层安全隔壁的作用，nginx作为隔离层。
+ 
+    c.解决跨域问题
+    
+    同源：URL由协议、域名、端口和路径组成，如果两个URL的协议、域名和端口相同，则表示他们同源。
+    浏览器的同源策略：浏览器的同源策略，限制了来自不同源的&quot;document&quot;或脚本，对当前&quot;document&quot;读取或设置某些属性。从一个域上加载的脚本不允许访问另外一个域的文档属性。
+    因为nginx和tomcat不能共用同一端口,url一样，端口不同，这样就会有跨域问题。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h2 id="location-匹配"><a href="#location-匹配" class="header-anchor">#</a> location 匹配</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>    1.常见的location路径映射路径有以下几种：
+    
+        =       进行普通字符精确匹配。也就是完全匹配。
+        ^~         前缀匹配。如果匹配成功，则不再匹配其他location。
+        ~      表示执行一个正则匹配，区分大小写
+        ~*         表示执行一个正则匹配，不区分大小写
+        /xxx/   常规字符串路径匹配
+        /       通用匹配，任何请求都会匹配到
+    
+    2. location路径映射匹配优先级：
+        (location =) &gt; (location 完整路径) &gt; (location ^~ 路径) &gt; (location ~,~* 正则顺序) &gt; (location 部分起始路径) &gt; (/)
+
+    3. 以下是按优先级排列说明：
+        
+        =    ： 优先级最高。一旦匹配成功，则不再查找其他匹配项，停止搜索。
+        ^~   ：类型表达式，不属于正则表达式。一旦匹配成功，则不再查找其他匹配项，停止搜索。
+        ~ ~* ： 的优先级次之。如果有多个location的正则能匹配的话，则使用正则表达式最长的那个。
+        /xxx/：  常规字符串匹配类型。按前缀匹配。
+        /    ： 通用匹配，如果没有匹配到，就匹配通用的
+
+        优先级搜索问题：不同类型的location映射决定是否继续向下搜索
+        
+        等号类型、^~类型：一旦匹配上就停止搜索了，不会再匹配其他location了
+        正则表达式类型(~ ~*）,常规字符串匹配类型/xxx/ : 匹配到之后，还会继续搜索其他其它location，直到找到优先级最高的，或者找到第一种情况而停止搜索
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><h2 id="配置文件解析"><a href="#配置文件解析" class="header-anchor">#</a> 配置文件解析</h2> <p>2.配置文件解析：
+配置文件主要由四部分组成：
+main(全区设置)
+server(主机配置)
+http(控制着nginx http处理的所有核心特性)<br>
+location(URL匹配特定位置设置)。
+upstream(负载均衡服务器设置)
+下面以默认的配置文件来说明下具体的配置文件属性含义：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>#Nginx的worker进程运行用户以及用户组
+#user  nobody;
+
+#Nginx开启的进程数 worker_processes 配置，这是 Nginx 服务器并发处理服务的关键配置，该值越大，可以支持的并发处理量也越多，但是会受到硬件、软件等设备的制约。你怕
+worker_processes  1;
+
+#定义全局错误日志定义类型，[debug|info|notice|warn|crit]
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#指定进程ID存储文件位置
+#pid        logs/nginx.pid;
+
+
+#事件配置
+events {
+
+
+    #use [ kqueue | rtsig | epoll | /dev/poll | select | poll ];
+    #epoll模型是Linux内核中的高性能网络I/O模型，如果在mac上面，就用kqueue模型。
+    use kqueue;
+
+    #每个进程可以处理的最大连接数，理论上每台nginx服务器的最大连接数为worker_processes*worker_connections。理论值：worker_rlimit_nofile/worker_processes
+    worker_connections  1024;
+}
+
+#http参数
+http {
+    #文件扩展名与文件类型映射表
+    include       mime.types;
+    #默认文件类型
+    default_type  application/octet-stream;
+
+    #日志相关定义
+    #log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    #                  '$status $body_bytes_sent &quot;$http_referer&quot; '
+    #                  '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+    #连接日志的路径，指定的日志格式放在最后。
+    #access_log  logs/access.log  main;
+
+    #开启高效传输模式
+    sendfile        on;
+
+    #防止网络阻塞
+    #tcp_nopush     on;
+
+    #客户端连接超时时间，单位是秒
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #开启gzip压缩输出
+    #gzip  on;
+
+    #虚拟主机基本设置
+    server {
+        #监听的端口号
+        listen       80;
+        #访问域名
+        server_name  localhost;
+
+        #编码格式，如果网页格式与当前配置的不同的话将会被自动转码
+        #charset koi8-r;
+
+        #虚拟主机访问日志定义
+        #access_log  logs/host.access.log  main;
+
+        #对URL进行匹配
+        location / {
+            #访问路径，可相对也可绝对路径
+            root   html;
+            #首页文件，匹配顺序按照配置顺序匹配
+            index  index.html index.htm;
+        }
+
+        #错误信息返回页面
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        #访问URL以.php结尾则自动转交给127.0.0.1
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        #php脚本请求全部转发给FastCGI处理
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        #禁止访问.ht页面
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+    #第二个虚拟主机配置
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    #HTTPS虚拟主机定义
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+    include servers/*;
+}
+
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br></div></div><h2 id="反向代理"><a href="#反向代理" class="header-anchor">#</a> 反向代理</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>server {
+    #监听80端口
+    listen 80;
+    server_name localhost;
+     # individual nginx logs for this web vhost
+    access_log /tmp/access.log;
+    error_log  /tmp/error.log ;
+
+    location / {
+        proxy_pass http://www.baidu.com;
+    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h2 id="负载均衡"><a href="#负载均衡" class="header-anchor">#</a> 负载均衡</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>    server {
+        #监听80端口
+        listen 80;
+        server_name localhost;
+    
+        # individual nginx logs for this web vhost
+        access_log /tmp/access.log;
+        error_log  /tmp/error.log ;
+    
+        location / {
+            #负载均衡
+            #轮询 
+            #proxy_pass http://polling_strategy;
+            #weight权重
+            #proxy_pass http://weight_strategy;
+            #ip_hash
+            # proxy_pass http://ip_hash_strategy;
+            #fair
+            # proxy_pass http://fair_strategy;
+            #url_hash
+            # proxy_pass http://url_hash_strategy;
+            #重定向
+            #rewrite ^ http://localhost:8080;
+        }
+    }
+    
+    
+另外一种负载均衡的配置：
+http {
+    upstream upstream_name{
+        server 192.168.0.28:8001;
+        server 192.168.0.28:8002;
+    }
+    server {
+        listen       8080;
+        server_name  localhost;
+        location / {
+            proxy_pass http://upstream_name;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div></div><h2 id="负载均衡策略"><a href="#负载均衡策略" class="header-anchor">#</a> 负载均衡策略</h2> <ul><li>轮询（默认）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    # 1、轮询（默认）
+    # 每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。 
+    upstream polling_strategy { 
+        server glmapper.net:8080; # 应用服务器1
+        server glmapper.net:8081; # 应用服务器2
+    } 
+    
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>指定权重</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    #2、指定权重
+    #指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。 
+    upstream  weight_strategy { 
+        server glmapper.net:8080 weight=1; # 应用服务器1
+        server glmapper.net:8081 weight=9; # 应用服务器2
+    }
+    测试结果：总访问次数15次，根据上面的权重配置，两台机器的访问比重：2：13；满足预期！
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>-- ip hash策略 （可以解决session的问题）</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    #3、IP绑定 ip_hash
+    #每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，
+    #可以解决session的问题;在不考虑引入分布式session的情况下，
+    #原生HttpSession只对当前servlet容器的上下文环境有效
+    upstream ip_hash_strategy { 
+        ip_hash; 
+        server glmapper.net:8080; # 应用服务器1
+        server glmapper.net:8081; # 应用服务器2
+    } 
+    iphash 算法:ip是基本的点分十进制，将ip的前三个端作为参数加入hash函数。这样做的目的是保证ip地址前三位相同的用户经过hash计算将分配到相同的后端server。
+    作者的这个考虑是极为可取的，因此ip地址前三位相同通常意味着来着同一个局域网或者相邻区域，使用相同的后端服务让nginx在一定程度上更具有一致性。
+    
+    为什么说要解释下iphash,因为采坑了；和猪弟在进行这个策略测试时使用了5台机器来测试的，5台机器均在同一个局域网内【192.168.3.X】;
+    测试时发现5台机器每次都路由到了同一个服务器上，一开始以为是配置问题，但是排查之后也排除了这个可能性。
+    最后考虑到可能是对于同网段的ip做了特殊处理，验证之后确认了猜测。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><ul><li>其他负载均衡策略，这里因为需要安装三方插件，时间有限就不验证了，知悉即可！</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    #4、fair（第三方）
+    #按后端服务器的响应时间来分配请求，响应时间短的优先分配。 
+    upstream fair_strategy { 
+        server glmapper.net:8080; # 应用服务器1
+        server glmapper.net:8081; # 应用服务器2
+        fair; 
+    } 
+    #5、url_hash（第三方）
+    #按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，
+    #后端服务器为缓存时比较有效。 
+    upstream url_hash_strategy { 
+        server glmapper.net:8080; # 应用服务器1
+        server glmapper.net:8081; # 应用服务器2 
+        hash $request_uri; 
+        hash_method crc32; 
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h2 id="重定向"><a href="#重定向" class="header-anchor">#</a> 重定向</h2> <ul><li>重定向rewrite</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>location / {
+    #重定向
+    #rewrite ^ http://localhost:8080;
+}
+验证思路：本地使用localhost:80端口进行访问，根据nginx的配置，如果重定向没有生效，则最后会停留在当前localhost:80这个路径，浏览器中的地址栏地址不会发生改变；如果生效了则地址栏地址变为localhost:8080；
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="nginx安装"><a href="#nginx安装" class="header-anchor">#</a> nginx安装</h2> <ul><li>编译nginx</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>cd /home   # 进入指定目录，目录请自行选择
+wget https://nginx.org/download/nginx-1.21.2.tar.gz   # 下载安装包，版本请自行选择
+
+$ cd /home   # 进入安装包所在目录
+$ tar -zxvf nginx-1.21.2.tar.gz   # 解压
+
+$ cd ./nginx-1.21.2   # 进入解压目录
+$ ./configure   # 运行./configure
+
+# 提示 error: the HTTP rewrite module requires the PCRE library.
+$ yum install -y pcre pcre-devel
+# 提示 error: Invalid C++ compiler or C++ compiler flags.
+$ yum install -y gcc gcc-c++
+# 提示 error: the HTTP gzip module requires the zlib library.
+$ yum install -y zlib-devel
+
+$ cd /home/nginx-1.21.2   # 返回 nginx 解压目录
+$ ./configure   # 再次运行./configure
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><ul><li><p>安装ssl模块  : yum -y install openssl openssl-devel</p></li> <li><p>配置ssl模块  : ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module</p></li> <li><p>执行安装</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module
+    make    执行编译
+ 
+    make install  执行安装
+
+    whereis nginx 
+
+    cd /usr/local/nginx/
+
+    ./sbin/nginx
+
+执行 ./configure 后：
+
+
+Configuration summary
++ using system PCRE library
++ OpenSSL library is not used
++ using system zlib library
+
+nginx path prefix: &quot;/usr/local/nginx&quot;
+nginx binary file: &quot;/usr/local/nginx/sbin/nginx&quot;
+nginx modules path: &quot;/usr/local/nginx/modules&quot;
+nginx configuration prefix: &quot;/usr/local/nginx/conf&quot;
+nginx configuration file: &quot;/usr/local/nginx/conf/nginx.conf&quot;
+nginx pid file: &quot;/usr/local/nginx/logs/nginx.pid&quot;
+nginx error log file: &quot;/usr/local/nginx/logs/error.log&quot;
+nginx http access log file: &quot;/usr/local/nginx/logs/access.log&quot;
+nginx http client request body temporary files: &quot;client_body_temp&quot;
+nginx http proxy temporary files: &quot;proxy_temp&quot;
+nginx http fastcgi temporary files: &quot;fastcgi_temp&quot;
+nginx http uwsgi temporary files: &quot;uwsgi_temp&quot;
+nginx http scgi temporary files: &quot;scgi_temp&quot;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><h2 id="keepalived-nginx-高可用"><a href="#keepalived-nginx-高可用" class="header-anchor">#</a> keepalived + nginx 高可用</h2> <h3 id="vrrp-实例定义部分"><a href="#vrrp-实例定义部分" class="header-anchor">#</a> vrrp 实例定义部分</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>vrrp_instance VI_1 {
+    state MASTER            # 指定keepalived的角色，MASTER为主，BACKUP为备
+    interface eth0         # 当前进行vrrp通讯的网络接口卡(当前centos的网卡) 用ifconfig查看你具体的网卡
+    virtual_router_id 66    # 虚拟路由编号，主从要一直
+    priority 100            # 优先级，数值越大，获取处理请求的优先级越高
+    advert_int 1            # 检查间隔，默认为1s(vrrp组播周期秒数)
+    authentication {
+      auth_type PASS # 授权访问 设置验证类型和密码，MASTER和BACKUP必须使用相同的密码才能正常通信
+      auth_pass 1111
+    }
+    track_script {
+      check_http_port            #（调用检测脚本）
+    }
+    virtual_ipaddress {
+      192.168.2.100            # 定义虚拟ip(VIP)，可多设，每行一个
+    } 
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h2 id="nginx80-443问题"><a href="#nginx80-443问题" class="header-anchor">#</a> nginx80-443问题</h2> <ul><li>nginx 80重定向到443的时候post变成了get</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>出现这种情况的配置： 
+    rewrite /.* https://$host$uri permanent;  
+
+解决方式： 
+    return 307 https://xxx.xxx.com$request_uri;
+    
+关于301和307
+    301 Moved Permanently ： 被请求的资源已永久移动到新位置，并且将来任何对此资源的引用都应该使用本响应返回的若干个 URI 之一
+    307 Temporary Redirect ： 请求的资源现在临时从不同的URI 响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求  
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h2 id="nginx静态文件服务器"><a href="#nginx静态文件服务器" class="header-anchor">#</a> nginx静态文件服务器</h2> <ul><li><ol><li>nginx.conf文件配置：
+<a data-fancybox="" title="111" href="nginx-静态文件服务器1.png"><img src="nginx-%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A81.png" alt="img_2.png"></a></li></ol></li> <li><ol start="2"><li>静态文件服务器配置</li></ol></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>server {
+      listen       80;
+      server_name  8.130.165.67;
+      #设置编码，防止乱码
+      charset utf-8;
+      set $doc_root /root/mqz/nginx/static-file;
+      location / {
+            root   $doc_root;
+            autoindex     on; #是否安全加固，打开目录浏览
+      }
+      location ^~ /images/ {
+            root $doc_root;
+      }
+      location ~* \.(sh|md|gif|jpg|jpeg|png|bmp|ico|swf|css|js)$ {
+           root $doc_root;
+      }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><ul><li>2.修改nginx.conf头部： user nginx 为： user root 针对访问403的情况</li> <li>3.nginx -t
+ningx -s reload</li> <li>4.访问地址： 8.130.165.67
+<a data-fancybox="" title="111" href="nginx-静态文件服务器2.png"><img src="nginx-%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A82.png" alt="img_2.png"></a></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/elk/logstash.html" class="prev">
+        logstash
+      </a></span> <span class="next"><a href="/mengqizhang/nginx/nginx.conf.html">
+        nginx.conf
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/33.a8272e84.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>seata-server服务端搭建 | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/39.8434909a.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable"><span>数据层 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>分布式事务</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" aria-current="page" class="sidebar-link">介绍</a></li><li><a href="/mengqizhang/分布式事务/seata-server.html" class="active sidebar-link">seata-server服务端</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/分布式事务/seata-server.html#docker-compose安装seata-server服务端" class="sidebar-link">docker-compose安装seata-server服务端</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/分布式事务/seata-server.html#把seata-server注册到nacos" class="sidebar-link">把seata-server注册到nacos</a></li></ul></li><li><a href="/mengqizhang/分布式事务/seata-client.html" class="sidebar-link">seata-server客户端</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="seata-server服务端搭建"><a href="#seata-server服务端搭建" class="header-anchor">#</a> seata-server服务端搭建</h1> <ul><li>seata-server服务端配置：</li></ul> <h3 id="启动"><a href="#启动" class="header-anchor">#</a> 启动：</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>    Server端存储模式（store.mode）现有file、db、redis三种（后续将引入raft,mongodb），file模式无需改动，直接启动即可，下面专门讲下db和redis启动步骤。
+    注： file模式为单机模式，全局事务会话信息内存中读写并持久化本地文件root.data，性能较高;
+    db模式为高可用模式，全局事务会话信息通过db共享，相应性能差些;
+    
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="建立seata-server"><a href="#建立seata-server" class="header-anchor">#</a> 建立seata-server：</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>    1. 全局事务--&gt;分支事务--&gt;全局锁，对应表global_table、branch_table、lock_table
+    2. 建表语句 ： seata-server.sql
+    3. 配置 file.conf 和 registry.conf配置文件，并且挂在到容器内部
+    4. 设置nacos的tx-service-group： 参考 bootstrap.yml 的 seata配置
+       下载 https://github.com/seata/seata.git，并且执行该目录下的/script/config-center/nacos/nacos-config.sh脚本
+       参考 ： https://github.com/seata/seata/tree/develop/script/config-center
+       
+            执行 sh ${SEATAPATH}/script/config-center/nacos/nacos-config.sh -h localhost -p 8848 -g SEATA_GROUP -t 5a3c7d6c-f497-4d68-a71a-2e5e3340b3ca -u username -w password
+            sh nacos/nacos-config.sh -h 192.168.2.11 -p 8848 -g SEATA_GROUP -t a77c2420-289a-44de-8d50-cef6f8efa40f -u nacos -w mengqizhang
+            
+            sh nacos/nacos-config.sh -h 106.12.187.16 -p 8848 -g SEATA_GROUP -t c81969fd-f5eb-496a-b03d-ed8a49413193 -u nacos -w mengqizhang
+            sh nacos/nacos-config.sh -h 47.98.229.144 -p 8848 -g DEFAULT_GROUP -t e0a30387-9019-4004-b491-d8045c67c350 -u nacos -w nacos
+            
+            ${SEATAPATH}/script/config-center/config.txt 参考本目录下的config.txt文件
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h2 id="docker-compose安装seata-server服务端"><a href="#docker-compose安装seata-server服务端" class="header-anchor">#</a> docker-compose安装seata-server服务端</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>version: &quot;3&quot;
+services:
+  mysql-slave:
+    image: seataio/seata-server:1.4.2
+    container_name: seata-server-MQZ
+    restart: on-failure
+    ports:
+      - &quot;8091:8091&quot;
+    volumes:
+      - /root/mqz/seata-server/conf:/root/seata-config
+      - /root/mqz/seata-server/logs:/root/logs
+    privileged: true
+    environment:
+      - SEATA_IP=192.168.2.9
+      - SEATA_CONFIG_NAME=file:/root/seata-config/registry
+      #seata-server启动的IP，用于向注册中心注册使用，默认使用容器IP可能无法与客户端通讯；
+      #此ip后续连过来的client需要用到，也就是上面第2点中client端连接的seata服务的配置信息。
+      #我这里配置的是seata所在的docker容器之外的linux虚拟机ip
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><h2 id="把seata-server注册到nacos"><a href="#把seata-server注册到nacos" class="header-anchor">#</a> 把seata-server注册到nacos</h2> <ul><li>file.conf</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>## transaction log store, only used in seata-server
+store {
+  ## store mode: file、db、redis
+  mode = &quot;db&quot;
+  ## rsa decryption public key
+  publicKey = &quot;&quot;
+  db {
+    ## the implement of javax.sql.DataSource, such as DruidDataSource(druid)/BasicDataSource(dbcp)/HikariDataSource(hikari) etc.
+    datasource = &quot;druid&quot;
+    ## dbType的类型： mysql、oracle、postgresql、h2、oceanbase 等
+    dbType = &quot;mysql&quot;
+    driverClassName = &quot;com.mysql.jdbc.Driver&quot;
+    # 如果使用mysql存储数据，建议在jdbc连接参数中添加rewriteBatchedStatements=true
+    # seata服务端需要的数据库
+    url = &quot;jdbc:mysql://106.12.187.16:3306/seata?rewriteBatchedStatements=true&quot;
+    user = &quot;root&quot;
+    password = &quot;mengqizhang&quot;
+    minConn = 5
+    maxConn = 100
+    # seata 服务端需要的三张表，可以存放在seata数据库（非业务库中），业务库还需要undo_log
+    globalTable = &quot;global_table&quot;
+    branchTable = &quot;branch_table&quot;
+    lockTable = &quot;lock_table&quot;
+    queryLimit = 100
+    maxWait = 5000
+  }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><ul><li>config.txt</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>service.vgroupMapping.my_test_tx_group=default
+store.mode=db
+store.db.datasource=druid
+store.db.dbType=mysql
+store.db.driverClassName=com.mysql.jdbc.Driver
+store.db.url=jdbc:mysql://106.12.187.16:3306/seata?useUnicode=true&amp;rewriteBatchedStatements=true
+store.db.user=root
+store.db.password=mengqizhang
+store.db.minConn=5
+store.db.maxConn=30
+store.db.globalTable=global_table
+store.db.branchTable=branch_table
+store.db.distributedLockTable=distributed_lock
+store.db.queryLimit=100
+store.db.lockTable=lock_table
+store.db.maxWait=5000
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul><li>registry.conf</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>registry {
+  # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
+  type = &quot;nacos&quot;
+  nacos {
+    application = &quot;seata-server&quot;
+    # nacos 的注册地址
+    serverAddr = &quot;139.155.180.57:8848&quot;
+    # 这里的group需要和业务服务的group一致
+    group = &quot;SEATA_GROUP&quot;
+    # nacos命名空间，建议不使用public
+    namespace = &quot;c81969fd-f5eb-496a-b03d-ed8a49413193&quot;
+    cluster = &quot;default&quot;
+    # nacos的登陆密码
+    username = &quot;nacos&quot;
+    password = &quot;mengqizhang&quot;
+  }
+}
+
+config {
+  # file、nacos 、apollo、zk、consul、etcd3
+  type = &quot;nacos&quot;
+
+  nacos {
+    serverAddr = &quot;139.155.180.57:8848&quot;
+    namespace = &quot;c81969fd-f5eb-496a-b03d-ed8a49413193&quot;
+    group = &quot;SEATA_GROUP&quot;
+    username = &quot;nacos&quot;
+    password = &quot;mengqizhang&quot;
+    dataId = &quot;seataServer.properties&quot;
+  }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" class="prev router-link-active">
+        介绍
+      </a></span> <span class="next"><a href="/mengqizhang/分布式事务/seata-client.html">
+        seata-server客户端
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/39.8434909a.js" defer></script>
+  </body>
+</html>

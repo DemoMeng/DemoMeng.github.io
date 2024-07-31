@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>docker集群 | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/59.fc5ce388.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable"><span>数据层 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable open"><span>容器化 🐳</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>docker</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/容器化/docker/docker.html" class="sidebar-link">基础</a></li><li><a href="/mengqizhang/容器化/docker/docker-install.html" class="sidebar-link">docker安装</a></li><li><a href="/mengqizhang/容器化/docker/docker-swarm.html" class="active sidebar-link">docker-swarm集群</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/容器化/docker/docker-swarm.html#docker-swarm-模式下的命令" class="sidebar-link">docker swarm 模式下的命令</a></li></ul></li><li><a href="/mengqizhang/容器化/docker/docker私服.html" class="sidebar-link">docker私服</a></li><li><a href="/mengqizhang/容器化/docker/docker-springboot打包使用.html" class="sidebar-link">docker-springboot打包使用</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>portainer容器管理工具</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="docker集群"><a href="#docker集群" class="header-anchor">#</a> docker集群</h1> <p><a data-fancybox="" title="111" href="docker-cluster.png"><img src="docker-cluster.png" alt="img.png"></a></p> <p>Swarm (Swarm kit) 在 Docker 1.12之前是一个独立的项目，在Docker 1.12之后，就集成到了 Docker中。
+是Docker官方提供唯一原生Docker集群管理的工具。它可以把多个 Docker 主机组成的系统转换成单一的虚拟Docker主机，使得容器可以组成跨主机的子网网格。</p> <ul><li><p>Node
+是Docker的一个节点，在一台机器上可以运行一个或者多个节点，节点包含管理节点和工作节点，是典型的Master-Slave模型
+默认情况下，管理节点也将作为服务的工作节点，可以配置管理节点专门作为管理器，只做管理，不做服务部署。这样管理节点就是只分配任务到其他工作节点。
+工作节点会将管理节点分配的任务的当前状态通知给管理节点，以便管理节点可以保持每个工作节点的期望状态</p></li> <li><p>Service
+基于容器的上层概念，可以设置副本、重启策略、升级策略、可以启动、停止、删除、更新等一系列操作。一个Service对应多个容器（副本）。</p></li> <li><p>Stack
+是Service执行实体</p></li></ul> <h1 id="docker集群工作模式"><a href="#docker集群工作模式" class="header-anchor">#</a> docker集群工作模式</h1> <p><a data-fancybox="" title="111" href="集群节点工作模式.png"><img src="%E9%9B%86%E7%BE%A4%E8%8A%82%E7%82%B9%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F.png" alt="img.png"></a></p> <ul><li>管理节点
+任务：1. 维护集群状态
+2. 调度服务
+3. 服务集群模式下提供的HTTP API端口服务</li></ul> <p>使用 Raft实现，管理节点负责docker集群和所运行服务的一致内部状态。一般来说测试环境可以使用单个管理节点来管理集群，
+如果管理节点发生故障，docker集群则无法继续运行，可以新建一个集群才能恢复！</p> <p>为了利用Swarm模式的容错性，建议根据docker集群机器的奇数个节点。当设置了多个管理节点（备用节点）后，docker会自动切换管理节点，无需停机。（需要手动调整故障节点）
+一般管理节点最多不能超过 7 个</p> <p>多个管理节点的情况下，允许部分管理节点故障，情况如下：
+3个节点允许1个节点故障
+5个节点允许2个节点故障
+n个节点允许（n-1）/2个节点故障</p> <p>注意： 添加多个管理节点并不是为了高扩展、高性能的实现，而是为了保证swarm集群在管理节点故障情况下而不停机，相反，设置过多管理节点会对扩展性、提高性能带来阻碍</p> <ul><li><p>工作节点
+工作节点也是Docker实例，唯一的工作就是运行服务。worker节点不参与 Raft 分布式状态，不做调度决策，也不提供于 swarm模式的HTTP API</p></li> <li><p>节点角色变更
+参考 docker node demote
+docker node promote</p></li></ul> <h1 id="raft-consensus-algorithm-分布式raft一致性算法"><a href="#raft-consensus-algorithm-分布式raft一致性算法" class="header-anchor">#</a> Raft Consensus Algorithm ： 分布式Raft一致性算法</h1> <p>Docker 在 Swarm集群下，Docker管理节点使用 Raft 一致性算法来保证全局节点的状态。
+在集群下，出现一致性状态问题的情况是在 Manager 节点，任何 Manager节点都可以接收到任务，并且将服务恢复到稳定状态。
+比如：如果集群中负责任务调度的 Leader Manger节点发生故障而死掉，任何一个 Manager节点均可以接收其调度任务并且重新平衡任务以匹配节点的状态。
+Raft 最多可以容忍 （n-1）/2 个manager节点故障，并且需要（n-1）/2 个manager成员的多数或法定人数才能提议给集群值达成一致。比如：若5个Manager节点中，
+如果3个节点不可用，系统则无法处理任何请求来调度额外的任务。现有的任务继续运行，但如果管理器集不健康，调度程序无法重新平衡任务。</p> <h1 id="集群搭建"><a href="#集群搭建" class="header-anchor">#</a> 集群搭建</h1> <ul><li>开放端口：主机之间的开放协议和端口
+用于集群管理通信的 TCP 端口 2377
+TCP 和 UDP 端口 7946 用于节点之间的通信
+覆盖网络流量的 UDP 端口 4789</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>修改主机的hostname
+    hostname: 查看当前主机的hostname
+    hostnamectl set-hostname 192.168.2.11 : 修改hostname为192.168.2.11
+
+1. docker swarm init --advertise-addr 192.168.2.9
+        
+        docker swarm join --token SWMTKN-1-2tk3yqmcwp4woityf8bym462bv9a3g4n8k6syu8qqq7t09go93-1mz1za31i7wyz4aozygwc4twp 192.168.2.9:2377
+        
+        docker swarm join --token SWMTKN-1-1ztuq8elm4q26x9nx8jho5kup65x51g0wyln5ejpji0i64tzxx-4t1hzdqkrltvu06d6iop0rcts 192.168.1.0:2377
+        
+        外网： 
+        docker swarm join --token SWMTKN-1-472gvgjretyhq3oj4h3ztmr7aoa5l93th7zphs9chwx9g8vx7z-cyw62kzspua2kdlv3spl16m58 139.155.180.57:2377
+        
+        docker swarm join --token SWMTKN-1-4z7selwr9uz7iupbb5717x0slhien936x6wxfkc8g93nruuirv-5ul3ov1gn4j50ny0br02y7tul 106.12.187.16:2377
+        
+        docker swarm join --token SWMTKN-1-62wx6qpm11l76im03gif6bzrhreilznztupo4f7n2zhfxddoam-3rm38xhvgdvfmxm6hxt6pqpdt 192.168.2.9:2377
+        
+        docker swarm join --token SWMTKN-1-4zjbxfbf1n9cqto0ndyufnwgt7fy3oyrawhetpmh2uu27hnv8p-3zox0xnrjsnq0l2zucm7ltth9 192.168.2.7:2377
+        
+2. docker info ： 查看docker信息，包含了主、从节点信息
+        
+3. docker node ls : 查看节点状态
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p><a data-fancybox="" title="111" href="docker-cluster-1.png"><img src="docker-cluster-1.png" alt="img_1.png"></a></p> <p>#部署服务</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+1. docker-compose.yml文件：
+
+version: &quot;3.3&quot;
+services:
+  qingwang-user:
+    image: registry.cn-hangzhou.aliyuncs.com/my-cloud-namespace/qingwang-admin:0.0.3
+    environment:
+      JAVA_AGENT_OPTS: &quot;&quot;
+    deploy:
+      replicas: 3
+    volumes:
+      - /root/mqz/log/qingwang-admin/logs/:/home/mqz/qingwang-user-0.0.1/logs/
+    ports:
+      - &quot;2000:2000&quot;
+    networks:
+      - test
+    restart: on-failure
+networks:
+  test:
+    external: true
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><h2 id="docker-swarm-模式下的命令"><a href="#docker-swarm-模式下的命令" class="header-anchor">#</a> docker swarm 模式下的命令</h2> <h3 id="docker-network"><a href="#docker-network" class="header-anchor">#</a> docker network</h3> <ul><li>docker network create --scope=swarm qingwang-module-test ： 创建网络</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>     指定网段：
+       docker network create --driver overlay --subnet=192.168.0.0/24  --gateway=192.168.0.254  qingwang-module-test
+       docker network create --driver overlay --subnet=192.168.0.0/24  --gateway=192.168.0.254  qingwang-module-test
+       docker network create --driver overlay --subnet=192.168.2.0/24  --gateway=192.168.2.254  qingwang-module-1
+       docker network create -d overlay --attachable qingwang-module-test
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>docker network ls  : 查看网络</li> <li>docker network inspect qingwang-module-test ： 查看网络具体信息</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>   docker network inspect qingwang-module-test |grep Subnet  
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="docker-node"><a href="#docker-node" class="header-anchor">#</a> docker node</h3> <ul><li>docker node ls：  查看集群节点信息
+节点 ID 旁边的 * 表示您当前已连接到该节点</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@rabbit_host22 ~]# docker node ls 
+ID                            HOSTNAME             STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+lj9jbfbvhd9m0zt76k24rfuw7     192.168.2.10node10   Ready     Active                          20.10.14
+n4mj7p8u9rr4hc99offv6xac9     rabbit_host11        Ready     Active                          20.10.7
+0xulzz4pl2mbft6ca0ggr8ubu *   rabbit_host22        Ready     Active         Leader           20.10.5
+
+AVAILABILITY: Active 、 Pasue 、 Drain
+Active： 调度任务程序可以将部署任务分配给该节点
+Pasue：  调度任务程序将不会再将新部署任务分配给该节点，但是现有任务仍保持运行
+Drain：  调度任务程序将不会再将新部署任务分配给该节点，并且调度任务程序会关闭该节点所有部署的任务实例
+
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li><p>docker node demote 节点id ： 降级管理节点节点为工作节点</p></li> <li><p>dokcer node rm : 删除工作节点，工作节点退出docker集群后，status为down，这时候可以删除工作节点</p></li> <li><p>docker node promote 节点id： 升级节点为管理节点备用节点
+集群状态变为 Reachable（选举者），因为集群中节点Leader只能有一个，
+这个类似zookeeper，只不过zookeepers用的算法是paxos，Swarm用的算法是raft。
+如果管理节点需要退出，需要先降级为工作节点才能执行 docker node rm 节点id</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@rabbit_host22 ~]# docker node promote n4mj7p8u9rr4hc99offv6xac9
+Node n4mj7p8u9rr4hc99offv6xac9 promoted to a manager in the swarm.
+[root@rabbit_host22 ~]# docker node ls 
+ID                            HOSTNAME             STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+lj9jbfbvhd9m0zt76k24rfuw7     192.168.2.10node10   Ready     Active                          20.10.14
+n4mj7p8u9rr4hc99offv6xac9     rabbit_host11        Ready     Active         Reachable        20.10.7
+0xulzz4pl2mbft6ca0ggr8ubu *   rabbit_host22        Ready     Active         Leader           20.10.5
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="docker-swarm-命令"><a href="#docker-swarm-命令" class="header-anchor">#</a> docker swarm 命令</h3> <ul><li>docker swarm init : 初始化当前机器为docker集群管理节点</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker swarm init --advertise-addr 192.168.2.11
+
+返回： 
+Swarm initialized: current node (0xulzz4pl2mbft6ca0ggr8ubu) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-47jzjdpcpyif6bojpojnuifz6pvw8d69jafbhofq0127zfaamv-c8rjboxcf1i1mogxgxqzy0uin 192.168.2.11:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>docker swarm join : 加入集群</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>问题： 
+[root@192 ~]# docker swarm join --token SWMTKN-1-47jzjdpcpyif6bojpojnuifz6pvw8d69jafbhofq0127zfaamv-c8rjboxcf1i1mogxgxqzy0uin 192.168.2.11:2377
+Error response from daemon: rpc error: code = Unavailable desc = connection error: desc = &quot;transport: Error while dialing dial tcp 192.168.2.11:2377: connect: no route to host&quot;
+解决： 主节点防火墙没有开放 2377 端口，导致从节点无法和主节点通信
+
+[root@rabbit_host22 ~]# firewall-cmd --query-port=2377/tcp #查询2377端口是否开放
+no
+[root@rabbit_host22 ~]# firewall-cmd --zone=public --add-port=2377/tcp --permanent #放行2377端口 
+success
+[root@rabbit_host22 ~]# firewall-cmd --reload #重载防火墙
+success
+[root@rabbit_host22 ~]# firewall-cmd --query-port=2377/tcp 
+yes
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><ul><li>docker swarm leave: 工作节点退出docker集群</li> <li>docker swarm leave --force : 管理节点退出docker集群</li></ul> <h3 id="docker-service"><a href="#docker-service" class="header-anchor">#</a> docker service</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code> docker service :
+       create: 创建服务
+       inspect: 显示服务的详细信息
+       ls: 查看所有服务 
+       rm: 删除服务，同时会删除服务的子节点的服务容器
+       update: 更新服务
+       ps: 查看服务部署详情
+       scale: 服务启动后，扩容或者缩容： kibxp4l80var是服务id，4是设置的副本数量     
+              docker service scale kibxp4l80var=4  
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p><a data-fancybox="" title="111" href="docker-cluster-1.png"><img src="docker%E6%9F%A5%E7%9C%8B%E9%9B%86%E7%BE%A4%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2%E6%83%85%E5%86%B5.png" alt="img.png"></a></p> <h3 id="docker-stack"><a href="#docker-stack" class="header-anchor">#</a> docker stack</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker stack:
+       deploy: 发布或者更新一个或者多个stack
+       ls:  查看所有stack
+       rm:  删除stack
+       ps:  查看stack
+       services:  查看所有stack服务，和docker servcie ls 效果一致                   
+  docker stack deploy -c qingwang-module.yml --with-registry-auth qingwang_module
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/容器化/docker/docker-install.html" class="prev">
+        docker安装
+      </a></span> <span class="next"><a href="/mengqizhang/容器化/docker/docker私服.html">
+        docker私服
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/59.fc5ce388.js" defer></script>
+  </body>
+</html>

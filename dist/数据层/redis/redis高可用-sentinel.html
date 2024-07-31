@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>redis高可用 | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/84.e2f1cab8.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/6.48810bdc.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable open"><span>数据层 🔥🔥🔥</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>mysql</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>mybatis</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>Redis</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-2"><p class="sidebar-heading"><span>redis基础</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-2"><p class="sidebar-heading"><span>redis配置</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-2"><p class="sidebar-heading open"><span>redis高可用</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/数据层/redis/redis高可用-sentinel.html" class="active sidebar-link">redis高可用-哨兵模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/redis/redis高可用-sentinel.html#主从原理" class="sidebar-link">主从原理</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/redis/redis高可用-sentinel.html#redis主从同步包括三个阶段。" class="sidebar-link">Redis主从同步包括三个阶段。</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/redis/redis高可用-sentinel.html#主从数据不一致" class="sidebar-link">主从数据不一致</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/redis/redis高可用-sentinel.html#一主多从-全量复制时主库压力问题" class="sidebar-link">一主多从，全量复制时主库压力问题</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/redis/redis高可用-sentinel.html#redis主从同步的方式" class="sidebar-link">redis主从同步的方式：</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/redis/redis高可用-sentinel.html#redis哨兵模式" class="sidebar-link">redis哨兵模式：</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/redis/redis高可用-sentinel.html#哨兵模式的缺点" class="sidebar-link">哨兵模式的缺点</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/redis/redis高可用-sentinel.html#springboot-redis集群" class="sidebar-link">springboot+redis集群</a></li></ul></li><li><a href="/mengqizhang/数据层/redis/redis-集群.html" class="sidebar-link">redis高可用-集群</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-2"><p class="sidebar-heading"><span>redis应用场景</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="redis高可用"><a href="#redis高可用" class="header-anchor">#</a> redis高可用</h1> <div class="language- line-numbers-mode"><pre class="language-text"><code>    1. redis原生 cluster模式
+    2. redis主从+哨兵模式
+
+    主要的方式有：
+        1.主从复制
+        2.Redis集群
+        3.数据持久化
+        4.自动故障恢复
+    
+    Redis的高可用保障的基础：数据持久化。因为Redis的主从复制和自动故障恢复，都需要依赖Redis持久化相关的东西。同时，Redis的数据持久化也可以用来做数据备份，用来保障数据的安全性。
+    Redis是一个内存数据库，它的数据都保存在内存中，如果实例宕机，那么数据则全部丢失。如何保证数据的完整性和安全性也是提高服务高可用的重要机制之一。
+    Redis提供了完善的持久化机制，可以把内存中的数据持久化到磁盘上，方便我们进行备份数据和快速恢复数据。
+        
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h1 id="redis主从-哨兵模式"><a href="#redis主从-哨兵模式" class="header-anchor">#</a> redis主从+哨兵模式</h1> <h3 id="_1-redis主的redis-conf配置文件"><a href="#_1-redis主的redis-conf配置文件" class="header-anchor">#</a> 1. redis主的redis.conf配置文件：</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 主节点密码，主机点配置masterauth，这样当主节点故障后能成功成为新主节点的从节点，这里建议主节点和所有的从节点使用相同的密码
+masterauth mengqizhang
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="_2-redis从的redis-conf配置文件"><a href="#_2-redis从的redis-conf配置文件" class="header-anchor">#</a> 2. redis从的redis.conf配置文件：</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+replicaof 192.168.2.9 6379
+# 主节点密码
+masterauth mengqizhang
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="_3-sentinel-配置文件-只需要监测redis主即可-主里面有slave的信息-会把sentinel的从节点分发给redis的salve节点"><a href="#_3-sentinel-配置文件-只需要监测redis主即可-主里面有slave的信息-会把sentinel的从节点分发给redis的salve节点" class="header-anchor">#</a> 3. sentinel 配置文件： 只需要监测redis主即可（ 主里面有slave的信息，会把sentinel的从节点分发给redis的salve节点）</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 安全策略，选择如下任意一个即可
+# bind 127.0.0.1 192.168.1.1
+# protected-mode no
+
+port 26378
+
+#默认情况下，Redis Sentinel 不作为守护进程运行。如果需要，请使用“是”。注意Redis在守护进程时会在varrunredis-sentinel.pid中写入一个pid文件。
+daemonize no
+#指定守护进程的文件位置
+pidfile /var/run/redis-sentinel.pid
+#指定日志文件名。此外，空字符串可用于强制 Sentinel 登录标准输出。请注意，如果您使用标准输出进行日志记录但守护进程，日志将被发送到 devnull
+logfile &quot;&quot;
+# sentinel announce-ip 1.2.3.4
+
+# dir &lt;working-directory&gt;
+# sentinel工作目录
+dir /tmp
+
+# sentinel monitor &lt;master-name&gt; &lt;ip&gt; &lt;redis-port&gt; &lt;quorum&gt;
+# 告诉 Sentinel 监视这个 master，并且只有在至少 &lt;quorum&gt; 哨兵同意时才考虑它处于 O_DOWN（客观关闭）状态。
+# 只需要配置主节点，当slave升级为master后，该配置文件会被重写
+# 支持域名配置
+# 监控主要节点，1代表有1台sentinel监控redi为有问题，那就执行故障转移
+sentinel monitor mymaster 192.168.2.9 6379 1
+
+# sentinel auth-pass &lt;master-name&gt; &lt;password&gt;
+# master节点的密码，注意master和slave密码需要设置一致！！
+sentinel auth-pass mymaster mengqizhang
+
+# acl控制，6.0之后新增
+# sentinel auth-user &lt;master-name&gt; &lt;username&gt;
+#     user sentinel-user &gt;somepassword +client +subscribe +publish \
+#                        +ping +info +multi +slaveof +config +client +exec on
+
+# sentinel ping从节点无响应的时间，无响应则认为故障，S_DOWN，默认为30s秒
+# sentinel down-after-milliseconds &lt;master-name&gt; &lt;milliseconds&gt;
+sentinel down-after-milliseconds mymaster 30000
+
+# 配置sentinel的密码，建议所有的sentinel密码配置为一致
+# requirepass &lt;password&gt;
+
+# 在故障转移期间，我们可以重新配置多少副本以同时指向新副本。如果您使用副本来提供查询服务，请使用较小的数字，以避免在与主服务器执行同步时几乎同时无法访问所有副本。
+# sentinel parallel-syncs &lt;master-name&gt; &lt;numreplicas&gt;
+sentinel parallel-syncs mymaster 1
+
+# 设置故障转移超时时间，默认3分钟
+# sentinel failover-timeout &lt;master-name&gt; &lt;milliseconds&gt;
+# Specifies the failover timeout in milliseconds. It is used in many ways:
+# - 在给定的 Sentinel 已经针对同一个主服务器尝试了先前的故障转移之后，重新启动故障转移所需的时间是故障转移超时的两倍。
+# - 根据 Sentinel 当前配置将副本复制到错误的 master 并强制使用正确的 master 进行复制所需的时间正是故障转移超时（从 Sentinel 检测到错误配置的那一刻开始计算）。
+# - 取消已在进行中但未产生任何配置更改的故障转移所需的时间（SLAVEOF NO ONE 尚未被提升的副本确认）。
+# - 正在进行的故障转移等待所有副本重新配置为新主副本的最长时间。然而，即使在这段时间之后，Sentinels 仍然会重新配置副本，但不会按照指定的精确并行同步进程进行配置。
+sentinel failover-timeout mymaster 180000
+
+
+# sentinel执行故障转移后，可以执行指定的脚本，用于通知开发人员或者记录故障转移记录等！！脚本最长执行时间为60秒
+# 如果脚本以“1”退出，则稍后重试执行（最多当前设置为 10 的最大次数）。
+# 如果脚本以“2”（或更高的值）退出，则不会重试脚本执行。
+# 执行指定的通知脚本
+# sentinel notification-script &lt;master-name&gt; &lt;script-path&gt;
+# sentinel notification-script mymaster /var/redis/notify.sh
+
+# 客户端重新配置脚本
+# sentinel client-reconfig-script &lt;master-name&gt; &lt;script-path&gt;
+#
+# 当主服务器因故障转移而更改时，可以调用脚本以执行特定于应用程序的任务，以通知客户端配置已更改且主服务器位于不同的地址。
+# 以下参数传递给脚本
+# &lt;master-name&gt; &lt;role&gt; &lt;state&gt; &lt;from-ip&gt; &lt;from-port&gt; &lt;to-ip&gt; &lt;to-port&gt;
+# &lt;state&gt; is currently always &quot;failover&quot;
+# &lt;role&gt; is either &quot;leader&quot; or &quot;observer&quot;
+# sentinel client-reconfig-script mymaster /var/redis/reconfig.sh
+
+# 默认情况下，SENTINEL SET 将无法在运行时更改通知脚本和客户端重新配置脚本。这避免了客户端可以将脚本设置为任何内容并触发故障转移以使程序执行的微不足道的安全问题。
+sentinel deny-scripts-reconfig yes
+
+# 有时 Redis 服务器有某些命令，这些命令是 Sentinel 正常工作所需的，重命名为不可猜测的字符串。在提供 Redis 即服务且不希望客户在管理控制台之外重新配置实例的提供商的上下文中，CONFIG 和 SLAVEOF 通常就是这种情况。
+# 在这种情况下，可以告诉 Sentinel 使用不同的命令名称而不是普通的命令名称。例如，如果主“mymaster”和关联的副本将“CONFIG”都重命名为“GUESSME”，我可以使用：
+# SENTINEL rename-command mymaster CONFIG GUESSME
+# 设置好这样的配置后，每次 Sentinel 使用 CONFIG 时，它都会使用 GUESSME。请注意，实际上并不需要尊重命令大小写，因此在上面的示例中编写“config guessme”是相同的。
+# 撤销上面的设置
+# SENTINEL rename-command mymaster CONFIG CONFIG
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br></div></div><h3 id="redis主从搭建"><a href="#redis主从搭建" class="header-anchor">#</a> redis主从搭建</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>version: '3'
+services:
+  redis-master:
+    image: redis:latest
+    container_name: redis-master-MQZ
+    restart: on-failure
+    volumes:
+      - /root/logs/docker-log/redis/master:/data
+      - /root/mqz/redis/redis-master.conf:/etc/redis/redis.conf
+    environment:
+      - TZ=Asia/Shanghai
+    command: redis-server /etc/redis/redis.conf
+    ports:
+      - &quot;6379:6379&quot;
+  redis-slave-1:
+    image: redis:latest
+    container_name: redis-slave-1-MQZ
+    restart: on-failure
+    volumes:
+      - /root/logs/docker-log/redis/slave-1:/data
+      - /root/mqz/redis/redis-slave-1.conf:/etc/redis/redis.conf
+    environment:
+      - TZ=Asia/Shanghai
+    command: redis-server /etc/redis/redis.conf
+    ports:
+      - &quot;6378:6378&quot;
+  redis-slave-2:
+    image: redis:latest
+    container_name: redis-slave-2-MQZ
+    restart: on-failure
+    volumes:
+      - /root/logs/docker-log/redis/slave-2:/data
+      - /root/mqz/redis/redis-slave-2.conf:/etc/redis/redis.conf
+    environment:
+      - TZ=Asia/Shanghai
+    command: redis-server /etc/redis/redis.conf
+    ports:
+      - &quot;6377:6377&quot;
+  redis-sentinel-1:
+    image: redis:latest
+    container_name: redis-sentinel-1-MQZ
+    restart: on-failure
+    ports:
+      - &quot;26379:26379&quot;
+    volumes:
+      - /root/mqz/redis/sentinel-1.conf:/etc/redis/sentinel.conf
+    environment:
+      - TZ=Asia/Shanghai
+    command: redis-sentinel /etc/redis/sentinel.conf
+  redis-sentinel-2:
+    image: redis:latest
+    container_name: redis-sentinel-2-MQZ
+    restart: on-failure
+    ports:
+      - &quot;26378:26378&quot;
+    volumes:
+      - /root/mqz/redis/sentinel-2.conf:/etc/redis/sentinel.conf
+    environment:
+      - TZ=Asia/Shanghai
+    command: redis-sentinel /etc/redis/sentinel.conf
+  redis-sentinel-3:
+    image: redis:latest
+    container_name: redis-sentinel-3-MQZ
+    restart: on-failure
+    ports:
+      - &quot;26377:26377&quot;
+    volumes:
+      - /root/mqz/redis/sentinel-2.conf:/etc/redis/sentinel.conf
+    environment:
+      - TZ=Asia/Shanghai
+    command: redis-sentinel /etc/redis/sentinel.conf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br></div></div><h3 id="相关操作"><a href="#相关操作" class="header-anchor">#</a> 相关操作</h3> <p>a. sentinel 操作：</p> <p><a data-fancybox="" title="111" href="sentinel-1查看info信息.png"><img src="sentinel-1%E6%9F%A5%E7%9C%8Binfo%E4%BF%A1%E6%81%AF.png" alt="img.png"></a> <a data-fancybox="" title="111" href="sentinel-master信息.png"><img src="sentinel-master%E4%BF%A1%E6%81%AF.png" alt="img.png"></a></p> <p>b. master 操作
+<a data-fancybox="" title="111" href="redis-主从配置-查看主从配置信息1.png"><img src="redis-%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE-%E6%9F%A5%E7%9C%8B%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF1.png" alt="img.png"></a> <a data-fancybox="" title="111" href="redis-sentinel主节点故障-1.png"><img src="redis-sentinel%E4%B8%BB%E8%8A%82%E7%82%B9%E6%95%85%E9%9A%9C-1.png" alt="img.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code> docker exec -it redis-sentinel-1-MQZ /bin/bash
+ redis-cli -h 172.16.1.11 -p 26379 ： # 查看哨兵搭建信息
+ info
+ sentinel master mymaster: # 查看mymaster组的主节点信息
+ sentinel slaves mymaster：# 查看mymaster组的从节点的信息
+
+
+- REPLICAOF NO ONE： # 则将当前服务器转换为主节点，取消原来的主从复制关系，退出函数。
+
+
+
+- redis-cli -h 127.0.0.1 -p 6379 -a mengqizhang ： 登陆redis客户端
+- info ： 查看redis的配置信息
+  info replication: 查看redis主从配置信息
+
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h2 id="主从原理"><a href="#主从原理" class="header-anchor">#</a> 主从原理</h2> <p><a data-fancybox="" title="111" href="redis主从原理1.png"><img src="redis%E4%B8%BB%E4%BB%8E%E5%8E%9F%E7%90%861.png" alt="img.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>流程：
+1. 从节点发送sync（2.8之后为 psync）请求（全量复制或增量复制）给主节点
+2. 主节点收到请求之后，执行bgsave命令，将当前数据生成内存快照（其中redis.master可以配置自动保存快照的策略：SNAPSHOTTING模块：save 900 1）
+并且，主节点会创建一个复制缓冲区，记录从收到从节点复制请求之后的所有执行命令记录。
+3. 从节点收到主节点的RDB快照文件和buffer文件之后，会清空所有的旧数据，将数据同步到数据库中（磁盘），并且会将数据库的文件同步到内存里
+原理：
+a. 主节点在复制缓冲区给每个从节点创建了一个同步备份日志 in memory backlog，超过1M就会清理
+c. 主节点和从节点同时维护了一个复制偏移量（offset）和master线程id（master run id），每次slave请求会携带offset和master run id
+
+
+   注意： 
+       a. 如果主节点收到多个从节点的sync（psync）请求，主节点只会执行一次（bgsave-&gt;创建复制缓冲区-&gt;发送RDB文件），然后把这写同步数据分别发送给所有的从节点
+       b. 如果从节点RDB复制文件超过60秒，从节点则认为复制失败，可以配置这个时间长度大一点 （ repl-timeout ） 
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h2 id="redis主从同步包括三个阶段。"><a href="#redis主从同步包括三个阶段。" class="header-anchor">#</a> Redis主从同步包括三个阶段。</h2> <p><a data-fancybox="" title="111" href="redis主从同步原理2.png"><img src="redis%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E5%8E%9F%E7%90%862.png" alt="img.png"></a></p> <ul><li>第一阶段：主从库间建立连接、协商同步。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>从库向主库发送psync 命令，告诉它要进行数据同步。
+主库收到 psync 命令后,响应FULLRESYNC命令（它表示第一次复制采用的是全量复制），并带上主库runID和主库目前的复制进度offset。
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>第二阶段：主库把数据同步到从库，从库收到数据后，完成本地加载。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>主库执行bgsave命令，生成RDB文件，存储到磁盘，接着将文件发给从库。从库接收到RDB 文件后，会先清空当前数据库，然后加载 RDB 文件。
+主库把数据同步到从库的过程中，新来的写操作，会记录到replication buffer。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>第三阶段，主库把新写的命令，发送到从库。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>主库完成RDB发送后，会把replication buffer中的修改操作发给从库，从库再重新执行这些操作。这样主从库就实现同步啦。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="主从数据不一致"><a href="#主从数据不一致" class="header-anchor">#</a> 主从数据不一致</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>1.原因：
+    主从库网路延迟。
+    从库收到了主从命令，但是它正在执行阻塞性的命令（如hgetall等）。
+2.解决：
+    可以换更好的硬件配置，保证网络畅通。
+    监控主从库间的复制进度
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="一主多从-全量复制时主库压力问题"><a href="#一主多从-全量复制时主库压力问题" class="header-anchor">#</a> 一主多从，全量复制时主库压力问题</h2> <p><a data-fancybox="" title="111" href="一主多从全量复制压力的问题.png"><img src="%E4%B8%80%E4%B8%BB%E5%A4%9A%E4%BB%8E%E5%85%A8%E9%87%8F%E5%A4%8D%E5%88%B6%E5%8E%8B%E5%8A%9B%E7%9A%84%E9%97%AE%E9%A2%98.png" alt="img.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>如果是一主多从的模式，从库很多的时候，每个从库都要和主库进行全量复制时候，主库压力会过大，因为主库需要fork进程生成RDB，
+这个fork进程是会阻塞主线程，影响主库正常处理的请求，同时传输大的RDB文件也是会占用主库的网络带宽。
+
+解决办法：
+    可以使用 主-从（主）-从 的方式，就是部署主从集群的时候，选择服务器硬件好的从库做下级的主库，可其他部分从库建立主从关系
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="redis主从同步的方式"><a href="#redis主从同步的方式" class="header-anchor">#</a> redis主从同步的方式：</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>全量复制： 所有的数据都会同步到从redis中
+增量复制： 网络中断等情况后的复制，只将中断部分复制数据到从redis中
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="redis哨兵模式"><a href="#redis哨兵模式" class="header-anchor">#</a> redis哨兵模式：</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+- 流语言协议：gossip protocols，用于传播master是否故障的信息
+- 投票协议：  agreement protocols，用于sentinel之间投票决定master故障迁移，以及升级哪个slave为新的master
+
+- 心跳机制： Redis创建master和slave时，sentinel需要配置主节点的信息（sentinel monitor mymaster 192.168.2.9 6379 1）
+  及投票决议数目（比如这个1代表的是如果有1台sentinel认为这个master有故障就会执行故障迁移 ）
+  sentinel会发送ping命令到主节点、从节点作为心跳检测。
+
+- 判断主节点故障：（主观下线、客观下线） 
+  1. sentinel每隔1s向所有的master、slave节点发送ping命令进行心跳检测，如果平命令无返回时间超过30s，则认为该master节点为故障，并且标记flags状态为SRI_S_DOWN
+  2. 上个认为master故障的sentinel节点，sentinel 发送sentinel is-master-down-by-addr消息，询问其他sentinel是否认同该master已故障
+     发送命令：sentinel is-master-down-by-addr &lt;ip&gt; &lt;port&gt; &lt;current_epoch&gt; &lt;runid&gt;
+        ip：主观下线的服务ip
+        port：主观下线的服务端口
+        current_epoch：sentinel的纪元
+        runid：*表示检测服务下线状态，如果是sentinel的运行id，表示用来选举领头sentinel
+        
+    主观下线：就是哨兵使用ping命令检测redis节点的心跳，若响应超时就会标记为主观下线，并且发送上面的消息给其他哨兵，执行客观下线的过程。
+    客观下线：多个哨兵实例均认为该redis节点已经下线（多个哨兵对该redis节点标记为了主观下线）
+    误判： 主库实际并没有下线，但是哨兵误以为它下线了。误判一般会发生在集群网络压力较大、网络拥塞，或者是主库本身压力较大的情况下
+    
+  3. 其他的sentinel节点收到另外sentinel的通知消息，会根据发送的消息进行判断master是否真的已故障，若认为master节点已经故障的数量大于配置的数量，则
+     执行故障转移步骤，升级某slave为新的master节点 
+     这就是sentinel的客观下线，只有客观下线才能真正认为该redis主节点已经故障了。其判断的原则就是少数服从多数，这也就是为什么分布式系统通常会部署奇数个实例的原因，方便投票决策。
+
+
+- 选举算法：
+  1.
+
+
+- 故障转移：
+  升级某个slave为新master的条件：
+  1. redis.conf中的replica-priority配置项代表主节点故障后，升级从节点会根据这个参数值进行是否优先升级，参数越小优先级越高
+  2. 若replica-priority配置值相同，那就选择offset最大的，越大表示同步的数据越多
+  3. 若offset也相同，选择run id较小的
+
+  sentinel的工作：
+  1. sentinel会将新选出来slave执行: slaveof no one(redis手动升级从节点为主节点命令)
+  2. sentinel发送命令slaveof 新masterIP 端口给其他的从节点，通知新主上位，后向这个新主复制数据
+  3. sentinel在选举完新主master节点之后，会将之前故障master节点变成新主节点的从节点，并且将其下线
+  这样这个故障节点下次恢复后就不会出现双主的问题（脑裂）
+
+- 哨兵机制的三个阶段：
+1. 监控： 也就是上面的 &quot;判断主节点故障&quot; 的大致过程
+哨兵向master发送ping心跳检测命令，若指定时间内无返回，则标记为主节点故障（SRI_S_DOWN），并且该哨兵会发送广播消息给其他哨兵，
+用于询问其他哨兵是否认同当前主节点已发生故障。若其他哨兵也认为当前主节点故障，并且认为主故障的哨兵数量超过配置的数量，则确定已故障，执行后续选主、故障转移等操作。
+
+2. 选主：
+       在确认主节点真正故障之后，开始执行选新主节点的过程。其中选主的主要是对从节点进行打分，打分规则为： 从库优先级、从库复制进度、从库id号。
+       从库优先级：   配置在从库 redis.conf 中的 replica-priority （旧版本： slave-priority ）的值判定，值越小优先级越高。
+       从库复制进度： 根据 slave_repl_offset 来，值越大表示已经同步的数据越多，分数越高。 
+       从库id号：    启动redis实例的时候，会生成一个id号，在 从库优先级 和 从库复制进度相同情况下，从库id号越小分数越高。 
+       其他： 从库的网络连接状况、从库和主库的断连次数
+
+3. 通知： 
+         选主结束之后，通知所有的从节点执行 replicaof 新主节点 的命令，就是和新主节点建立主从关系，数据同步复制关系。另外把之前就的主节点变成新主的从节点以防脑裂！
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br></div></div><h2 id="哨兵模式的缺点"><a href="#哨兵模式的缺点" class="header-anchor">#</a> 哨兵模式的缺点</h2> <ol><li>哨兵模式下每台Redis服务器都存储相同的数据，浪费内存控件，数据量太大，主从同步时严重影响了master性能</li> <li>哨兵模式是中心化的集群实现方案，每个从机和主机的耦合度很高，master宕机到slave选举master恢复期间服务不可用</li> <li>哨兵模式只有一个Redis主机来接收处理和写的请求，写的操作还是收到单机瓶颈的影响，没有实现真正的分布式架构</li></ol> <p>Redis Cluster 解决了以上哨兵模式的问题</p> <h2 id="springboot-redis集群"><a href="#springboot-redis集群" class="header-anchor">#</a> springboot+redis集群</h2> <h3 id="_1-redis配置读写分离"><a href="#_1-redis配置读写分离" class="header-anchor">#</a> 1. redis配置读写分离：</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>参考配置： RedisSentinelConfig:         
+LettuceClientConfiguration clientConfiguration = LettucePoolingClientConfiguration.builder()
+        .readFrom(ReadFrom.REPLICA)//TODO LETTUCE设置读写分离
+        .poolConfig(config)
+        .build();
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="_2-springboot配置redis集群"><a href="#_2-springboot配置redis集群" class="header-anchor">#</a> 2. springboot配置redis集群</h3> <ul><li>a. 引入pom.xml依赖</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+&lt;!-- redis-start --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;!-- redis-end --&gt;
+
+&lt;!-- 配置sentinel需要使用到 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-pool2&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><ul><li>b. application.yml配置：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 配置redis-replication 主从+哨兵模式
+spring:
+  redis:
+    lettuce:
+      pool:
+        max-active: 1024 #最大连接数
+        max-wait: 20000 #最大阻塞等待时间(负数表示没限制)
+        max-idle: 200 #最大空闲
+        min-idle: 10 #最小空闲
+    sentinel:
+      master: mymaster # 主从组的名称，取值是来自于sentinel的配置文件 ！！
+      nodes: x.x.x.x:26379,x.x.x.x:26378,x.x.x.x:26377 # sentinel节点，ip:port，逗号隔开
+    timeout: 100000
+    client-name: LETTUCE
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><ul><li>c. LETTUCE 连接池配置</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>package com.mqz.better.redis.replication.sentinel;
+
+import io.lettuce.core.ReadFrom;
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisNode;
+import org.springframework.data.redis.connection.RedisSentinelConfiguration;
+import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * :  版权所有 © Copyright 2012&lt;br&gt;
+ *
+ * @Author： 蒙大拿
+ * @Date：2021/10/22 10:39 上午
+ * @Description
+ * @About： https://github.com/DemoMeng
+ */
+@Configuration
+public class RedisSentinelConfig {
+
+
+    @Value(&quot;${spring.redis.sentinel.master}&quot;)
+    private String master;
+    @Value(&quot;${spring.redis.sentinel.nodes}&quot;)
+    private String redisNodes;
+
+    @Autowired
+    RedisProperties redisProperties;
+
+
+    @Bean
+    public GenericObjectPoolConfig poolConfig() {
+        GenericObjectPoolConfig config = new GenericObjectPoolConfig();
+        config.setMinIdle(redisProperties.getLettuce().getPool().getMinIdle());
+        config.setMaxIdle(redisProperties.getLettuce().getPool().getMaxIdle());
+        config.setMaxTotal(redisProperties.getLettuce().getPool().getMaxActive());
+        config.setMaxWaitMillis(redisProperties.getLettuce().getPool().getMaxWait().toMillis());
+        return config;
+    }
+
+    @Bean
+    public RedisSentinelConfiguration configuration() {
+        RedisSentinelConfiguration redisConfig = new RedisSentinelConfiguration();
+        redisConfig.setMaster(redisProperties.getSentinel().getMaster());
+        redisConfig.setPassword(&quot;mengqizhang&quot;);
+        if(redisProperties.getSentinel().getNodes()!=null) {
+            List&lt;RedisNode&gt; sentinelNode=new ArrayList&lt;RedisNode&gt;();
+            for(String sen : redisProperties.getSentinel().getNodes()) {
+                String[] arr = sen.split(&quot;:&quot;);
+                sentinelNode.add(new RedisNode(arr[0],Integer.parseInt(arr[1])));
+            }
+            redisConfig.setSentinels(sentinelNode);
+        }
+        return redisConfig;
+    }
+    @Bean(&quot;lettuceConnectionFactory&quot;)
+    public LettuceConnectionFactory lettuceConnectionFactory(@Qualifier(&quot;poolConfig&quot;) GenericObjectPoolConfig config,
+                                                             @Qualifier(&quot;configuration&quot;) RedisSentinelConfiguration redisConfig) {//注意传入的对象名和类型RedisSentinelConfiguration
+        LettuceClientConfiguration clientConfiguration = LettucePoolingClientConfiguration.builder()
+                .readFrom(ReadFrom.REPLICA)//TODO LETTUCE设置读写分离
+                .poolConfig(config)
+                .build();
+        return new LettuceConnectionFactory(redisConfig, clientConfiguration);
+    }
+
+//    @Bean(&quot;stringObjectRedisTemplate&quot;)
+//    public RedisTemplate&lt;String, Object&gt; stringObjectRedisTemplate(@Qualifier(&quot;lettuceConnectionFactory&quot;) LettuceConnectionFactory connectionFactory) {
+//        RedisTemplate&lt;String, Object&gt; redisTemplate = new RedisTemplate&lt;&gt;();
+//        redisTemplate.setConnectionFactory(connectionFactory);
+//        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+//        GenericJackson2JsonRedisSerializer genericJackson2JsonRedisSerializer = new GenericJackson2JsonRedisSerializer();
+//        //设置序列化器
+//        redisTemplate.setKeySerializer(stringRedisSerializer);
+//        redisTemplate.setValueSerializer(genericJackson2JsonRedisSerializer);
+//        redisTemplate.setHashKeySerializer(stringRedisSerializer);
+//        redisTemplate.setHashValueSerializer(genericJackson2JsonRedisSerializer);
+//        redisTemplate.afterPropertiesSet();
+//        return redisTemplate;
+//    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br></div></div><div data-v-1f2b5245></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/数据层/redis/redis6-conf.html" class="prev">
+        redis6配置文件
+      </a></span> <span class="next"><a href="/mengqizhang/数据层/redis/redis-集群.html">
+        redis高可用-集群
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/84.e2f1cab8.js" defer></script><script src="/mengqizhang/assets/js/6.48810bdc.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>docker在springboot使用打包上传到镜像仓库，服务器拉取镜像启动docker容器 | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/58.0c040aca.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable"><span>数据层 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable open"><span>容器化 🐳</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>docker</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/容器化/docker/docker.html" class="sidebar-link">基础</a></li><li><a href="/mengqizhang/容器化/docker/docker-install.html" class="sidebar-link">docker安装</a></li><li><a href="/mengqizhang/容器化/docker/docker-swarm.html" class="sidebar-link">docker-swarm集群</a></li><li><a href="/mengqizhang/容器化/docker/docker私服.html" class="sidebar-link">docker私服</a></li><li><a href="/mengqizhang/容器化/docker/docker-springboot打包使用.html" class="active sidebar-link">docker-springboot打包使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/容器化/docker/docker-springboot打包使用.html#步骤概览" class="sidebar-link">步骤概览</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/容器化/docker/docker-springboot打包使用.html#pom-xml父级配置" class="sidebar-link">pom.xml父级配置</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/容器化/docker/docker-springboot打包使用.html#web模块的pom配置" class="sidebar-link">web模块的pom配置</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/容器化/docker/docker-springboot打包使用.html#web模块下的dockerfile文件配置" class="sidebar-link">web模块下的Dockerfile文件配置</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/容器化/docker/docker-springboot打包使用.html#maven的setting设置docker仓库鉴权配置" class="sidebar-link">maven的setting设置docker仓库鉴权配置</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/容器化/docker/docker-springboot打包使用.html#执行打包命令" class="sidebar-link">执行打包命令</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/容器化/docker/docker-springboot打包使用.html#fabric8-打包相关命令" class="sidebar-link">fabric8 打包相关命令</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/容器化/docker/docker-springboot打包使用.html#使用fabric8-插件需要配置docker-compose-yml文件" class="sidebar-link">使用fabric8 插件需要配置docker-compose.yml文件</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/容器化/docker/docker-springboot打包使用.html#dockerfile打包插件区别" class="sidebar-link">Dockerfile打包插件区别</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>portainer容器管理工具</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="docker在springboot使用打包上传到镜像仓库-服务器拉取镜像启动docker容器"><a href="#docker在springboot使用打包上传到镜像仓库-服务器拉取镜像启动docker容器" class="header-anchor">#</a> docker在springboot使用打包上传到镜像仓库，服务器拉取镜像启动docker容器</h1> <ul><li><p>参考项目
+<a href="https://gitee.com/DemoMeng/simple-life-better.git" target="_blank" rel="noopener noreferrer">https://gitee.com/DemoMeng/simple-life-better.git<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://gitee.com/DemoMeng/nacos-gateway.git" target="_blank" rel="noopener noreferrer">https://gitee.com/DemoMeng/nacos-gateway.git<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p>dockerfile-maven-plugin 本地打包项目成镜像并推送到镜像仓库 这里需要参考maven多模块打包方式！！ 具体可看项目： https://gitee.com/DemoMeng/simple-life-better.git</p></li></ul> <h2 id="步骤概览"><a href="#步骤概览" class="header-anchor">#</a> 步骤概览</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>1.打包配置pom
+2.编写Dockerfile文件
+3.运行该插件的机器上定义DOCKER_HOST环境变量，配置访问Docker的URL， 
+  如：export DOCKER_HOST=tcp://localhost:2375
+  上面的例子，是在Linux环境下定义的DOCKER_HOST环境变量，因为Docker安装在本机上，因此使用localhost。如果你的Docker运行环境不在本机，
+  请使用Docker所在机器的IP。2375是为Docker开启的远程访问API的端口，如果你开启的是其他端口，请使用具体的端口。如果你的Docker没有开启远程访问API，请自行Google开启。
+4.配置鉴权，在maven的setting.xml中新加一个server节点配置鉴权：
+    &lt;server&gt;
+      &lt;id&gt;registry.cn-hangzhou.aliyuncs.com&lt;/id&gt;
+      &lt;username&gt;xxxx&lt;/username&gt;
+      &lt;password&gt;xxxx&lt;/password&gt;
+      &lt;configuration&gt;
+        &lt;email&gt;xxxx&lt;/email&gt;
+      &lt;/configuration&gt;
+    &lt;/server&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h2 id="pom-xml父级配置"><a href="#pom-xml父级配置" class="header-anchor">#</a> pom.xml父级配置</h2> <p><a data-fancybox="" title="111" href="父级pom配置.png"><img src="%E7%88%B6%E7%BA%A7pom%E9%85%8D%E7%BD%AE.png" alt="父级pom配置.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!-- maven环境配置区分 --&gt;
+&lt;profiles&gt;
+    &lt;profile&gt;
+        &lt;id&gt;dev&lt;/id&gt;
+        &lt;properties&gt;
+            &lt;projectActive&gt;dev&lt;/projectActive&gt;
+            &lt;zookeeperUrl&gt;127.0.0.1:2181&lt;/zookeeperUrl&gt;
+            &lt;javaHome&gt;/usr/local/java&lt;/javaHome&gt;
+            &lt;aliNameSpace&gt;nacos-project&lt;/aliNameSpace&gt;&lt;!--阿里云镜像仓库命名空间，有一个环境区分dev/prod的命名空间--&gt;
+            &lt;aliRep&gt;simplie-life-better-rep&lt;/aliRep&gt;
+            &lt;bdNameSpace&gt;simple-life-better-repository&lt;/bdNameSpace&gt;
+            &lt;bdImageName&gt;simple-life-better-image&lt;/bdImageName&gt;
+        &lt;/properties&gt;
+    &lt;/profile&gt;
+    &lt;profile&gt;
+        &lt;id&gt;test&lt;/id&gt;
+        &lt;properties&gt;
+            &lt;projectActive&gt;test&lt;/projectActive&gt;
+            &lt;zookeeperUrl&gt;192.168.2.11:2181&lt;/zookeeperUrl&gt;
+            &lt;javaHome&gt;/usr/local/java&lt;/javaHome&gt;
+            &lt;aliNameSpace&gt;nacos-project&lt;/aliNameSpace&gt;&lt;!--阿里云镜像仓库命名空间，有一个环境区分dev/prod的命名空间--&gt;
+            &lt;aliRep&gt;simplie-life-better-rep&lt;/aliRep&gt;
+            &lt;bdNameSpace&gt;simple-life-better-repository&lt;/bdNameSpace&gt;
+            &lt;bdImageName&gt;simple-life-better-image&lt;/bdImageName&gt;
+        &lt;/properties&gt;
+    &lt;/profile&gt;
+    &lt;profile&gt;
+        &lt;id&gt;prod&lt;/id&gt;
+        &lt;properties&gt;
+            &lt;projectActive&gt;prod&lt;/projectActive&gt;
+            &lt;zookeeperUrl&gt;192.168.2.11:2181&lt;/zookeeperUrl&gt;
+            &lt;javaHome&gt;/usr/local/java&lt;/javaHome&gt;
+            &lt;aliNameSpace&gt;nacos-project&lt;/aliNameSpace&gt;&lt;!--阿里云镜像仓库命名空间，有一个环境区分dev/prod的命名空间--&gt;
+            &lt;aliRep&gt;simplie-life-better-rep&lt;/aliRep&gt;
+            &lt;bdNameSpace&gt;simple-life-better-repository&lt;/bdNameSpace&gt;
+            &lt;bdImageName&gt;simple-life-better-image&lt;/bdImageName&gt;
+        &lt;/properties&gt;
+    &lt;/profile&gt;
+&lt;/profiles&gt;
+
+
+&lt;!-- com.spotify插件： 配置项目打包成docker镜像，上传到aliyun --&gt;
+&lt;build&gt;
+    &lt;pluginManagement&gt;
+        &lt;plugins&gt;
+          &lt;!-- com.spotify提供的Dockerfile的maven项目打包插件，除了需要更改父级pom的plugin依赖配置和当前web主类依赖配置，其他均一致不动 --&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;com.spotify&lt;/groupId&gt;
+                &lt;artifactId&gt;dockerfile-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;1.4.0&lt;/version&gt;
+                &lt;executions&gt;
+                    &lt;execution&gt;
+                        &lt;id&gt;tag-image&lt;/id&gt;
+                        &lt;phase&gt;package&lt;/phase&gt;
+                        &lt;goals&gt;
+                            &lt;goal&gt;build&lt;/goal&gt;
+                            &lt;goal&gt;tag&lt;/goal&gt;
+                            &lt;goal&gt;push&lt;/goal&gt;
+                        &lt;/goals&gt;
+                    &lt;/execution&gt;
+                &lt;/executions&gt;
+                &lt;configuration&gt;
+                    &lt;!--Dockerfile默认与pom平级--&gt;
+                    &lt;!--&lt;contextDirectory&gt;${project.basedir}&lt;/contextDirectory&gt;--&gt;
+                    &lt;!--docker/config.json 阿里云auth鉴权密码，鉴权放在maven的setting.xml中，参考README.md--&gt;
+                    &lt;!--仓库名--&gt;
+                    &lt;!--&lt;repository&gt;registry.cn-hangzhou.aliyuncs.com/${aliNameSpace}/${aliRep}&lt;/repository&gt;--&gt;
+                    &lt;repository&gt;registry.baidubce.com/${bdNameSpace}/${bdImageName}&lt;/repository&gt;
+                    &lt;tag&gt;0.0.8&lt;/tag&gt;&lt;!--镜像版本--&gt;
+                    &lt;useMavenSettingsForAuth&gt;true&lt;/useMavenSettingsForAuth&gt;
+                    &lt;buildArgs&gt;
+                        &lt;JAR_NAME&gt;${project.build.finalName}&lt;/JAR_NAME&gt;&lt;!--需要想Dcoekrfile传递的变量--&gt;
+                    &lt;/buildArgs&gt;
+                    &lt;skipPush&gt;false&lt;/skipPush&gt;&lt;!--是否跳过 docker push 推送本地镜像到dockerHub或者阿里云等镜像仓库--&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/pluginManagement&gt;
+&lt;/build&gt;
+
+&lt;!-- io.fabric8插件： 配置项目打包成docker镜像，上传到aliyun --&gt;
+&lt;build&gt;
+    &lt;pluginManagement&gt;
+        &lt;plugins&gt;
+          &lt;plugin&gt;
+              &lt;groupId&gt;io.fabric8&lt;/groupId&gt;
+              &lt;artifactId&gt;docker-maven-plugin&lt;/artifactId&gt;
+              &lt;version&gt;0.32.0&lt;/version&gt;
+              &lt;configuration&gt;
+                  &lt;!-- Docker Remote Api --&gt;
+                  &lt;!-- 本地有docker环境即可 --&gt;
+                  &lt;dockerHost&gt;tcp://106.12.187.16:2375&lt;/dockerHost&gt;
+                  &lt;!-- Docker 镜像私服 --&gt;
+                  &lt;registry&gt;registry.cn-hangzhou.aliyuncs.com&lt;/registry&gt;
+                  &lt;!-- 认证信息--&gt;
+                  &lt;authConfig&gt;
+                      &lt;push&gt;
+                          &lt;username&gt;977466992@qq.com&lt;/username&gt;
+                          &lt;password&gt;mengqizhang0304&lt;/password&gt;
+                      &lt;/push&gt;
+                  &lt;/authConfig&gt;
+                  &lt;images&gt;
+                      &lt;image&gt;
+                          &lt;!-- 镜像名称： 172.17.0.111/library/pig-gateway:2.6.3--&gt;
+                          &lt;name&gt;registry.cn-hangzhou.aliyuncs.com/nacos-project/simplie-life-better-rep:0.1.2&lt;/name&gt;
+                          &lt;build&gt;
+                              &lt;dockerFile&gt;/Applications/mqz/simple-life-better/better-web/Dockerfile&lt;/dockerFile&gt;
+                          &lt;/build&gt;
+                          &lt;!-- 别名:用于容器命名和在docker-compose.yml文件只能找到对应名字的配置--&gt;
+                          &lt;alias&gt;${project.name}&lt;/alias&gt;
+                          &lt;!-- 配置docker-compose文件--&gt;
+                          &lt;external&gt;
+                              &lt;type&gt;compose&lt;/type&gt;
+                              &lt;basedir&gt;/Applications/mqz/simple-life-better/docker&lt;/basedir&gt;
+                              &lt;composeFile&gt;simple-life-better-compose.yml&lt;/composeFile&gt;
+                          &lt;/external&gt;
+                          &lt;!-- 容器run相关配置 --&gt;
+                          &lt;run&gt;
+                              &lt;!-- 配置运行时容器命名策略为:别名,如果不指定则默认为none,即使用随机分配名称 --&gt;
+                              &lt;namingStrategy&gt;alias&lt;/namingStrategy&gt;
+                          &lt;/run&gt;
+                      &lt;/image&gt;
+                  &lt;/images&gt;
+              &lt;/configuration&gt;
+          &lt;/plugin&gt;--&gt;
+        &lt;/plugins&gt;
+    &lt;/pluginManagement&gt;
+&lt;/build&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br></div></div><h2 id="web模块的pom配置"><a href="#web模块的pom配置" class="header-anchor">#</a> web模块的pom配置</h2> <p><a data-fancybox="" title="111" href="子pom配置.png"><img src="%E5%AD%90pom%E9%85%8D%E7%BD%AE.png" alt="子pom配置.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!-- com.spotify提供的Dockerfile的maven项目打包插件，除了需要更改父级pom的plugin依赖配置和当前web主类依赖配置，其他均一致不动 --&gt;
+&lt;plugin&gt;
+    &lt;groupId&gt;com.spotify&lt;/groupId&gt;
+    &lt;artifactId&gt;dockerfile-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;1.4.0&lt;/version&gt;
+    &lt;configuration&gt;
+        &lt;skip&gt;false&lt;/skip&gt;
+        &lt;!--这里设置是否需要跳过dockerfile-maven打包，true：跳过，本地运行的jar ，false不跳过，则会打成镜像并且上传aliyun（如果父级依赖的skipPush没设置true的话）--&gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;
+
+
+&lt;!-- Dockerfile的maven项目打包依赖插件：io.fabric8，该插件bug比较多，不建议使用 --&gt;
+&lt;plugin&gt;
+  &lt;groupId&gt;io.fabric8&lt;/groupId&gt;
+  &lt;artifactId&gt;docker-maven-plugin&lt;/artifactId&gt;
+  &lt;version&gt;0.32.0&lt;/version&gt;
+  &lt;!--需不需要跳过推送请参考 README.md 指定某些指令即可实现 --&gt;
+&lt;/plugin&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h2 id="web模块下的dockerfile文件配置"><a href="#web模块下的dockerfile文件配置" class="header-anchor">#</a> web模块下的Dockerfile文件配置</h2> <ul><li>该Dockerfile和web的pom.xml是同一级别</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>#基础镜像
+FROM java:8
+#镜像的制作人
+MAINTAINER mengqizhang
+ENV APP_NAME=&quot;better-web-0.0.1-SNAPSHOT&quot;
+#定义jar包名称 给个默认值
+ARG JAR_NAME=${APP_NAME}.jar
+#此处必须这么指定，ARG参数在最终的ENTRYPOINT执行时会出现问题
+ENV FILE_NAME=&quot;better-web-0.0.1-SNAPSHOT.jar&quot;
+ENV WORK_DIR=&quot;/home/mqz/nacos-project/${APP_NAME}&quot;
+ENV JAVA_MS=&quot;1G&quot;
+ENV JAVA_OPTS=&quot;-Djava.security.egd=file:/dev/./urandom -Dlog4j.defaultInitOverride=true -Dorg.apache.tomcat.util.http.ServerCookie.ALLOW_EQUALS_IN_VALUE=true -Dorg.apache.tomcat.util.http.ServerCookie.ALLOW_HTTP_SEPARATORS_IN_V0=true -server  -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=256m -Xmn256m -XX:SurvivorRatio=10 -XX:+UseConcMarkSweepGC -XX:CMSMaxAbortablePrecleanTime=5000 -XX:+CMSClassUnloadingEnabled -XX:CMSInitiatingOccupancyFraction=80 -XX:+UseCMSInitiatingOccupancyOnly -XX:+ExplicitGCInvokesConcurrent -Dsun.rmi.dgc.server.gcInterval=2592000000 -Dsun.rmi.dgc.client.gcInterval=2592000000 -XX:ParallelGCThreads=4 -Djava.awt.headless=true -Dsun.net.client.defaultConnectTimeout=10000 -Dsun.net.client.defaultReadTimeout=30000  -Dfile.encoding=utf-8&quot;
+RUN mkdir -p  ${WORK_DIR}
+#目的解决docker容器和宿主机时差的问题！
+RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &amp;&amp; echo 'Asia/Shanghai' &gt;/etc/timezone
+WORKDIR ${WORK_DIR}
+# 把可执行jar包复制到基础镜像的根目录下
+COPY target/${FILE_NAME} ${FILE_NAME}
+#声明了容器应该打开的端口并没有实际上将它打开
+EXPOSE 2000
+#健康检查
+#Docker 打包异常 ： [ERROR] Unknown flag: start-period  （ 暂时关闭 ）
+
+#本地打包正常并且能上传到阿里云成功
+#docker版本问题，本地docker（macos）：Docker version 20.10.6, build 370c289
+#服务器（centOS）： Docker version 1.13.1, build 0be3e21/1.13.1
+
+#HEALTHCHECK --start-period=160s --interval=160s --timeout=160s --retries=10 CMD curl --fail localhost:2000/actuator/health || exit 1
+#指定容器启动时要执行的命令，但如果存在CMD指令，CMD中的参数会被附加到ENTRYPOINT指令的后面
+ENTRYPOINT [&quot;sh&quot;,&quot;-c&quot;,&quot;java ${JAVA_OPTS} -jar ${FILE_NAME}&quot;]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><h2 id="maven的setting设置docker仓库鉴权配置"><a href="#maven的setting设置docker仓库鉴权配置" class="header-anchor">#</a> maven的setting设置docker仓库鉴权配置</h2> <p><a data-fancybox="" title="111" href="docker打包镜像鉴权配置.png"><img src="docker%E6%89%93%E5%8C%85%E9%95%9C%E5%83%8F%E9%89%B4%E6%9D%83%E9%85%8D%E7%BD%AE.png" alt="docker打包镜像鉴权配置.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>registry.cn-hangzhou.aliyuncs.com 是阿里云镜像仓库的主域名，类比docker.io
+用户名 和 授权密码均可以配置
+
+ &lt;server&gt;
+      &lt;id&gt;registry.cn-hangzhou.aliyuncs.com&lt;/id&gt;
+      &lt;username&gt;xxxx&lt;/username&gt;
+          &lt;password&gt;xxxx&lt;/password&gt;
+          &lt;configuration&gt;
+              &lt;email&gt;xxxx@qq.com&lt;/email&gt;
+          &lt;/configuration&gt;
+ &lt;/server&gt;
+
+百度云容器镜像仓库同等配置:
+    &lt;server&gt;
+        &lt;id&gt;registry.baidubce.com&lt;/id&gt;
+        &lt;username&gt;xxxx&lt;/username&gt;
+        &lt;password&gt;xxxx&lt;/password&gt;
+    &lt;/server&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h2 id="执行打包命令"><a href="#执行打包命令" class="header-anchor">#</a> 执行打包命令</h2> <ul><li>使用 spotify 的maven打包命令： mvn clean install -pl better-web -am -Pdev -DskipTests</li> <li>使用 fabric8 的maven打包命令： mvn clean install -pl better-web -am -Pdev -DskipTests docker:remove docker:build docker:push
+fabric8 如果使用了dockerHost，那么打包生成的镜像会在该dockerHost上
+<a data-fancybox="" title="111" href="fabric8的打包插件.png"><img src="fabric8%E7%9A%84%E6%89%93%E5%8C%85%E6%8F%92%E4%BB%B6.png" alt="fabric8的打包插件.png"></a> <a data-fancybox="" title="111" href="fabric8打包后的镜像.png"><img src="fabric8%E6%89%93%E5%8C%85%E5%90%8E%E7%9A%84%E9%95%9C%E5%83%8F.png" alt="fabric8打包后的镜像.png"></a> <a data-fancybox="" title="111" href="fabric8打包后的镜像2.png"><img src="fabric8%E6%89%93%E5%8C%85%E5%90%8E%E7%9A%84%E9%95%9C%E5%83%8F2.png" alt="fabric8打包后的镜像2.png"></a></li></ul> <h2 id="fabric8-打包相关命令"><a href="#fabric8-打包相关命令" class="header-anchor">#</a> fabric8 打包相关命令</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>  maven指令	     功能
+docker:start	        创建和启动容器
+docker:stop	            停止并销毁容器
+docker:build	        构建镜像
+docker:watch	        自动进行重建和重启
+docker:push	            将镜像推送到registry
+docker:remove	        从本地docker主机删除镜像
+docker:logs	            显示容器日志
+docker:source	        将docker build archive附加到Maven项目
+docker:save	            将镜像保存到文件
+docker:volume-create	创建卷以在容器之间共享数据
+docker:volume-remove	删除创建的卷
+
+使用示例： mvn clean install -pl better-web -am -Pdev -DskipTests docker:remove docker:build docker:push 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h2 id="使用fabric8-插件需要配置docker-compose-yml文件"><a href="#使用fabric8-插件需要配置docker-compose-yml文件" class="header-anchor">#</a> 使用fabric8 插件需要配置docker-compose.yml文件</h2> <ul><li>具体参考项目： <a href="https://gitee.com/DemoMeng/simple-life-better.git" target="_blank" rel="noopener noreferrer">https://gitee.com/DemoMeng/simple-life-better.git<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h2 id="dockerfile打包插件区别"><a href="#dockerfile打包插件区别" class="header-anchor">#</a> Dockerfile打包插件区别</h2> <ul><li>io.fabric8 ： dockerfile和docker-compose文件进行docker镜像构造(build),
+镜像推送(push),支持对容器操作(如run,stop,remove等),
+实现对Docker从构建镜像到运行和推送完整的控制流程,这是它独树一帜的地方.</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+          
+fabric8io的 的dockerHost支持 tcp 和http（https）两种格式
+1 tcp
+  如果使用tcp则只能使用 2375 和 2376端口，分别对应不加密验证和加密验证
+  这个时候在url里配置其他端口是无效的。
+  （也就是说，服务器设置了监听 tcp:///0.0.0.0:9999，fabric8io的插件设置 tcp:公网ip:9999，也是无效的，这个时候如果启用了ssl加密的话就只能一起用 2376）
+
+2 http/https
+  这个时候端口是可以自定义的
+  即是说直接用 http://公网ip（域名）:9999 即可。
+  
+打开docker的2375端口供remote api使用
+vim /etc/docker/daemon.json
+
+{
+  &quot;hosts&quot;: [&quot;tcp://0.0.0.0:2375&quot;, &quot;unix:///var/run/docker.sock&quot;]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><ul><li>com.spotify ：只能支持dockerfile文件的、并且Dockerfile文件的位置放置需要按照规则放置，对与docker-compose.yml文件几乎不支持</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/容器化/docker/docker私服.html" class="prev">
+        docker私服
+      </a></span> <span class="next"><a href="/mengqizhang/%E5%AE%B9%E5%99%A8%E5%8C%96/portainer/">
+        首页
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/58.0c040aca.js" defer></script>
+  </body>
+</html>

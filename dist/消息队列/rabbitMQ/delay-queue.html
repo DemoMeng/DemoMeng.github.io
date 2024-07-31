@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>延迟队列 | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/89.fbed7b0f.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable open"><span>消息队列 🔥🔥🔥</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>rabbitMQ</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/rabbitMQ/" aria-current="page" class="sidebar-link">rabbitMQ</a></li><li><a href="/mengqizhang/消息队列/rabbitMQ/集群.html" class="sidebar-link">集群</a></li><li><a href="/mengqizhang/消息队列/rabbitMQ/install.html" class="sidebar-link">安装</a></li><li><a href="/mengqizhang/消息队列/rabbitMQ/usually-queue.html" class="sidebar-link">常规队列</a></li><li><a href="/mengqizhang/消息队列/rabbitMQ/dead-queue.html" class="sidebar-link">死信队列</a></li><li><a href="/mengqizhang/消息队列/rabbitMQ/delay-queue.html" class="active sidebar-link">延迟队列</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/消息队列/rabbitMQ/delay-queue.html#rabbitmq服务端配置" class="sidebar-link">rabbitMQ服务端配置</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/消息队列/rabbitMQ/delay-queue.html#springboot配置" class="sidebar-link">springBoot配置</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/消息队列/rabbitMQ/delay-queue.html#_1-引入pom-xml配置" class="sidebar-link">1. 引入pom.xml配置</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/消息队列/rabbitMQ/delay-queue.html#_2-消息生产者配置" class="sidebar-link">2. 消息生产者配置：</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/消息队列/rabbitMQ/delay-queue.html#_2-消费方application-yml配置" class="sidebar-link">2. 消费方application.yml配置</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/消息队列/rabbitMQ/delay-queue.html#_3-消息生产者代码配置队列、交换机、及绑定路由" class="sidebar-link">3. 消息生产者代码配置队列、交换机、及绑定路由</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/消息队列/rabbitMQ/delay-queue.html#_4-消息生产者投递消息" class="sidebar-link">4. 消息生产者投递消息</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/消息队列/rabbitMQ/delay-queue.html#_5-消费者消费消息" class="sidebar-link">5.消费者消费消息</a></li></ul></li></ul></section></li><li><a href="/mengqizhang/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/rocketMQ/" class="sidebar-link">rocketMQ</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable"><span>数据层 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="延迟队列"><a href="#延迟队列" class="header-anchor">#</a> 延迟队列</h1> <h2 id="rabbitmq服务端配置"><a href="#rabbitmq服务端配置" class="header-anchor">#</a> rabbitMQ服务端配置</h2> <p><a data-fancybox="" title="111" href="rabbitmq开启插件.png"><img src="rabbitmq%E5%BC%80%E5%90%AF%E6%8F%92%E4%BB%B6.png" alt="img.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 安装延迟消息插件， 在rabbitmq 3.5.7及以上的版本提供了一个插件（rabbitmq-delayed-message-exchange）来实现延迟队列功能。同时插件依赖Erlang/OPT 18.0及以上。
+     a 官方下载插件 https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases
+     b 把插件 rabbitmq_delayed_message_exchange-3.8.9-0199d11c.ez 复制到容器中：
+         docker cp rabbitmq_delayed_message_exchange-3.8.9-0199d11c.ez 98:/plugins/
+     c rabbitmq开启插件： rabbitmq-plugins enable rabbitmq_delayed_message_exchange
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="springboot配置"><a href="#springboot配置" class="header-anchor">#</a> springBoot配置</h2> <h2 id="_1-引入pom-xml配置"><a href="#_1-引入pom-xml配置" class="header-anchor">#</a> 1. 引入pom.xml配置</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!--集成消息队列--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.amqp&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-rabbit-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h2 id="_2-消息生产者配置"><a href="#_2-消息生产者配置" class="header-anchor">#</a> 2. 消息生产者配置：</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>spring:
+  rabbitmq:
+    host: 192.168.2.11
+    port: 5672
+    username: mqz
+    password: mqz
+    virtual-host: / #虚拟主机地址
+    connection-timeout: 15000
+    # RabbitMQ的消息确认
+    # 1.消息发送确认：确认生产者将消息发送给交换器，交换器传递给队列过程是否成功投递，步骤：一是确认是否到达交换器，二是确认是否到达队列
+    # 2.消费接收确认： 确认消费者是否成功消费了队列中的消息，
+    # 确认消息发送成功，通过实现ConfirmCallBack接口，消息发送到交换器Exchange后触发回调
+    publisher-confirms: true #如果对异步消息需要回调必须设置为true
+    publisher-returns: true # 实现ReturnCallback接口，如果消息从交换器发送到对应队列失败时触发，（比如根据发送消息时指定的routingKey找不到队列时会触发）
+    publisher-confirm-type: correlated # ConfirmCallback不回调的问题，其中none是不触发回调
+    template:
+      mandatory: true # 设置为 true 后消息没有成功交换器到被路由到合适队列情况下会被return（ ReturnCallback函数）监听，而不会自动删除
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h2 id="_2-消费方application-yml配置"><a href="#_2-消费方application-yml配置" class="header-anchor">#</a> 2. 消费方application.yml配置</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>spring:
+  rabbitmq:
+    host: 192.168.2.11
+    port: 5672
+    username: mqz
+    password: mqz
+    #虚拟主机地址
+    virtual-host: /
+    connection-timeout: 15000
+    template:
+      mandatory: true # 设置为 true 后消息没有成功交换器到被路由到合适队列情况下会被return（ ReturnCallback函数）监听，而不会自动删除
+    #消费端配置
+    listener:
+      simple:
+        #消费端
+        concurrency: 5
+        #最大消费端数
+        max-concurrency: 10
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><h2 id="_3-消息生产者代码配置队列、交换机、及绑定路由"><a href="#_3-消息生产者代码配置队列、交换机、及绑定路由" class="header-anchor">#</a> 3. 消息生产者代码配置队列、交换机、及绑定路由</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>package com.mqz.better.rabbitmq.provider.config;
+
+import com.mqz.better.rabbitmq.common.constants.Constant;
+import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.SerializerMessageConverter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @author mqz
+ * @description rabbitMq  延迟消息 交换器、队列、交换器和队列绑定，绑定routing_key
+ * @abount https://github.com/DemoMeng
+ * @since 2020/12/4
+ */
+@Configuration
+public class RabbitDelayConfig {
+
+    /**
+     * double check
+     *   配置手动确认，和yml配置一样可以省略，为了解决：
+     *
+     *   2021-09-10 11:01:06.629 ERROR 29350 --- [155.180.57:5672] o.s.a.r.c.CachingConnectionFactory:
+     *      Shutdown Signal: channel error; protocol method: #method&lt;channel.close&gt;
+     *      (reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'type' for exchange 'xbNotify-exchange' in vhost '/': received 'topic' but current is ''x-delayed-message'', class-id=40, method-id=10)
+     *
+     *
+     */
+    @Bean
+    public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory(ConnectionFactory connectionFactory) {
+        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+        factory.setAcknowledgeMode(AcknowledgeMode.MANUAL); // 代码设置消费方确认机制，因为spring-boot-starter-amqp默认是自动签收信息的方式，消费了两次消息
+        factory.setConnectionFactory(connectionFactory);
+        //factory.setMessageConverter(new Jackson2JsonMessageConverter());
+        return factory;
+    }
+
+
+
+
+    @Bean
+    @Scope(&quot;prototype&quot;)
+    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+        RabbitTemplate template = new RabbitTemplate(connectionFactory);
+        template.setMandatory(true);
+        template.setMessageConverter(new SerializerMessageConverter());
+        return template;
+    }
+
+
+    // 延迟投递 配置交换器、队列、交换器队列绑定----开始------
+//    @Bean(&quot;customExchangeBean&quot;)
+//    public CustomExchange lazyTopicExchange(){
+//        Map&lt;String, Object&gt; pros = new HashMap&lt;&gt;();
+//        //设置交换机支持延迟消息推送
+//        //pros.put(&quot;x-delayed-message&quot;, &quot;direct&quot;);
+//        CustomExchange customExchange = new CustomExchange(Constant.lazy_exchange,&quot;x-delayed-message&quot;,true,false,pros);
+//        return customExchange;
+//    }
+
+    /**
+     * 上面customerExchange也可以实现 延迟队列
+     */
+    @Bean(&quot;topicExchangeDelay&quot;)
+    public TopicExchange lazyTopicExchange(){
+        Map&lt;String, Object&gt; pros = new HashMap&lt;&gt;();
+        //设置交换机支持延迟消息推送
+        //pros.put(&quot;x-delayed-message&quot;, &quot;direct&quot;);
+        TopicExchange topicExchange = new TopicExchange(Constant.lazy_exchange,true,false,pros);
+        topicExchange.setDelayed(true);
+        return topicExchange;
+    }
+
+
+
+    @Bean(&quot;lazy-queue&quot;)
+    public Queue lazyQueue(){
+        return new Queue(Constant.lazy_queue, true);
+    }
+
+    @Bean
+    public Binding lazyBinding(){
+        //return BindingBuilder.bind(lazyQueue()).to(lazyTopicExchange()).with(Constant.lazy_routing_key).noargs(); //针对CustomerExchange
+        return BindingBuilder.bind(lazyQueue()).to(lazyTopicExchange()).with(Constant.lazy_routing_key);
+    }
+    // 延迟投递 配置交换器、队列、交换器队列绑定----结束------
+}
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br></div></div><h2 id="_4-消息生产者投递消息"><a href="#_4-消息生产者投递消息" class="header-anchor">#</a> 4. 消息生产者投递消息</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>package com.mqz.better.rabbitmq.provider.provider;
+
+import com.mqz.better.rabbitmq.common.constants.Constant;
+import com.mqz.better.rabbitmq.common.model.dto.MessageDTO;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageDeliveryMode;
+import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.core.ReturnedMessage;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+/**
+ * @author mqz
+ * @description 信保通知消息产生者
+ * @abount https://github.com/DemoMeng
+ * @since 2020/12/4
+ */
+@Component
+@Slf4j
+public class MessageDelayProvider {
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+
+    /**
+     * 【消息发送确认1】 消息发送到交换器Exchange后触发回调
+     */
+    private final RabbitTemplate.ConfirmCallback confirmCallback = new RabbitTemplate.ConfirmCallback() {
+        /**
+         * @param correlationData 唯一标识，有了这个唯一标识，我们就知道可以确认（失败）哪一条消息了
+         * @param ack  是否投递成功
+         * @param cause 失败原因
+         */
+        @Override
+        public void confirm(CorrelationData correlationData, boolean ack, String cause) {
+            String messageId = correlationData.getId();
+            log.info(&quot;【延迟消息】消息成功投递触发了【提供者】的回调。。。&quot;);
+            //返回成功，表示消息被正常投递
+            if (ack) {
+                log.info(&quot;【延迟消息】信息投递成功，messageId:{}&quot;,messageId);
+            } else {
+                log.error(&quot;【延迟消息】消费信息失败，messageId:{} 原因:{}&quot;,messageId,cause);
+                //TODO 重新执行
+            }
+        }
+    };
+
+
+    /***
+     * 【消息发送确认2】消息从交换器发送到对应队列
+     *
+     * 如果消息从交换器发送到对应队列失败时触发
+     * 这个方法可以不用重写，因为交换器和队列是在代码中绑定的，若回调了这个方法则说明交换器和队列绑定的问题
+     * */
+    private final RabbitTemplate.ReturnsCallback returnsCallback = new RabbitTemplate.ReturnsCallback(){
+        @Override
+        public void returnedMessage(ReturnedMessage returnedMessage) {
+            log.info(&quot;【延迟消息】消息经交换器发送到队列失败触发，回调参数：{}&quot;,returnedMessage);
+            //TODO 重新执行
+        }
+
+    };
+
+
+    private final MessagePostProcessor messagePostProcessor = new MessagePostProcessor() {
+        @Override
+        public Message postProcessMessage(Message message) throws AmqpException {
+            //设置消息持久化
+            message.getMessageProperties().setDeliveryMode(MessageDeliveryMode.PERSISTENT);
+            //message.getMessageProperties().setHeader(&quot;x-delay&quot;, &quot;6000&quot;);
+            message.getMessageProperties().setDelay(10000);//延迟10秒，底层调的也是在header里加入x-delay
+            return message;
+        }
+    };
+
+
+    /**
+     *  包含发送消息以及添加 confirm 监听、添加 return 监听。
+     *  如果消费端要设置为手工 ACK ，那么生产端发送消息的时候一定发送 correlationData ，并且全局唯一，用以唯一标识消息
+     */
+    public void send(MessageDTO dto){
+        //设置投递回调
+        rabbitTemplate.setConfirmCallback(this.confirmCallback);
+        rabbitTemplate.setReturnsCallback(this.returnsCallback);
+        CorrelationData correlationData = new CorrelationData();
+        correlationData.setId(dto.getMessageId());
+
+        //消息延迟投递，需要配置rabbit延迟投递配置，参考RabbitConfig，正常投递不需要配置！！
+        //发送消息时指定 header 延迟时间
+        rabbitTemplate.convertAndSend(
+                Constant.lazy_exchange,
+                Constant.lazy_routing_key,
+                dto,
+                messagePostProcessor,
+                correlationData
+        );
+    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br></div></div><h2 id="_5-消费者消费消息"><a href="#_5-消费者消费消息" class="header-anchor">#</a> 5.消费者消费消息</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>package com.mqz.better.rabbitmq.consumer.web;
+
+import com.mqz.better.rabbitmq.common.constants.Constant;
+import com.mqz.better.rabbitmq.common.model.dto.MessageDTO;
+import com.rabbitmq.client.Channel;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.annotation.*;
+import org.springframework.amqp.support.AmqpHeaders;
+import org.springframework.messaging.handler.annotation.Headers;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.util.Map;
+
+/**
+ * @author mqz
+ * @description
+ * @abount https://github.com/DemoMeng
+ * @since 2020/12/4
+ */
+@Component
+@Slf4j
+public class MessageConsumer {
+
+
+
+    private static final String SUCCESS = &quot;SUCCESS&quot;;
+
+    @RabbitListener(
+        bindings = @QueueBinding(//数据是否持久化
+            value = @Queue(value = Constant.lazy_queue,durable = &quot;true&quot;),
+            exchange = @Exchange(name = Constant.lazy_exchange, durable = &quot;true&quot;,type = &quot;x-delayed-message&quot;),
+            key= Constant.lazy_routing_key
+        )
+    )
+    //@RabbitListener(queues = Constant.lazy_queue)
+    public void onDo(@Payload MessageDTO dto,
+                     @Headers Map&lt;String, Object&gt; headers,
+                     Channel channel) throws IOException {
+        log.info(&quot;【延迟投递消息】收到消息，开始消费&quot;);
+//        if(dto.getTemplateNo().equals(&quot;123&quot;)){
+//            throw new IOException(&quot;模拟异常抛出，看是否消费成功&quot;);
+//        }
+        log.info(&quot;【延迟投递消息】  参数:{}&quot;,dto.toString());
+
+        Long deliveryTag = (Long) headers.get(AmqpHeaders.DELIVERY_TAG);
+        /**
+         *  取值为 false 时，表示通知 RabbitMQ 当前消息被确认
+         *  如果为 true，则额外将比第一个参数指定的 delivery tag 小的消息一并确认
+         */
+        log.info(&quot;【延迟投递消息】:deliveryTag:{}&quot;,deliveryTag);
+        // 手工ack
+        channel.basicAck(deliveryTag,false);
+        log.info(&quot;【延迟投递消息】消费完成&quot;);
+    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/消息队列/rabbitMQ/dead-queue.html" class="prev">
+        死信队列
+      </a></span> <span class="next"><a href="/mengqizhang/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/rocketMQ/">
+        rocketMQ
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/89.fbed7b0f.js" defer></script>
+  </body>
+</html>

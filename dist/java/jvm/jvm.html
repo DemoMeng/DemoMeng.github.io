@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JVM | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/15.b407b696.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable"><span>数据层 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Java ☕️</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/java/" aria-current="page" class="sidebar-link">Java</a></li><li><a href="/mengqizhang/java/jvm/jvm.html" aria-current="page" class="active sidebar-link">JVM</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#背景" class="sidebar-link">背景</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#备忘录整理" class="sidebar-link">备忘录整理</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#gc算法、垃圾收集算法" class="sidebar-link">GC算法、垃圾收集算法</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#垃圾回收器-垃圾回收算法的具体实现和落地" class="sidebar-link">垃圾回收器 - 垃圾回收算法的具体实现和落地</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#垃圾对象寻找算法" class="sidebar-link">垃圾对象寻找算法</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#gc-roots有哪一些" class="sidebar-link">GC Roots有哪一些</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#jvm内存模型" class="sidebar-link">jvm内存模型</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#jvm调优" class="sidebar-link">JVM调优</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#线上排查jvm的堆栈信息" class="sidebar-link">线上排查JVM的堆栈信息</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#什么情况下触发垃圾回收" class="sidebar-link">什么情况下触发垃圾回收</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#jstat-、-jmap-、jstack-使用、mat工具使用-todo" class="sidebar-link">jstat 、 jmap 、jstack 使用、MAT工具使用 （TODO）</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#jar启动配置相关的jvm参数" class="sidebar-link">jar启动配置相关的JVM参数</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#设置vm虚拟机参数" class="sidebar-link">设置VM虚拟机参数</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#什么是dump文件" class="sidebar-link">什么是dump文件</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#如何生成dump文件" class="sidebar-link">如何生成dump文件</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#mat安装" class="sidebar-link">MAT安装</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/java/jvm/jvm.html#macos-m1无法使用mat" class="sidebar-link">MacOS M1无法使用MAT ？</a></li></ul></li><li><a href="/mengqizhang/java/springboot/" class="sidebar-link">springboot</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>多线程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><a href="/mengqizhang/java/集合/" class="sidebar-heading clickable"><span>java集合</span> <span class="arrow right"></span></a> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="jvm"><a href="#jvm" class="header-anchor">#</a> JVM</h1> <h2 id="背景"><a href="#背景" class="header-anchor">#</a> 背景</h2> <ol><li>java开发中JVM堆空间过小时，程序会出现系统内存不足的问题OOM（Out of Memory）。</li> <li>特别是在容器环境中，不合理的JVM堆参数设置回导致各种异常现象的产生，例如应用堆大小还未达到设置的阈值或者规格限制，就会因为OOM导致应用重启</li></ol> <h2 id="备忘录整理"><a href="#备忘录整理" class="header-anchor">#</a> 备忘录整理</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>类加载机制
+ 1.加载，加载cla文件，加载静态数据结构到方法区
+ 2.验证，验证文件类型，元数据验证，类是否继承
+ 3.准备，内存分配工作，
+ 4.解析，符号引用，直接引用
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="gc算法、垃圾收集算法"><a href="#gc算法、垃圾收集算法" class="header-anchor">#</a> GC算法、垃圾收集算法</h2> <ul><li>标记清除算法
+<a data-fancybox="" title="111" href="GC算法-标记清除.png"><img src="GC%E7%AE%97%E6%B3%95-%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4.png" alt="GC算法-标记清除算法"></a></li> <li>标记复制算法
+<a data-fancybox="" title="111" href="GC算法-标记复制.png"><img src="GC%E7%AE%97%E6%B3%95-%E6%A0%87%E8%AE%B0%E5%A4%8D%E5%88%B6.png" alt="GC算法-标记清除算法"></a></li> <li>标记整理算法
+<a data-fancybox="" title="111" href="GC算法-标记整理.png"><img src="GC%E7%AE%97%E6%B3%95-%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86.png" alt="GC算法-标记清除算法"></a></li> <li>分代收集回收算法
+<a data-fancybox="" title="分代收集算法" href="分代收集算法.jpg"><img src="%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95.png" alt="分代收集算法"></a></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>gc算法
+1.标记清除算法：年轻代清除阶段，Mark-Sweep,最基础的垃圾回收算法
+    步骤：标记出垃圾然后清理掉。标记出存活的对象、标记出需要回收的对象，清除阶段就是把需要回收的对象进行清除并且回收空间。
+    缺点  随着对象越来越多，耗时。容易产生碎片化、如果有大对象分配不下，容易发起另外一个垃圾收集的动作。
+    
+2.标记复制算法：年轻代清除阶段，Copying,出于标记清除算法的碎片化缺点而提出的算法
+    
+    步骤： 将内存空间划分为等大小的两个区域：存活对象、未使用的空间。每次只使用其中一块区域，当这块内存满了之后就把尚存活的对象复制到另外一块去，把已经使用的内存清除掉。
+    优点： 避免了碎片化的空间。
+    缺点： 浪费了过多的内存使现有的可用空间变成原先的一半。且存活对象变多的时候，Copying算法的效率会大大降低
+    
+3.标记整理算法：老年代清除阶段，Mark-Compact，结合上面两种算法的优点
+    步骤： 将存活的对象向空间一端移动，然后清除边界外的对象，回收掉其内存。
+    
+4.分代收集算法：大部分JVM使用的算法
+    不同的生命周期的对象可以采用不同的收集方式，以提高回收效率。一般是把Java堆分为新生代和老年代，老年代的特点是每次只有少量的对象需要回收、新生代的特点是每次有大量的对象需要回收。
+    目前对新生代的主要算法是标记复制算法，因为新生代每次需要回收大量的对象，所以复制的操作比较少。但通常不是按照1：1来划分新生代，一般会将新生代划分一块较大的Edge 区和较小的Survivor区。
+    每次进行垃圾回收时候，将这两块空间中还存活的对象复制到另一块Survivor空间中。
+    jvm默认新生代对象熬过15次GC才能进入老年代，所以老年代的生命周期比较长。
+    而老生代因为每次回收的对象少量对象，所以采用标记清除、标记整理算法混合实现
+    
+    新生代：标记复制算法
+    老年代：标记清除、标记整理算法混合实现
+    
+    
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><h2 id="垃圾回收器-垃圾回收算法的具体实现和落地"><a href="#垃圾回收器-垃圾回收算法的具体实现和落地" class="header-anchor">#</a> 垃圾回收器 - 垃圾回收算法的具体实现和落地</h2> <p>常见的垃圾回收器的种类：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>新生代收集器： 
+            Seeial 
+            ParNew 
+            Parallel
+            
+老年代收集器：
+            Serial Old  
+            CMS 
+            Parallel Old
+    
+新生代和老年代收集器：
+           G1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>每种垃圾回收器之间不是独立操作的，下图表示回收器之间有连接表示，可以协作使用。
+<a data-fancybox="" title="垃圾回收器的分类1" href="垃圾回收器的分类1.png"><img src="%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E7%9A%84%E5%88%86%E7%B1%BB1.png" alt="垃圾回收器的分类1.png"></a></p> <p>// TODO</p> <ul><li><p>新生代收集器：</p></li> <li><p>老年代收集器：</p></li> <li><p>堆内存收集器：</p></li></ul> <h2 id="垃圾对象寻找算法"><a href="#垃圾对象寻找算法" class="header-anchor">#</a> 垃圾对象寻找算法</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>gc查找垃圾的方式
+1.引用计数：
+ - 每当有一个地方引用它的时候，计数器就加1
+ - 每当有一个引用失效的时候，计数器就减1
+ - 当计数器的值为0的时候，那么该对象就是垃圾了。
+ 额外情况：
+    比如两个对象循环引用 ，a 对象引用了 b 对象，b 对象也引用了 a 对象，a、b 对象却没有再被其他对象所引用了，
+    其实正常来说这两个对象已经是垃圾了，因为没有其他对象在使用了，但是计数器内的数值却不是 0，所以引用计数算法就无法回收它们。
+    这种算法是比较直接的找到垃圾 ，然后去回收，也被称为&quot;直接垃圾收集&quot;。 
+    
+2.根可达算法： JVM 默认使用
+ - GC Roots
+ - 从 &quot;GC Roots&quot; 开始往下进行搜索，走过的路径我们把它称为 &quot;引用链&quot; ，当一个对象到 &quot;GC Roots&quot; 之间没有任何引用链相连时，
+   那么这个对象就可以被当做垃圾回收了。
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h2 id="gc-roots有哪一些"><a href="#gc-roots有哪一些" class="header-anchor">#</a> GC Roots有哪一些</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>固定的GC Roots:
+
+    1.在 虚拟机栈(栈帧的本地变量表)中所引用的对象 ，譬如各个线程被调用的方法堆栈中使用到的参数、局部变量、临时变量等。
+    2.在方法区中类静态属性引用的对象，譬如 Java 类的 引用静态变量 。
+    3.在方法区中 常量引用的对象 ，譬如字符串常量池中的引用。
+    4.在方法区栈中  JNI (譬如 Native 方法)引用的对象 。
+    5.Java  虚拟机内部的引用 ，如基本数据类型对应的 Class 对象，一些常驻的异常对象(空指针异常、OOM等)，还有类加载器。
+    6.所有 被 Synchronized 持有的对象 。
+    7.反应 Java 虚拟机内部情况的  JMXBean、JVMTI 中注册的回调本地代码缓存等 。
+
+
+临时GC Roots:
+    为什么会有临时的 GC Roots ？ :目前的垃圾回收大部分都是 分代收集和局部回收 ，如果只针对某一部分区域进行局部回收，那么就必须要考虑的 
+    当前区域的对象有可能正被其他区域的对象所引用 ，这时候就要将这部分关联的对象也添加到 GC Roots 中去来确保根可达算法的准确性。
+    这种算法是利用了 逆向思维 ，找到使用的对象，剩下的就是垃圾，也被称为&quot;间接垃圾收集&quot;。
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h2 id="jvm内存模型"><a href="#jvm内存模型" class="header-anchor">#</a> jvm内存模型</h2> <p><a data-fancybox="" title="jvm内存模型1" href="jvm内存模型1.png"><img src="jvm%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B1.png" alt="img.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1.虚拟机栈：线程私有，不共享
+ - 栈桢，局部方法变量，方法返回地址，方法签名等，方法执行完之后就弹栈
+ - 在每个方法执行的时候，jvm都会创建一个栈桢用于存储：局部变量、方法出口、动态连接、等信息
+
+2.本地方法栈 ： 线程私有，不共享
+ - 和虚拟机栈差不多
+ - java底层用了很多c的代码去实现，而其调用c端的方法上都会有native，代表本地方法服务，而本地方法栈就是为其服务的。
+ 
+ -Xss控制每个线程栈的大小。
+
+ 
+3.程序计数器: 线程私有，不共享
+  - 不会出现内存泄漏，线程私有的、生命周期和线程保持一致 
+  - 是用于程序指令执行区，字节码指令地址等，保证程序执行顺序正确性
+  - N 个核心数的 CPU 在同一时刻，最多有  N个线程同时运行，在我们真实的使用过程中可能会创建很多线程，
+    JVM 的多线程其实是通过线程轮流切换，分配处理器执行时间来实现的。既然涉及的线程切换，所以每条线程必须有一个独立的程序计数器。
+    
+  
+4.方法区: 线程共享
+ - 常量池，cla文件的字段，方法，变量，接口描述
+ - 存储 了被 jvm 加载的 类型信息、常量、静态变量等数据 。运行时常量池就是方法区的一部分，编译期生成的各种字面量与符号引用就存储在其中
+ 
+ -XX:PermSize 设置最小空间 -XX:MaxPermSize 设置最大空间。
+
+  
+5.堆： 线程共享
+  - 所有实例对象，数组都要在堆上进行分配。
+  - 是回收器主要管理的对象。
+  - 可能出现oom，需要设置虚拟机参数，xms：堆最小空间 xmx：堆最大空间，XX:NewSize：新生代最小空间等
+  - 异常情况： 堆上内存完成实例分配，并且堆无法扩展的时候，将会抛出 OutOfMemoryError异常
+  
+  堆的作用是存放对象实例和数组，从结构上来分，可以分为新生代和老年代，新生代又可以分为：老年区(Edge)、幸存区(Survivor)（From Survivor 、 To Survivor）。所有的新生成对象都是先放在新生代的。
+  Survivor的两个区是对称的，没有先后关系，所以同一个区中可能同时存在从Edge复制过来的对象，而复制到老年代的只有从第一个Survivor区过来的对象。而且Survivor区总又一个是空的。
+  
+  
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><h2 id="jvm调优"><a href="#jvm调优" class="header-anchor">#</a> JVM调优</h2> <p>可以从三个方面说：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 工作中引起JVM性能问题的原因，到底是代码的问题还是 JVM参数的问题
+2. JVM 性能如何监控和排查
+3. 如何根据性能问题进行参数调优
+
+一般情况下，JVM性能问题并不是我们设置的JVM启动参数问题（默认的参数就基本满足了）。而真正出现问题的是代码上的问题，如：频繁创建大对象，然后又引用不释放，然后这个大对象通过15次的GC没死
+变成了老年代里的对象，垃圾回收器又无法回收它们。导致老年代内存不足，频繁Full GC ，每次Full GC会造成 STW （Stop The World）也就是造成卡顿现象，由此性能就变差了。
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>关于jvm内存占用情况的分析步骤</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1.模拟程序长时间执行，高额占用jvm，可写一个死锁的方法，写完之后进行执行
+2.使用命令查看内存使用情况：
+    a.查看所有程序使用内存情况： top
+    b.查看某个进程的内存使用情况: top -p 进程id
+    c.查看java所有程序的内存使用情况
+        ps -ef|grep java        详细的进程信息
+        jps -l                  显示进程id，路径
+        jps -v                  显示jvm的参数
+        jps -lms                显示进程id，路径，main方法启动参数，虚拟机参数
+    d.查看某个进程里面详细的线程使用情况，这就是最重要的：
+        top -Hp                 进程id
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><ul><li>关于jvm调优</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    10种垃圾回收器算法
+    什么是垃圾：
+        长期没有被引用，没有引用的堆，栈
+    如何找到垃圾：
+        a.refrence count : 引用计数 = 查看某个对象的引用，0则没有引用
+        b.root searching : 根可达算法-jvm用的就是这个算法
+    处理垃圾的方式：
+        a.mark-sweep : 找到垃圾，并且改为可用，速度快内存比较碎片化。
+        b.copying : 复制方法
+        c.mark-compact :  标记压缩方法，找到没有引用的垃圾并且把空白的内存顶上去，也就是有使用的内存和没有使用的内存进行划分 
+                         （程序执行时候，内存会把总内存进行碎片化，某一个片的内存块执行某个线程任务。）
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>记录GC日志</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>-XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCCause
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>设置内存溢出（OOM）后自动导出Dump文件、或者手动导出dump文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>-XX:+PrintGCDetails -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/usr/local/mqz/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="线上排查jvm的堆栈信息"><a href="#线上排查jvm的堆栈信息" class="header-anchor">#</a> 线上排查JVM的堆栈信息</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. jps -l 找到当前进程的pid
+2. ps -mp -o THREAD,tid,time 定位到具体线程。
+3. printf “%x\n” ，把线程 pid 转为16进制，比如 0xf58
+4. jstack pid | g rep -A 10 0xf58 查看线程的堆栈日志，还找不到问题继续。
+实在没办法了，只能 dump 出内存文件用可视化工具进行分析了，然后 定位到代码后修复。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="什么情况下触发垃圾回收"><a href="#什么情况下触发垃圾回收" class="header-anchor">#</a> 什么情况下触发垃圾回收</h2> <p>一般就分为 Minor GC 和 Full GC 两种情况</p> <ul><li>新生代发生垃圾回收 ： Minor GC</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    当 Edge 区没有足够空间分配的时候
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>整堆触发垃圾回收： Full GC</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 当新生代的对象通过15次GC晋升到老年代的时候，发现老年代剩余的空间无法存放下该对象
+2. 当老年代空间大小超过了设置的阈值 （）
+3. 当元空间不足时 （JDK1.7永久代不足）
+4. 代码中调用 System.gc() , 系统建议执行 Full GC ,但是不是一定会执行
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>分析 YGC (Young GC ): 年轻代GC情况，也就是 Minor GC
+大多数情况下，新创建的对象都会在新生代的 Edge 区中分配，当Edge中你没有足够的空间分配时候，虚拟机就会发生一次 YGC，也就是Minor GC 。频繁的发生YGC可能会对性能产生影响</li></ul> <p>分析年轻代对象的增长速率：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>jstat -gc pid 5000 10
+
+每5秒执行一次，执行10次，然后观察这5秒内Edge，即可以知道年轻代对象增上速率。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><a data-fancybox="" title="jstat-定时刷新gc内存使用情况" href="jstat-定时刷新gc内存使用情况.png"><img src="jstat-%E5%AE%9A%E6%97%B6%E5%88%B7%E6%96%B0gc%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5.png" alt="img.png"></a></p> <p>如果Edge区增长很快，那么发生YGC的频率也会很高，说明 Edge 区太小了，所以调大Edge区（调整 -Xmn参数，这个参数是年轻代的内存大小，因为年轻代中 Edge区和Survivor区是一分为2的，所以设置年轻代的内存就能让 Edge区内存变大）
+我们调优的思路是尽量让对象减少进入老年代，减少发生FGC的频率，所以通过调整年轻代 Edge区的大小，减少对象进入老年代的频率</p> <h2 id="jstat-、-jmap-、jstack-使用、mat工具使用-todo"><a href="#jstat-、-jmap-、jstack-使用、mat工具使用-todo" class="header-anchor">#</a> jstat 、 jmap 、jstack 使用、MAT工具使用 （TODO）</h2> <ul><li>jstat : 内存使用情况、GC回收情况</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>S0C: 第一个Survivor大小（kb）
+S1C: 第二个Survivor大小
+S0U: 第一个Survivor区的使用大小
+S1U: 第二个Survivor区的使用大小
+EC: eden区大小
+EU: eden区的使用大小
+OC: 老年代大小
+OU: 老年代使用大小
+MC: 方法区大小（元空间）
+MU: 方法区使用大小
+CCSC: 压缩类空间大小
+CCSU: 压缩类空间使用大小
+YGC: YoungGC次数
+YGCT: YoungGC时间（s）
+FGC: FullGC次数
+FGCT: FullGC时间（s）
+GCT: 总的GC时间（s）
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p><a data-fancybox="" title="jstat-1" href="jstat-1.png"><img src="jstat-1.png" alt="img.png"></a></p> <ul><li>jmap ： 查看实例情况、查看堆内存使用情况、生成dump文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>查看堆内存使用情况 ： jmap -heap 8152
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><a data-fancybox="" title="jmap查看堆内存使用情况" href="jmap查看堆内存使用情况.png"><img src="jmap%E6%9F%A5%E7%9C%8B%E5%A0%86%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5.png" alt="img.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>查看实例个数及使用情况 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><a data-fancybox="" title="jmap查看实例及使用情况" href="jmap查看实例及使用情况.png"><img src="jmap%E6%9F%A5%E7%9C%8B%E5%AE%9E%E4%BE%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5.png" alt="img.png"></a></p> <ul><li>jstack ： 排查死锁、死循环问题
+当应用程序占用 CPU 很高，但是又没有发生 OOM，就可以通过 jstack 命令来看下到底哪里出问题了。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>ps -mp &lt;pid&gt; -o THREAD,tid,time 定位到具体线程。
+printf “%x\n” &lt;pid&gt;，把线程 pid 转为16进制，比如 0xf58
+jstack &lt;pid&gt; | grep -A 10 0xf58 查看线程的堆栈日志
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li><p>MAT ： 界面化分析dump文件</p></li> <li><p>CPU 占用过高，如何分析是代码的问题还是服务器配置的问题</p></li></ul> <ol><li><p>cpu占用过高需要分情况讨论，是不是业务上在做什么活动，这期间有大批量的流量进来，并且在过一段时间后，cpu占用率突然就下降了，这种情况就是请求突然的增加，需要参与处理请求的线程数就增多。
+这种情况是真长的。如果服务器配置交较差，cpu也是单核的，这种情况下大流量进来也能导致CPU资源的耗尽。这个时候就需要提高服务器的相关配置了。</p></li> <li><p>cpu长期占用过高，这种情况下有可能是程序有突然循环多次的代码，或者出现了死循环，死锁的情况了：具体的排查步骤如下：</p></li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 找到运行的jar进程id ： jps -l 或者 ps -ef|grep web.jar
+2. top 查看使用cpu最高的线程： top -Hp 进程id
+3. 将2获取到的线程id转为16进制， printf '%x' 线程id
+4. 使用jstack 分析： jstack 进程id |grep 16进制的线程id -A 100 
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="jar启动配置相关的jvm参数"><a href="#jar启动配置相关的jvm参数" class="header-anchor">#</a> jar启动配置相关的JVM参数</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>    参数：
+    -Xmn2G -Xms4G -Xmx4G -XX:+UseParallelGC -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/usr/local/mqz/ -Xloggc:/usr/local/mqz/identity-gc-%t.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=5M -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCCause
+    其中 /usr/local/mqz/ 是存放gc日志所在的路径，需要手动创建
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li><p>例子：
+<a data-fancybox="" title="111" href="JVM-jar启动配置JVM调优参数.jpg"><img src="JVM-jar%E5%90%AF%E5%8A%A8%E9%85%8D%E7%BD%AEJVM%E8%B0%83%E4%BC%98%E5%8F%82%E6%95%B0.jpg" alt="jar启动JVM启动参数"></a></p></li> <li><p>启动成功后：如果没有设置JVM参数，就是没有的
+<a data-fancybox="" title="111" href="JVM-jar启动配置JVM调优参数-2.jpg"><img src="JVM-jar%E5%90%AF%E5%8A%A8%E9%85%8D%E7%BD%AEJVM%E8%B0%83%E4%BC%98%E5%8F%82%E6%95%B0-2.jpg" alt="jar启动JVM启动参数"></a></p></li></ul> <h2 id="设置vm虚拟机参数"><a href="#设置vm虚拟机参数" class="header-anchor">#</a> 设置VM虚拟机参数</h2> <div class="language- extra-class"><pre><code>-Xms512m -Xmx512m -Xmn200m
+
+-Xms:	
+    初始堆大小，等价于-XX:InitialHeapSize	
+    物理内存的1/64
+    默认(MinHeapFreeRatio参数可以调整)空余堆内存小于40%时，JVM就会增大堆直到-Xmx的最大限制.
+
+-Xmx
+    最大堆大小，等价于-XX:MaxHeapSize	
+    物理内存的1/4	
+    默认(MaxHeapFreeRatio参数可以调整)空余堆内存大于70%时，JVM会减少堆直到 -Xms的最小限制
+
+-Xmn
+    年轻代大小，设置了-Xmn之后-XX:NewSize和-XX:MaxNewSize都为该数值  
+    默认XX:NewSize为-XX:InitialHeapSize的1/3 XX:MaxNewSize为-XX:MaxHeapSize的1/3
+
+    注意：此处的大小是（eden+ 2 survivor space).与jmap -heap中显示的New gen是不同的。
+    整个堆大小=年轻代大小 + 年老代大小 + 持久代大小.
+    增大年轻代后,将会减小年老代大小.此值对系统性能影响较大,Sun官方推荐配置为整个堆的3/8
+
+-Xss
+    每个线程的栈大小	
+    1m	
+    JDK5.0以后每个线程栈大小为1M，之前每个线程栈大小为256K。在相同物理内存下，减小这个值能生成更多的线程，当然操作系统对一个进程内的线程数还是有限制的，不能无限生成。
+    线程栈的大小是个双刃剑，如果设置过小，可能会出现栈溢出，特别是在该线程内有递归、大的循环时出现溢出的可能性更大，如果该值设置过大，就有影响到创建栈的数量，如果是多线程的应用，就会出现内存溢出的错误。
+
+-XX:PermSize	
+    非堆内存初始值	
+    物理内存的1/64
+    java8及之后就不支持了，警告如下：Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=128m; support was removed in 8.0
+
+
+-XX:MaxPermSize	
+    最大非堆内存的大小	
+    物理内存的1/4	
+    java8及之后就不支持了，同上
+
+-XX:MetaspaceSize	
+    元空间初始大小	
+    21m	
+    一旦元空间的大小达到初始大小，就会触发Full GC并会卸载没有用的类，然后该值将会向MaxMetaspaceSize扩大一点。
+    如果初始化的高水位线设置过低，会频繁的触发Full GC，高水位线会被多次调整。所以为了避免频繁GC以及调整高水位线，建议将-XX:MetaspaceSize设置为较高的值。
+
+-XX:MaxMetaspaceSize	
+    元空间最大大小	
+    物理内存的总大小	
+    默认情况下，元空间最大的大小是系统内存的大小，元空间一直扩大，虚拟机可能会消耗完所有的可用系统内存。一般不建议修改-XX:MaxMetaspaceSize。
+
+-XX:NewRatio	
+    老年代（不包含永久区）和新生代（Eden+2*S）的比值	
+    2	 
+
+-XX:SurvivorRatio	
+    Eden区和Survivor区的比值	
+    8	 
+
+-XX:MaxTenuringThreshold	
+    设置Survivor区的最大分代年龄	
+    15	
+    具体参看JVM系列之内存分配和回收策略中对象的衰老过程
+
+-XX:ReservedCodeCacheSize	
+    设置代码缓存的大小	
+    240m	
+    用来存储已编译方法生成的本地代码，如果代码缓存被占满，JVM会打印出一条警告消息，并切换到interpreted-only 模式：JIT编译器被停用，字节码将不再会被编译成机器码。因此，应用程序将继续运行，但运行速度会降低一个数量级，直到有人注意到这个问题。
+</code></pre></div><h2 id="什么是dump文件"><a href="#什么是dump文件" class="header-anchor">#</a> 什么是dump文件</h2> <p>dump文件是一个进程或者系统在某一个给定的时间的快照。
+dump文件是用来给驱动程序编写人员调试驱动程序使用的，需要使用特定专用工具打开。
+dump文件中包含了程序运行的模块信息、线程信息、堆栈调用信息、异常信息等数据。
+在服务器运行我们的java程序时，是无法跟踪代码的，所以线上发生事故时，dump文件就成了分析事故原因的关键点。</p> <h2 id="如何生成dump文件"><a href="#如何生成dump文件" class="header-anchor">#</a> 如何生成dump文件</h2> <ul><li><ol><li>命令生成：需要通过jvm的内置jmap或jcmd命令，并且知道java程序的pid</li></ol></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    jmap -dump:format=b,file=user.hprof 1246
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>或</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    jcmd 1246 GC.heap_dump /home/user.hprof
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li><ol start="2"><li>oom时自动生成：其实在很多时候我们无法知道什么时候会发生OOM，所以需要在发生OOM的时候自动生成dump文件，只需要在启动参数中加上dump生成设置参数，如下</li></ol></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/mqz/qingwang-module/qingwang-user/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="mat安装"><a href="#mat安装" class="header-anchor">#</a> MAT安装</h2> <p>MAT(Memory Analyzer Tool)工具是eclipse的一个插件，使用起来非常方便，尤其是在分析 大内存的dump文件时，
+可以非常直观的看到各个对象在堆空间中所占用的内存大小、类实例数量、对象引用关系、利用OQL对象查询，
+以及可以很方便的找出对象GC Roots的相关信息，当然最吸引人的还是能够快速为开发人员生成内存泄露报表，方便定位问题和分析问题。</p> <h3 id="macos下安装mat-如果是m1的话-目前mat和它不适配-可以安装eclipse再安装eclipse支持的mat插件-后面在eclipse中直接打开dump文件就能使用。"><a href="#macos下安装mat-如果是m1的话-目前mat和它不适配-可以安装eclipse再安装eclipse支持的mat插件-后面在eclipse中直接打开dump文件就能使用。" class="header-anchor">#</a> MacOS下安装MAT：如果是M1的话，目前MAT和它不适配，可以安装Eclipse再安装Eclipse支持的MAT插件，后面在Eclipse中直接打开dump文件就能使用。</h3> <h3 id="linux下使用mat"><a href="#linux下使用mat" class="header-anchor">#</a> Linux下使用MAT：</h3> <ul><li><ol><li>步骤：</li></ol></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 下载地址： https://www.eclipse.org/mat/previousReleases.php 
+    注意： MAT需要使用到JDK，并且和JDK的版本有对应要求，目前MAT 1.12.0版本需要JDK11及更高的版本
+          本人的JDK是8，所下载的MAT版本为 1.9.0
+          
+2.  将下载的zip安装包下载到Linux上，或者提前在本地解压后上传到Linux服务器
+
+3. 执行命令，生成MAT分析dump文件的报告，命令： ./ParseHeapDump.sh user.hprof org.eclipse.mat.api:suspects org.eclipse.mat.api:overview org.eclipse.mat.api:top_components
+   其中 user.hprof 是dump文件，也可以改为： a.dump
+   生成了3个zip的分析报告： 其中user是文件名，后面的是固定的名
+                                                    user_Leak_Suspects.zip
+                                                    user_System_Overview.zip
+                                                    user_Top_Components.zip
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>Linux MAT解压后文件结构：
+<a data-fancybox="" title="Linux-MAT文件结构" href="Linux-MAT文件结构.png"><img src="Linux-MAT%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84.png" alt="Linux-MAT文件结构"></a></p> <p>Linux MAT修改分析时候堆的最大值，根据dump文件具体设置，默认是1G
+<a data-fancybox="" title="修改MAT堆最大值设置" href="修改MAT堆最大值设置.png"><img src="%E4%BF%AE%E6%94%B9MAT%E5%A0%86%E6%9C%80%E5%A4%A7%E5%80%BC%E8%AE%BE%E7%BD%AE.png" alt="修改MAT堆最大值设置"></a></p> <p>生成的3个压缩包，里面就是分析结果报告
+<a data-fancybox="" title="生成分析报告" href="生成分析报告.png"><img src="%E7%94%9F%E6%88%90%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.png" alt="生成分析报告"></a></p> <ul><li><ol start="2"><li>分析报告</li></ol></li></ul> <p>Leak_Suspects: 泄漏最大的嫌疑人，指的是可能出现内存泄漏的对象，Mat都统计在这里了，这个文件是我们用来排查内存泄漏原因最主要的文件</p> <p>System_Overview: 系统总览，这个文件是JVM内存分析报告的大纲，可以通过这个文件看到所有的对象、线程、内存占用情况</p> <p>Top_Components: 顶部组建，这个文件记录了一些内存使用浪费的、或者可以优化的信息</p> <h2 id="macos-m1无法使用mat"><a href="#macos-m1无法使用mat" class="header-anchor">#</a> MacOS M1无法使用MAT ？</h2> <p>可以下载 Eclipse M1版本，随后再 Eclipse中安装MAT的插件，直接在Eclipse中 Open File 打开 dump文件就能查看分析结果，效果如下：</p> <p><a data-fancybox="" title="Eclipse中使用MAT插件11" href="Eclipse中使用MAT插件11.png"><img src="Eclipse%E4%B8%AD%E4%BD%BF%E7%94%A8MAT%E6%8F%92%E4%BB%B611.png" alt="Eclipse中使用MAT插件11"></a></p> <p><a data-fancybox="" title="Eclipse中使用MAT插件22" href="Eclipse中使用MAT插件22.png"><img src="Eclipse%E4%B8%AD%E4%BD%BF%E7%94%A8MAT%E6%8F%92%E4%BB%B622.png" alt="Eclipse中使用MAT插件22"></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/java/" class="prev router-link-active">
+        Java
+      </a></span> <span class="next"><a href="/mengqizhang/java/springboot/">
+        springboot
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/15.b407b696.js" defer></script>
+  </body>
+</html>

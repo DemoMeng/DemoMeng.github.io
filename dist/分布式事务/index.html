@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>分布式事务 | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/37.f3d4b763.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable"><span>数据层 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>分布式事务</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" aria-current="page" class="active sidebar-link">介绍</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/#分布式事务-2" class="sidebar-link">分布式事务</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/#分布式事务解决方案-xa、tcc、at-、saga" class="sidebar-link">分布式事务解决方案： XA、TCC、AT 、SAGA</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/#分布式事务解决方案之-本地消息表" class="sidebar-link">分布式事务解决方案之 本地消息表</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/#seata实现2pc与传统2pc的差别" class="sidebar-link">Seata实现2PC与传统2PC的差别</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/#seata分布式事务" class="sidebar-link">seata分布式事务</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/#分布式事务产生的场景" class="sidebar-link">分布式事务产生的场景</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/#分布式理论相关" class="sidebar-link">分布式理论相关</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/#数据库事务" class="sidebar-link">数据库事务</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/#并发事务导致的问题" class="sidebar-link">并发事务导致的问题</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/#数据库锁" class="sidebar-link">数据库锁</a></li></ul></li><li><a href="/mengqizhang/分布式事务/seata-server.html" class="sidebar-link">seata-server服务端</a></li><li><a href="/mengqizhang/分布式事务/seata-client.html" class="sidebar-link">seata-server客户端</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="分布式事务"><a href="#分布式事务" class="header-anchor">#</a> 分布式事务</h1> <p>https://blog.csdn.net/zzti_erlie/category_11350690.html</p> <h2 id="分布式事务-2"><a href="#分布式事务-2" class="header-anchor">#</a> 分布式事务</h2> <h3 id="setata服务端-需要sql-seata-server-sql"><a href="#setata服务端-需要sql-seata-server-sql" class="header-anchor">#</a> setata服务端: 需要sql ： seata-server.sql</h3> <p>https://github.com/seata/seata/blob/1.2.0/script/server/db/mysql.sql</p> <h3 id="每个业务库都需要-undo-log"><a href="#每个业务库都需要-undo-log" class="header-anchor">#</a> 每个业务库都需要 undo_log</h3> <p>https://github.com/seata/seata/blob/1.2.0/script/client/at/db/mysql.sql</p> <h3 id="tc-、-tm-、-rm"><a href="#tc-、-tm-、-rm" class="header-anchor">#</a> TC 、 TM 、 RM</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>TC : Transaction coordination： 事务协调器
+    维护全局和分支事务的状态，驱动全局事务提交或回滚。
+TM : Transaction Management: 事务管理器
+    定义全局事务的范围：开始全局事务、提交或回滚全局事务。
+RM : Resource Management : 资源管理器
+    管理分支事务处理的资源，与注册分支事务的状态、并且驱动分支事务提交或回滚
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="_2pc-两阶段提交协议、也成为-xa-、-3pc-三阶段提交协议"><a href="#_2pc-两阶段提交协议、也成为-xa-、-3pc-三阶段提交协议" class="header-anchor">#</a> 2PC （两阶段提交协议、也成为 XA） 、 3PC （三阶段提交协议）</h3> <ul><li>一阶段事务提交（传统）数据库事务</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    1. 如果只有一个DB资源，那么在mysql中使用 begin、commit就能实现
+    2. 在spring中，一个注解 @Transactional ，如果发生了嵌套事务（一个方法中有另外一个方法操作资源！！），它的实现方式本质是通过 ThreadLocal 向下传递，若应用中有子线程相关的事物需要协调管理，它无法处理！！
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>2PC: Two Phase Commit Protocols 两阶段提交协议 ： 它实际上指的是两个分布式协调阶段</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    阶段1 事务管理器（单个）通知资源管理器（多个db）准备开始执行事务，并且锁住对应的资源（直到提交、回滚之后才会释放），当准备完毕，资源管理器回复通知给事务管理器，并且写入 undo / redo 日志 （undo 是记录操作之前，redo是操作时候的数据）
+    阶段2 若所有的资源都准备成功，事务管理器会要求所有的资源管理器进行提交操作，若有任意一资源管理器准备（第一阶段）失败，则事务管理器会要求所有的资源管理器回滚（第二阶段）
+    
+    
+    问题：
+        1. 单点故障问题 （SPOF：Single Point Of Failure）： 事务管理器可能故障，存在用于完成不了的事务。 
+        2. 阻塞问题： 阶段1中对资源是采用了锁的方式，可能出现锁无法释放的问题和竞争锁的问题。    
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>3PC: Three Phase Commit Protocols 三阶段提交协议</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    3pc 最显著的一个特点是加入了一个超时机制，
+    3pc 较于 2pc ，多了一个步骤就是 询问阶段（can commit） ，这个阶段是不会锁资源的，所以没有2pc的第一阶段的阻塞情况。
+
+    Can Commit: 询问是否可以提交，不会加锁
+    Pre Commit: 加入了超时机制，如果超时则认为失败
+    Do Commit: 若干preCommit 超时了，则就是需要回滚操作，不会因此而阻塞 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="分布式事务解决方案-xa、tcc、at-、saga"><a href="#分布式事务解决方案-xa、tcc、at-、saga" class="header-anchor">#</a> 分布式事务解决方案： XA、TCC、AT 、SAGA</h2> <ul><li>XA： 2PC也叫做XA</li></ul> <p><a data-fancybox="" title="111" href="XA流程.png"><img src="XA%E6%B5%81%E7%A8%8B.png" alt="img.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    流程： 
+        1. 订单服务操作下的两个数据源，一个订单表，一个库存表
+        2. 订单服务通过嵌入的TM通知 订单RM 生成订单数据，同时通知 库存RM 扣减库存数据，此时两个RM都没有提交事务，所以订单和库存都是锁定的状态
+        3. TM收到两个RM的执行消息，只要有一方失败了，TM则通知RM回滚事务执行回滚，资源锁释放，若都成功，则TM通知所有RM提交事务，资源锁释放
+
+    问题： 
+    
+        1. 两个阶段需要同时成功，否则同时锁定多个资源不释放，性能较差
+        2. 数据库需要支持 XA 协议
+        
+    解析：
+        整个事务流程涉及到三个角色： AP 、 RM 、 TM
+        其中AP指的是使用2PC的分布式事务的应用程序
+        RM是资源管理器，管理分支事务
+        TM是全局事务管理器，决定分支事务提交、回滚
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul><li>TCC : Try 、 Confirm 、 Cancel</li></ul> <p><a data-fancybox="" title="111" href="TCC流程.png"><img src="TCC%E6%B5%81%E7%A8%8B.png" alt="img.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    TCC 主要分为三个操作
+        Try:  一阶段业务资源的检查和预留资源 
+        Confirm: 二阶段提交操作，所有的Try都成功了，则执行 Confirm的操作，Confirm真正执行业务，使用Try的预留的资源 
+        Cancel:  二阶段回滚操作，有一个Try失败了，则执行Cancel操作，Cancel释放Try的预留的资源
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>AT:</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    1. Seata的AT模式，是Seata主推的模式，Seata的AT模式是无侵入的分布式事务模式。事务的1阶段和事务的2阶段均有Seata框架完成，
+       SQL解析作为阶段1，阶段2由框架自动生成提交、回滚操作
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>AT: Seata-AT的工作机制：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    表结构：product
+    
+        Field	Type	       Key
+        id	    bigint(20)	   PRI
+        name	varchar(100)	
+        since	varchar(100)	
+
+    若被全局事务管理的业务逻辑sql为：   update product set name = 'GTS' where name = 'TXC';
+    
+    ***** 阶段一 *****
+    
+    1. 解析sql，得到sql的类型（update）、表（product）、条件（name='TXC'）等信息
+    2. 根据a解析的sql，查询执行前镜像： select id, name, since from product where name = 'TXC';
+        得到数据：
+            id	name	since
+            1	TXC	2014
+            
+    3. 执行业务sql，update的操作，即第1点的sql
+    4. 查询更新之后的数据：根据id查询
+        id	name	since
+        1	GTS	    2014
+
+    5. 将插入之前的数据镜像，和插入之后的数据镜像都插入到undo_log中（回滚日志）        
+    6. 本地事务提交前，向TC注册分支事务，申请 product 表中的 id=1 的记录的 全局锁
+    7. 本地事务提交，业务数据更新，并且把之前 undo_log 的数据一并提交
+    8. 将本地事务提交的结果上报给TC
+    
+    
+    ***** 阶段二 - 提交 *****
+    
+    1. 收到 TC 分支事务提交的请求，提交本地事务，并且把提交结果上报给TC
+    2. 提交成功之后，批量删除undo_log的记录
+    
+    
+    
+    ***** 阶段二 - 回滚 *****
+    
+    1. 收到 TC 回滚的请求，开启一个本地事务，通过xid和BranchID 找到对应的 undo_log 记录
+    2. 拿到 undo_log 记录判断 前后的数据镜像是否一致，不一致则根据配置需要处理
+    3. 生成处理的sql ：把阶段1的更改的记录更改回前数据镜像，随后提交本地事务给 TC
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br></div></div><ul><li>SAGA ： 长事务解决模式，Long Lived Transaction</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    1. 在分布式事务下，有多个参与者。依次执行各参与者的正向操作，若所有的操作均成功，则分布式事务提交。如果一个参与者的正向操作失败，则分布式事务回滚
+    
+    优点 ： 
+        1. 并发度高，无锁，高性能
+        2. 开发量大，需要定义正向操作和补偿操作
+        3. 不能保证隔离型
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="分布式事务解决方案之-本地消息表"><a href="#分布式事务解决方案之-本地消息表" class="header-anchor">#</a> 分布式事务解决方案之 本地消息表</h2> <p><a data-fancybox="" title="111" href="分布式事务解决方案-本地消息表.png"><img src="%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8.png" alt="img.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    1. 订单服务执行保存订单入库、推送扣减库存消息给MQ（可以实时投递MQ也可以定时任务扫描消息记录表的未扣减状态进行投递消息），并且保存消息记录表记录（此时消息记录状态为未扣减），
+       因为订单入库和消息记录入库是同一个本地事务，所以不存在分布式事务。
+    2. 库存服务订阅了MQ的订单服务发送的消息，收到消息后执行扣减库存的操作（本地事务）
+    3. 库存服务扣减库存成功，随即投递消息给MQ，订单服务库存订阅此消息后，收到消息通知，修改消息记录表的状态。   
+    
+    
+    缺点：
+        1. 需要写入消息表，增加数据库的IO压力
+        2. 需要MQ第三方件协同，并且需要考证消息投递可靠，消费可靠性（消息一致性）
+        3. 过多的业务代码，耦合性加重
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h2 id="seata实现2pc与传统2pc的差别"><a href="#seata实现2pc与传统2pc的差别" class="header-anchor">#</a> Seata实现2PC与传统2PC的差别</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>    架构层次方面：
+        1. 传统 2PC 方案的 RM 实际上是在数据库层，RM 本质上就是数据库自身，通过 XA 协议实现，
+        2. Seata 的 RM 是以 jar 包的形式作为中间件层部署在应用程序这一侧的。
+    两阶段提交方面：
+        1. 传统 2PC无论第二阶段的决议是 commit 还是 rollback ，事务性资源的锁都要保持到 Phase2 完成才释放。
+        2. Seata 的做法是在 Phase1 就将本地事务提交，这样就可以省去 Phase2 持锁的时间，整体提高效率。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="seata分布式事务"><a href="#seata分布式事务" class="header-anchor">#</a> seata分布式事务</h2> <ul><li>工作流程：
+<a data-fancybox="" title="111" href="SEATA分布式事务工作流程.png"><img src="SEATA%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png" alt="img.png"></a></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+    1. TM 向 TC申请开启一个全局事务，TC创建一个创建一个全局事务，并且返回一个全局事务的xid，这个xid在微服务的链路中上下文传递
+    2. RM 向 TC 注册分支事务，分支事务的xid是上面那个全局事务的xid，因此可以通过xid获取到全局事务和分支事务
+    3. TM 向 TC 发起针对全局事务的xid为全局提交获取全局回滚操作
+    4. TC 协调 xid下的分支事务的提交或回滚操作
+    
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="分布式事务产生的场景"><a href="#分布式事务产生的场景" class="header-anchor">#</a> 分布式事务产生的场景</h2> <p><a data-fancybox="" title="111" href="分布式事务产生的场景.png"><img src="%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E4%BA%A7%E7%94%9F%E7%9A%84%E5%9C%BA%E6%99%AF.png" alt="img.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    1. 微服务场景下，远程调用系统，跨JVM产生产生分布式事务
+       在单体应用中，一个业务操作需要调用多个模块完成的，此时的数据一致性是用本地事务来保证的
+       而在微服务调用中，产生了系统和系统之间调用，就必然会产生分布式事务的问题
+    
+    2. 单体访问多个数据库产生分布式事务
+    
+    3. 多个系统访问同一个数据库： 跨JVM
+    
+    本质： 都是因为产生了不同的数据库会话（session）操作数据库
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h2 id="分布式理论相关"><a href="#分布式理论相关" class="header-anchor">#</a> 分布式理论相关</h2> <p>在单个数据库的性能存在瓶颈的时候，我们可能会对数据库进行分库，数据库多个库存在不同的服务器上，
+这个时候单机数据库的事务ACID不适应这种情况了，而且在ACID事务下集群实例想要保证各个应用的数据统一也比较难达到。
+这个时候需要引入一个新的理论规则来应对上述情况，这个理论就是CAP原则（定理）</p> <h3 id="cap"><a href="#cap" class="header-anchor">#</a> CAP：</h3> <ul><li>CAP：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    C： Consistency ： 一致性
+    A： Available ：可用性
+    P： Partition Tolerance： 分区容忍性
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>现举例来理解 CAP 理论
+<a data-fancybox="" title="111" href="CAP-1.png"><img src="CAP-1.png" alt="img.png"></a></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    场景： 
+        1. 订单服务 新增、修改、删除的请求打到mysql主库
+        3. 从库异步请求主库根据主库binlog日志异步同步数据到从库
+        2. 订单服务查询最新的订单信息， 查询 的请求打到mysql从库
+        
+    
+    Consistency: 一致性
+        目标：
+            如上的场景中下，订单的读、写满足的一致性就需要： 订单写入主库成功，订单查询从库能取出最新的信息，若失败，则无法查询到最新的数据
+        
+        实现一致性： 
+            1. 写入主库成功之后，需要同步到从库
+            2. 在同步期间，需要锁定从库，因为数据没有同步完成，等同步完成后释放锁。这样避免了同步期间（耗时长），读取的数据是不是订单系统插入主库最新的数据
+    
+    Available: 可用性
+    
+        目标： 
+            1. 订单写入主库成功响应
+            2. 订单查询从库成功响应，并且不会存在阻塞的情况，立即响应，不管数据是否最新！ 
+        
+        实现可用性：
+            1. 主库同步数据到从库
+            2. 从库在同步期间不锁定，立即响应数据给订单服务。
+            
+    Partition Tolerance： 分区容忍性
+    
+        目标：
+            1. 从库在同步主库的binlog中若失败，不会影响读的操作，也不会影响主库写的操作
+            2. 其中一个节点down后，不会影响另外一个节点提供服务
+            
+        实现：
+            1. 从库同步binlog的方式采用异步更新，
+            2. 一主多从（冷备），双主多从（热备）的模式
+    
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><ul><li>CAP理论在实际中的满足情况：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    前提： 
+        在有P的情况下Consitency和 Available是不能共存的！因为保证一致性的情况下，就必须要加上锁，加锁之后就会有响应不及时，导致 Available 无法满足 ！！
+        也就是说，在mysql集群模式下，C和A是无法共存的！若mysql是单机的情况CA可以共存，但是存在mysql单点故障的情况 ！！ 
+    
+    常见搭配：
+    
+        CP： 一致性，分区容忍性 均满足，：要求强一致性，比如zookeeper追求的强一致性，比如跨行转账，一次转账要求双方银行都完成了整个事务才算完成
+        
+        AP： 可用新，分区容忍性 均满足 ： 常用，一些业务场景比如：订单退款，今日退款成功，明日账户到账，只要用户可以接受在一定的时间内到账即可。
+        
+        CA： 一致性，可用性 均满足 ： 即mysql单点统一提供读写 
+    
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="base-理论"><a href="#base-理论" class="header-anchor">#</a> BASE 理论：</h3> <p>在分布式系统中，我们需要保证系统的可用性，这个的重要性会比数据一致性要高。
+分布式系统需要实现高可用性，需要保证系统满足BASE理论</p> <div class="language- extra-class"><pre><code>Base Available： 出现故障后，保证核心系统可用，不影响核心的系统可以故障
+Soft status ： 数据的中间的中间状态，比如订单退款中，但是这个数据的最终状态是成功！
+Eventually ：  会有一定的延迟，担数据最终一致！
+</code></pre></div><p>BASE理论是对CAP中一致性和可用性的中和权衡的结果，实际上并无法做到强一致性，但每个应用的业务特点，采用属于系统合适的规则最终达到一致性。</p> <h2 id="数据库事务"><a href="#数据库事务" class="header-anchor">#</a> 数据库事务</h2> <p>事务本质上来说是多个操作，其中要么所有操作都成功，要么全部失败！</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    特性： ACID
+        A: Atomicity ：原子性：   整个事务是不可分割的部分，要么全部成功，否则全部失败。即执行发生异常sql的之前的sql也需要回滚，不管其已经成功 ！！
+        C: Consistency：一致性：  数据的完整性和业务一致性。比如银行转账的时候，不管如何转账，总额是不变的。
+        I: Isolation：隔离性：    A事务不会影响B事务
+        D: Durabilily ：持久性：  所做的修改最终都会落到数据库上，不会因为系统故障导致数据丢失
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="并发事务导致的问题"><a href="#并发事务导致的问题" class="header-anchor">#</a> 并发事务导致的问题</h2> <p>多个事务并发运行，经常会操作相同的数据来完成各自的任务（多个用户对同一数据进行操作）。并发虽然是必须的，但可能会导致以下的问题。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>名词解释：
+      不可重复读： 两次读取数据在中途中被修改。比如 A事务多次读了同一个数据，但是A事务还未结束，此时B事务也访问该数据，在A事务中的读该数据之间，B事务执行并且提交了，这就导致A事务里的在B事务提交之后读出来的数据和一开始读的数据不一致​。​
+                 存在的隔离机制为：读已提交、读未提交，解决办法：使用可重复读隔离机制。
+      脏读：读到了未提交的数据，也就是本应该提交后才能的读取的数据，在未提交就被提前读取了。
+           比如：A事务正在对数据进行修改，但是还未完成其事务，未提交变更后的数据，但是此时B事务也访问到了该数据，读取出来的数据是A还未提交前的数据（不是A事务修改后最新的），所以此时B事务读取到了“脏数据”，因此B对该脏数据的操作也可能是不正确的​。​
+           存在的隔离机制为读未提交，解决办法：使用读已提交的隔离机制。
+      幻读：在同一个事务内，同一条sql语句在不同时间段内查询出来的数据不一样。 解决办法：innoDB引擎的间隙锁。
+           当MySQL InnoDB引擎在一行行扫描的过程中，不仅会给行加上行锁，还会给行的两边的空隙也加上间隙锁。由于间隙锁（gap lock）仍在存在一些问题，可能会降低并发度和仍然可能导致死锁。
+           因此，MySQL InnoDB为间隙锁引入了一个补充：next-key lock。所谓next-key lock，它是间隙锁和行锁的合体，每个next-key lock都是前开后闭区间，如 (0,5]。
+           间隙锁都是开区间，如 (0,5)。next-key lock帮助MySQL在默认隔离级别下解决了幻读问题，因此它也是MySQL加锁的基本单位。
+      
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>1.隔离机制可能会产生的问题：
+<a data-fancybox="" title="111" href="隔离机制可能会产生的问题.png"><img src="%E9%9A%94%E7%A6%BB%E6%9C%BA%E5%88%B6%E5%8F%AF%E8%83%BD%E4%BC%9A%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98.png" alt="img.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      读未提交： 幻读、脏读、不可重复读 
+      读已提交： 幻读、不可重复读
+      可重复读： 幻读
+      可串连化：
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>2.SQL的隔离机制：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>   
+      读已提交：SQL Server和Oracle默认隔离机制。 （不可重复读）
+              设置 ：  set transaction_isolation='read-committed';    
+      
+              事务A                                                         事务B
+            1 begin                                                       
+            2                                                              select name from user where id = 1    =&gt; 结果为 '李四'
+            3 update user set name = '张三' where id = 1   
+            4                                                              select name from user where id = 1    =&gt; 结果为'李四' 
+            5 commit
+            6                                                              select name from user where id = 1    =&gt; 结果为'张三' （事务B只能读取到事务A已经提交的数据）
+  
+      读未提交：可以读取到未提交的数据。
+              极少使用该机制，可能出现脏读，幻读  
+              设置 ： set transaction_isolation='read-uncommitted';
+      
+              事务A                                                         事务B
+            1 begin                                                       
+            2                                                              select name from user where id = 1    =&gt; 结果为 '李四'
+            3 update user set name = '张三' where id = 1   
+            4                                                              select name from user where id = 1    =&gt; 结果为'张三' (这sql能读取到事务A的未提交的数据'张三')
+            5 commit
+            6                                                              select name from user where id = 1    =&gt; 结果为'张三'  
+      可重复读：Mysql默认隔离机制。
+              在可重复读隔离级别下，事务B只能在事务A修改过数据并提交后，自己也提交事务后，才能读取到事务B修改的数据。（参考images/可重复读.png）
+              可重复读隔离级别解决了脏读和不可重复读的问题，但可能发生幻读问题。
+              
+              提问：为什么上了写锁（写操作），别的事务还可以读操作？
+              因为InnoDB有MVCC机制（多版本并发控制），可以使用快照读，而不会被阻塞。
+                              
+      可串行化：
+             读读操作不会阻塞
+             读写操作会阻塞写操作
+             写读操作会阻塞读操作
+             写写操作会阻塞写（后）操作
+             
+      不可重复读和幻读的区别：
+        不可重复读注重的是修改，幻读注重的是新增、删除
+        不可重复读：A事务中查询张三的银行卡余额为300块，此时A事务操作还未结束，B事务执行了公司发工资给张三增加了200块，此时张三银行卡的为500块，B事务结束并提交。此时A事务后续操作再读张三的银行卡余额发现张三此时有500块
+        幻读：工资表中工资大于3000的总共有4人。此时事务A读取到了工资大于3000的有4个人，事务B插入了一条工资大于3000的数据到工资表中，此时事务A再读会发现有5个人工资大于3000       
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br></div></div><p>3.设置隔离机制：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      方式1：通过set命令
+          SET [GLOBAL|SESSION] TRANSACTION ISOLATION LEVEL level;
+              其中level有4种值：
+              level: {
+                   REPEATABLE READ
+                 | READ COMMITTED
+                 | READ UNCOMMITTED
+                 | SERIALIZABLE
+              }
+              
+关键词：GLOBAL
+SET GLOBAL TRANSACTION ISOLATION LEVEL level;
+    * 只对执行完该语句之后产生的会话起作用
+    * 当前已经存在的会话无效
+关键词：SESSION
+SET SESSION TRANSACTION ISOLATION LEVEL level;
+    * 对当前会话的所有后续的事务有效
+    * 该语句可以在已经开启的事务中间执行，但不会影响当前正在执行的事务
+    * 如果在事务之间执行，则对后续的事务有效。
+无关键词
+SET TRANSACTION ISOLATION LEVEL level;
+    * 只对当前会话中下一个即将开启的事务有效
+    * 下一个事务执行完后，后续事务将恢复到之前的隔离级别
+    * 该语句不能在已经开启的事务中间执行，会报错的
+              
+      方式2：通过服务启动项命令
+          可以修改启动参数transaction-isolation的值
+          比方说我们在启动服务器时指定了--transaction-isolation=READ UNCOMMITTED，那么事务的默认隔离级别就从原来的REPEATABLE READ变成了READ UNCOMMITTED。
+
+
+        
+    1. 数据库写入数据的时候都是先写入日志的，在执行事务的时候，会先写入redo日志，然后再开始操作数据。数据库操作之前首先日志文件会写入磁盘，若写入中途出现
+       断电断网的操作，数据库重新启动之后，会根据当前的数据情况进行redo和undo的操作。这样用于保证数据的一致性。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><ul><li><p>读已提交：
+<a data-fancybox="" title="111" href="读已提交.png"><img src="%E8%AF%BB%E5%B7%B2%E6%8F%90%E4%BA%A4.png" alt="img.png"></a> <a data-fancybox="" title="111" href="读已提交1.png"><img src="%E8%AF%BB%E5%B7%B2%E6%8F%90%E4%BA%A41.png" alt="img.png"></a></p></li> <li><p>读未提交：
+<a data-fancybox="" title="111" href="读未提交.png"><img src="%E8%AF%BB%E6%9C%AA%E6%8F%90%E4%BA%A4.png" alt="img.png"></a></p></li> <li><p>可重复读：
+<a data-fancybox="" title="111" href="可重复读.png"><img src="%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB.png" alt="img.png"></a></p></li> <li><p>可序列化
+<a data-fancybox="" title="111" href="可序列化.png"><img src="%E5%8F%AF%E5%BA%8F%E5%88%97%E5%8C%96.png" alt="img.png"></a></p></li> <li><p>可序列化-读读操作：
+<a data-fancybox="" title="111" href="可串行化-读读操作.png"><img src="%E5%8F%AF%E4%B8%B2%E8%A1%8C%E5%8C%96-%E8%AF%BB%E8%AF%BB%E6%93%8D%E4%BD%9C.png" alt="img.png"></a></p></li> <li><p>可序列化-读写操作：
+<a data-fancybox="" title="111" href="可串行化-读写操作.png"><img src="%E5%8F%AF%E4%B8%B2%E8%A1%8C%E5%8C%96-%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C.png" alt="img.png"></a></p></li> <li><p>可序列化-写读操作：
+<a data-fancybox="" title="111" href="可串行化-写读操作.png"><img src="%E5%8F%AF%E4%B8%B2%E8%A1%8C%E5%8C%96-%E5%86%99%E8%AF%BB%E6%93%8D%E4%BD%9C.png" alt="img.png"></a></p></li> <li><p>可序列化-写写操作
+<a data-fancybox="" title="111" href="可串行化-写写操作.png"><img src="%E5%8F%AF%E4%B8%B2%E8%A1%8C%E5%8C%96-%E5%86%99%E5%86%99%E6%93%8D%E4%BD%9C.png" alt="img.png"></a></p></li></ul> <h2 id="数据库锁"><a href="#数据库锁" class="header-anchor">#</a> 数据库锁</h2> <p>当数据库有并发事务的时候，可能会产生数据不一致，这个时候需要用锁机制来进行协调和计算。</p> <ul><li>InnoDB与MYISAM的最大不同有两点：
+InnoDB支持事务
+InnoDB支持行级锁
+MYISAM： 采用表级锁
+InnoDB:  支持表级锁和行级锁，默认是行级锁</li></ul> <p>1.性能上划分： 悲观锁、乐观锁</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    悲观锁： 假设会发生并发冲突，（考虑到存在并且肯跟会发生的并发冲突下）屏蔽一切可能违反数据完整性的操作，在查询完数据的时候就把事务锁起来，知道事务提交。
+           实现方式 ： 数据库中的锁机制 （读锁、写锁）
+   
+    乐观锁： 假设不会发生并发冲突，只在提交的操作检查是否违反了数据完整性，在修改数据的时候把事务锁起来，通过version方式来进行处理
+           实现方式 ： 版本号方式，或者CAS算法实现
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>2.操作类型划分：（读锁和写锁都是悲观锁）</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    读锁（共享锁、S锁(Shared) ）： 针对同一份数据，多个读操作可以同时进行而不会互相影响。
+    写锁（排他锁、X锁(eXclusive) ）：当前写操作没有完成前，它会阻断其他写锁和读锁。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>3.数据操作的粒度：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>        表级锁： （颗粒度最大的锁）对整个表加锁，实现简单，资源消耗少，别大部分Mysql引擎支持（MYISAM 和 InnoDB均支持 表级锁），表级锁定氛围共享锁（读锁）和拍他锁（写锁）
+                特点： 开销小，加锁快，不会出现思索，锁定颗粒度大，发出锁冲突的概率最高，并发度最低。
+        行级锁： （颗粒度最小的锁）行锁每次操作锁住一行数据，一个session开启事务更新不提交，另一个session更新同一条记录会阻塞，更新不同记录不会阻塞 （这个看具体字段，id/索引字段不会阻塞，否则会阻塞）。
+                特点： 开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度最高。
+                
+        页级锁： 颗粒度介于行级锁和表级锁之间的一种锁，表级锁加锁速度快，但是冲突多，行级锁加锁速度慢。所以折中的页级锁，一次锁定相邻的一组记录
+                特点： 开销和加锁速度介于表锁和行锁之间，会出现死锁，加锁粒度介于表锁和行锁之间，并发度也处于二者之间
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/37.f3d4b763.js" defer></script>
+  </body>
+</html>

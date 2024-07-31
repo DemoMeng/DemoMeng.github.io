@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SQL优化 | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/68.ca0d798d.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable open"><span>数据层 🔥🔥🔥</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>mysql</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/%E6%95%B0%E6%8D%AE%E5%B1%82/mysql/" aria-current="page" class="sidebar-link">简介</a></li><li><a href="/mengqizhang/数据层/mysql/mysql集群.html" class="sidebar-link">集群</a></li><li><a href="/mengqizhang/数据层/mysql/读写分离.html" class="sidebar-link">读写分离</a></li><li><a href="/mengqizhang/数据层/mysql/ApacheShardingSphere介绍.html" class="sidebar-link">ApacheShardingSphere</a></li><li><a href="/mengqizhang/数据层/mysql/binlog.html" class="sidebar-link">binlog</a></li><li><a href="/mengqizhang/数据层/mysql/分库分表.html" class="sidebar-link">分库分表</a></li><li><a href="/mengqizhang/数据层/mysql/SQL.html" class="active sidebar-link">SQL优化</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/mysql/SQL.html#sql优化" class="sidebar-link">SQL优化</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/mysql/SQL.html#sql语句关键字执行的顺序" class="sidebar-link">sql语句关键字执行的顺序</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/mysql/SQL.html#数据库连接工具" class="sidebar-link">数据库连接工具</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/mysql/SQL.html#索引失效场景" class="sidebar-link">索引失效场景</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/mysql/SQL.html#数据库设计和表接口设计" class="sidebar-link">数据库设计和表接口设计</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/数据层/mysql/SQL.html#行转列的几种方式" class="sidebar-link">行转列的几种方式</a></li></ul></li><li><a href="/mengqizhang/数据层/mysql/redo.html" class="sidebar-link">redo日志</a></li><li><a href="/mengqizhang/数据层/mysql/mysql索引数据结构.html" class="sidebar-link">mysql索引数据结构</a></li><li><a href="/mengqizhang/数据层/mysql/面试题.html" class="sidebar-link">面试题</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>mybatis</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>Redis</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="sql优化"><a href="#sql优化" class="header-anchor">#</a> SQL优化</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>    【1】当数据量大的时候比如几百万条：where条件可能很多
+        原sql：
+            select 查询的字段 from user where 各种条件 LIMIT 0,10
+    
+            ----&gt; 非常消耗性能，速度慢，索引失效！！
+        后sql:
+            select 查询的字段 from user u
+            right join (
+                select id from user where 各种条件 LIMIT 0,10
+            ) iu on u.id = iu.id
+    
+        原理：查询条件放到子查询中，子查询只查主键ID，然后使用子查询中确定的主键关联查询其他的属性字段，减少回表操作！！！
+    
+    
+    【2】：当查询的数据只有一条的时候，尽量使用limit关键字 ---&gt; limit 1
+           可能使用场景：
+                List&lt;User&gt; userList = userService.getAll(userId);
+                userList.get(0);
+    
+    【3】：避免查询全部字段（select *），可能会不命中索引或者回表的操作。
+          a.增加查询分析器的成本 = 可能失去mysql覆盖索引策略的优化的可能性
+          b.可能导致字段和resultMap里面的字段不一致
+          c.增加网络消耗，数据传输，尤其是text，varchar，blog字段 = 这些无用的大字段会增大IO操作
+    
+    
+    
+    【4】：避免在where中使用or关键字操作：需要使用 union all 进行替换or关键字
+            原因：使用or关键字会造成索引失效，进而进行全表扫描。
+            原sql： select * from user where age &gt; 10 or age &lt; 5
+            改为：  select * from user where age &gt; 10
+                   union all
+                   select * from user where age &lt; 5
+    
+    【5】：避免在索引列上使用mysql的内置函数，会导致索引无法命中查询全表
+    
+        原先：explain select * from user where createdAt &gt;= date_format(now(),'yyyy-MM-dd')
+            1	SIMPLE	user	ALL	createdAt				1846	Using where
+    
+        改为：explain select * from user where createdAt &gt;=&quot;2020-12-20&quot;
+            1	SIMPLE	user	range	createdAt	createdAt	6		1	Using index condition
+    
+    【6】：避免在索引字段有表达式计算，会导致无法命中索引而查询全表
+    
+        原先：explain select * from user where userId-1 = 10
+             1	SIMPLE	user	ALL					1846	Using where
+        改为：explain select * from user where userId = 20
+             1	SIMPLE	user	const	PRIMARY	PRIMARY	8	const	1
+    
+    【7】：如果是字符串的字段需要用 ''，否则导致所以无法命中，进而查询全表。参考本文第14点，隐式转换！！
+    
+        原因：因为字符串和数字类型不匹配， 所以mysql首先需要进行类型转换，会导致全表查询。
+    
+        原先：explain select * from user where username = 23
+            1	SIMPLE	user	ALL	username				1846	Using where
+    
+        改为：EXPLAIN select * from user where username = '23'
+            1	SIMPLE	user	ref	username	username	195	const	1	Using index condition
+    
+    【8】：索引不适合建立在具有大量重复值的字段上面，比如：性别、民族等。
+    
+    
+            索引分类：
+                a.普通索引：普通单字段上创建的索引 create index on (字段名)
+                b.组合索引：多个字段上创建的索引 create index on (字段1,字段2,字段3) 它等同于 =  (字段1)  (字段1,字段2) (字段1,字段2,字段3)
+                c.唯一索引：这个字段上的值是唯一的
+                d.全文索引：字段的数据类型是fulltext  =   create fulltext index on
+    
+                组合索引需要遵循最左前缀法则：
+                        也就是说建立了索引： index_test(name,address,school)
+                        在查询的时候需要按照顺序来写比如： select * from user where name=&quot;大拿&quot; and address= '杭州' and school = &quot;杭州高级中学&quot;
+                        如果是： select * from user where address= '杭州' and school = &quot;杭州高级中学&quot;，那么这个查询将不会走这个组合索引，会全表查询
+                        所以说组合索引，需要带上左边的字段，要是左边字段都没有带，那么右边的字段查询将不会走索引
+    【9】：一个表的索引不宜过多，最好不能超过5个
+            原因：1.过多索引可能会影响插入和更新的效率。
+                 2.insert和update操作可能会重建索引。
+    
+          不常使用的字段不建索引，过多的索引会造成额外的开销
+          数据量不大的字段不要建索引
+          经常操作的字段不要使用索引，会影响 insert 和 update 的操作。
+    
+    【10】:exist 和 in 关键字的使用。
+    
+    【11】：where 关键字中最好不要使用is not null 或者is null
+            可以使用设置默认值的方式，如果是null的话默认值为0
+                ------&gt; 葫芦娃的数据库user表就是存在这种弊病，企业和个人都在user表中，但是他们又没有区分的标识，只能通过companyId进行判断，null的话为个人，not null 为公司 （服这个设计数据库的人！！）
+    
+    【12】：在where 和 order by 的字段上加上索引 ！！
+    
+    【13】：Inner join , left join ,right join 的使用：
+            inner join :查询两个表公共数据
+            left join ： 以左边为主表，并且返回即使左边表没有的数据
+            right join ：以右边为主表，并且返回即使右边表没有的数据
+    
+    【14】：避免mysql中的隐式转换：
+        比如字段的类型是varchar，但是sql是 select * from user where no = 1233633
+        此处并没有把 1233633 用字符串标识起来，导致mysql认为 1233633 是一个整数，并且把no字段值转换整数进行全表扫描 。所以存在一个隐式转换。
+        
+    【15】： 小表驱动大表：
+            select * from t_order where product_id in (select id from t_product where delete_flag = 0)
+            
+            select * from t_order where product_id exist (select id from t_product where delete_flag = 0)
+            
+            
+            in 适用于左边大表，右边小表。
+            exists 适用于左边小表，右边大表。
+    
+    ############################子查询里面的统计############################
+    
+    SELECT
+        p.*,
+        case
+            when t.counts is null then 0
+            else 1
+        end template_flag,
+        t.counts
+    FROM
+        t_product p
+        left join (
+            select product_id,count(*) counts from t_template GROUP BY product_id
+        ) t on p.id = t.product_id
+    ORDER BY
+        create_time DESC
+    
+    
+    ****************************查询强制使用索引*********************************
+    【使用force index (index_name)】
+    
+    select * from user force index (user_name_index) where user_name like '%张三%'
+    
+    
+    
+    **************************数据库中关于字段类型的设计**********************************
+    1.禁止使用blob作为类型，二进制存文件到数据库导致查询效率十分低下
+      可以使用云存储办法，文件上传到云再路径保存到数据库。
+    
+      思考：
+        如果一些机密性的文件怎么处理呢，不想存到云上。
+    
+    **************************数据库中关于字段类型的设计**********************************
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br></div></div><h2 id="sql语句关键字执行的顺序"><a href="#sql语句关键字执行的顺序" class="header-anchor">#</a> sql语句关键字执行的顺序</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>    WHERE 是对表记录的筛选，而HAVING是对分组之后筛选，HAVING只有在GROUP BY之后才能使用，通常，Group By 是需要配合聚合函数使用，
+    那么聚合函数就只能用HAVING来限定条件，不能用WHERE，并且HAVING在sql语句的末尾。
+    
+    1.sql语句的语法是从右到左
+    
+          顺序  关键字
+            7  SELECT
+            8    DISTINCT &lt;select_list&gt;
+            1  FROM table_name
+            3      &lt;join_type&gt; JOIN table_name
+            2      ON &lt;condition&gt;
+            4  WHERE &lt;condition&gt;
+            5  GROUP BY &lt;group_by_list&gt;
+            6  HAVING &lt;having_condition&gt;
+            9  ORDER BY &lt;order_by_condition&gt;
+            10 LIMIT &lt;limit_number&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h2 id="数据库连接工具"><a href="#数据库连接工具" class="header-anchor">#</a> 数据库连接工具</h2> <div class="language- extra-class"><pre><code>https://dbeaver.io/download/
+</code></pre></div><h2 id="索引失效场景"><a href="#索引失效场景" class="header-anchor">#</a> 索引失效场景</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 索引最左匹配原则： 只要联合索引中的最左边的字段在查询条件内，则会走这个联合索引（不管是否是selct * 这种导致不走索引的情况）。
+
+2. 避免使用 select * : 大概率会查询非索引列的数据，非索引列不会走索引，查询效率非常低。
+3. 避免在字段上有计算： 如：explain select id,name,address from user where id+1 = 2
+4. 避免在字段上使用函数： 如： explain select id,name from user where DATE_FORMAT(time,&quot;%Y-%m-%d&quot;) = '2022-01-11'
+5. 避免字段存在隐式转换： 按照数据库的字段类型来决定查询条件使用的字符串或者是int
+6. OR、NOT IN 、 NOT EXISTS 不走索引
+7. LIKE查询 左边有%不走索引
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h2 id="数据库设计和表接口设计"><a href="#数据库设计和表接口设计" class="header-anchor">#</a> 数据库设计和表接口设计</h2> <p>https://mp.weixin.qq.com/s/9hGrh3wpCMSISkNPM4bQyg</p> <div class="language- extra-class"><pre><code>mysql数据库本身灵活度搞，造成性能不足的原因是因为开发人员的设计能力，也就是说开发人员的能力越高，mysql的新能也就越高，这也是关系型数据库的通病
+
+1.表结构设计：
+    a.字段避免null值出现，null值很难查询优化而且占用额外的索引空间，推荐默认数字0代替null
+    b.尽量使用int，避免使用bigint，如果是非负则加上unsigned(这样数值容量会扩大一倍)
+    c.使用枚举或者整数代替字符串类型
+    d.尽量使用Timestamp，避免使用DateTime
+    e.单表的字段不要太多，不能超过20个字段
+    f.用整型存ip
+
+2.索引：
+    a.在where和order by设计的列建立索引
+    b.避免在where子句上对字段进行null值判断，否则会扫描全表
+    c.值分布稀少的字段不适合建立索引，比如 性别、民族这种字段
+    d.字符字段不适合做主键
+    e.尽量不要使用UNIQUE，由程序保证约束
+    f.使用多列索引时，注意顺序和查询条件保持一直，同事删除不必要的单列索引
+</code></pre></div><h2 id="行转列的几种方式"><a href="#行转列的几种方式" class="header-anchor">#</a> 行转列的几种方式</h2> <p>最近因为在工作中遇到了需要对数据进行行转列的场景，特此总结了以下几种行转列的方法可供使用，具体使用需要根据实际场景使用</p> <p>根据模拟业务场景，假设有学生信息表、科目信息表、学生成绩表，具体表机构和数据如下：</p> <p>student : 学生信息表
+<a data-fancybox="" title="学生信息表" href="学生信息表.png"><img src="%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E8%A1%A8.png" alt="img.png"></a></p> <p>subject_info : 课程信息表
+<a data-fancybox="" title="课程信息表" href="课程信息表.png"><img src="%E8%AF%BE%E7%A8%8B%E4%BF%A1%E6%81%AF%E8%A1%A8.png" alt="img.png"></a></p> <p>student_score ：学生成绩表
+<a data-fancybox="" title="学生成绩表" href="学生成绩表.png"><img src="%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E8%A1%A8.png" alt="img_1.png"></a></p> <ul><li><ol><li>使用 case when then 搭配 group by 及聚合函数
+具体SQL：</li></ol></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>select 
+  s.id as student_id,
+  s.name as student_name,
+  max(case i.class_name when '语文' then c.score end ) '语文',
+  max(case i.class_name when '数学' then c.score end ) '数学',
+  max(case i.class_name when '英文' then c.score end ) '英文',
+  max(case i.class_name when '物理' then c.score end ) '物理',
+  max(case i.class_name when '化学' then c.score end ) '化学',
+  max(case i.class_name when '生物' then c.score end ) '生物',
+  max(case i.class_name when '政治' then c.score end ) '政治',
+  max(case i.class_name when '历史' then c.score end ) '历史',
+  max(case i.class_name when '地理' then c.score end ) '地理',
+  sum(c.score) '总分'
+from 
+student s 
+  left join student_score c on s.id = c.student_id
+  left join subject_info i ON c.subject_info_id = i.id
+group by s.id    
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>显示结果
+<a data-fancybox="" title="结果1" href="结果1.png"><img src="%E7%BB%93%E6%9E%9C1.png" alt="img.png"></a></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>a. max()函数是为了能够使用 group by根据 s.id 进行分组，因为每个学生对应的学科成绩只有一条，所以使用 max() 值也就只有一条。因此针对只有一条分数数据的情况下，max、min、sum、avg 函数都能实现行转列的效果。
+b. sum(c.score) 统计的是所有学科的总分，也就是所有max 行转列的字段进行统计
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li><ol start="2"><li>使用 group_concat 函数拼接成固定格式字符</li></ol></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>group_concat(a.column,':',c.column SEPARATOR ',')
+
+具体解析：
+        a.column代表的 a表的字段，比如说是课程表的名称
+        ':' 代表a.column 和c.column字段的拼接符
+        c.column代表 c表的字段，比如说是学生分数表的分数
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>具体SQL如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+select 
+  s.id as student_id,
+  s.name as student_name,
+  GROUP_CONCAT(i.class_name,&quot;:&quot;,c.score)
+ from 
+student s 
+  left join student_score c on s.id = c.student_id
+  left join subject_info i ON c.subject_info_id = i.id
+group by s.id
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>结果显示如下
+<a data-fancybox="" title="结果2" href="结果2.png"><img src="%E7%BB%93%E6%9E%9C2.png" alt="img_1.png"></a></p> <ul><li><ol start="3"><li>使用嵌套子查询
+具体SQL如下：</li></ol></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>select
+s.id as student_id,
+s.name as student_name,
+max(x.yuwen_score) '语文',
+max(xx.shuxue_score) '数学'
+
+from student s 
+  left join (
+    select 
+    i.class_name,
+    c.score as yuwen_score,
+    c.student_id
+    from subject_info  i
+    left join student_score c on i.id = c.subject_info_id 
+    where i.class_name = '语文'
+  ) x  on x.student_id = s.id
+  left join (
+    select 
+    i.class_name,
+    c.score as shuxue_score,
+    c.student_id
+    from subject_info  i
+    left join student_score c on i.id = c.subject_info_id 
+    where i.class_name = '数学'
+  ) xx  on xx.student_id = s.id
+
+group by s.id
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><p>结果显示如下：
+<a data-fancybox="" title="结果3" href="结果3.png"><img src="%E7%BB%93%E6%9E%9C3.png" alt="img_2.png"></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/数据层/mysql/分库分表.html" class="prev">
+        分库分表
+      </a></span> <span class="next"><a href="/mengqizhang/数据层/mysql/redo.html">
+        redo日志
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/68.ca0d798d.js" defer></script>
+  </body>
+</html>

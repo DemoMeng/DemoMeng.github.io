@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hystrix 熔断机制 | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/48.bad75ece.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable"><span>数据层 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>分布式系统 ☁️</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" aria-current="page" class="sidebar-link">介绍</a></li><li><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/dubbo-zookeeper/" class="sidebar-link">dubbo-zookeeper</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>springcloud</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/springcloud/" aria-current="page" class="sidebar-link">示例项目</a></li><li><a href="/mengqizhang/分布式系统/springcloud/Eureka.html" class="sidebar-link">Eureka</a></li><li><a href="/mengqizhang/分布式系统/springcloud/Hystrix.html" class="active sidebar-link">Hystrix</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/分布式系统/springcloud/Hystrix.html#雪崩效应" class="sidebar-link">雪崩效应</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/分布式系统/springcloud/Hystrix.html#hystrix-设置原则" class="sidebar-link">Hystrix 设置原则</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/分布式系统/springcloud/Hystrix.html#hystrix-资源隔离-线程池实现-、-信号量实现" class="sidebar-link">Hystrix 资源隔离 : 线程池实现 、 信号量实现</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/分布式系统/springcloud/Hystrix.html#hystrix-内部原理-工作流程" class="sidebar-link">Hystrix 内部原理/工作流程</a></li></ul></li><li><a href="/mengqizhang/分布式系统/springcloud/SpringCloudConfig.html" class="sidebar-link">SpringCloudConfig</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>springcloud-alibaba</span> <span class="arrow right"></span></p> <!----></section></li><li><a href="/mengqizhang/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/" class="sidebar-link">灰度发布</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>分布式锁</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="hystrix-熔断机制"><a href="#hystrix-熔断机制" class="header-anchor">#</a> Hystrix 熔断机制</h1> <p>在分布式系统中，每个服务可能会调用多个服务，然后每个服务的可用性、是否故障，调用方是无法预知的。
+Hystrix 可以让我们在分布式系统服务之间的调用，加入一些调用限流、故障处理机制。
+Hystrix 通过将依赖的服务进行资源隔离，进而阻止某个服务在调用链上出现问题而导致整个请求等待，同时 Hystrix 还提供了 fallback 降级机制</p> <p>Hystrix 是 Netflix 公司内部API 团队于2011开源的一个项目。Hystrix 目前比较稳定，为 Netflix 公司的其他团队也在使用该项目。
+2018年11月，Hystrix 在GitHub上宣布，不会再开发新功能，推荐开发者使用其他仍然活跃的开源项目。维护模式的转变，但并不是说 Hystrix 没有了价值 ！！</p> <h2 id="雪崩效应"><a href="#雪崩效应" class="header-anchor">#</a> 雪崩效应</h2> <p>Hystrix 的目的就是解决服务间调用可能出现的 雪崩效应</p> <ul><li>雪崩效应的解决方案：</li></ul> <ol><li><p>服务熔断 ：
+熔断机制是对雪崩效应问题的一种链路保护机制，当一个服务不可用或者响应超时，熔断该节点的服务调用，进行服务降级，快速返回错误响应信息，当检测到该节点恢复正常后，则恢复调用链路，通常和服务降级一起使用。
+Hystrix 的熔断机制会监控微服务间的调用状况，当失败的调用到达一定阈值的时候 （默认是 5秒20次失败）就会启用熔断机制。</p></li> <li><p>服务降级 ：
+服务降级是从系统整体考虑，当某个服务熔断后，该服务不在被调用时，客户端仍然可以发送请求，并且会有fallback响应。比如：阿里双11的时候，系统流量巨大，可以暂时关闭用户的游戏圈功能 ！
+服务降级主要目的是保证核心功能高可用、非核心功能短期内关闭使用（提示用户该功能暂时关闭，某某时间恢复该功能）</p></li> <li><p>服务限流
+当服务为系统的核心功能时，不能使用熔断、降级来处理的时候，可以使用服务限流</p> <p>限流措施：
+1. 限制总并发数 ， 比如： 数据库连接池、线程池
+2. 限制瞬时并发数   比如： nginx限制瞬时并发连接数
+3. 限制时间窗口内的平均速率 比如： Guava 的 RateLimiter 、 Nginx的 Limit_req模块，限制每秒平均速率
+4. 限制远程接口调用速率，限制MQ消费速率等</p></li></ol> <h2 id="hystrix-设置原则"><a href="#hystrix-设置原则" class="header-anchor">#</a> Hystrix 设置原则</h2> <ol><li>对依赖服务调用时出现的 调用延迟 和 调用失败 进行控制和容错保护</li> <li>提供 fail-fast （快速失败）和快速恢复的支持</li> <li>提供 fallback 优雅降级的支持</li> <li>支持近实时的监控、报警以及运维操作</li> <li>使用资源隔离技术，比如 bulkhead（舱壁隔离技术）、swimlane （泳道技术）、circuit breaker（短路技术）来限制任何一个依赖服务的故障影响</li></ol> <h2 id="hystrix-资源隔离-线程池实现-、-信号量实现"><a href="#hystrix-资源隔离-线程池实现-、-信号量实现" class="header-anchor">#</a> Hystrix 资源隔离 : 线程池实现 、 信号量实现</h2> <ul><li><p>为什么要做资源隔离?
+比如一个tomcat配置的线程是1000个，当 用户服务 发送了一个请求分别调用了 订单服务 和 库存服务，比如这个时候下订单爆了，导致订单服务并发量激增，假设有500个线程来处理这个订单的并发量
+但是随着并发量的加大，订单服务崩溃的风险也会加大！最后导致了所有其他的系统也不可用。</p></li> <li><ol><li>线程池实现资源隔离：Thread 官方默认  HystrixCommand将会在单独的线程 (调用方 和 被调用方不是在同一个线程上)上执行，并发请求受线程池中线程数量的影响</li></ol></li> <li><ol start="2"><li>信号量实现资源隔离：Semaphore 信号量 HystrixCommand将会在调用线程 (调用方 和 被调用方是在同一个线程上)上执行，开销相对较小，并发请求受信号量的个数限制</li></ol></li> <li><p>配置：</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>hystrix.command.default.execution.isolation.strategy = Thread #Semaphore 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>二者区别
+<a data-fancybox="" title="Hystrix资源隔离策略" href="Hystrix资源隔离策略.png"><img src="Hystrix%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BB%E7%AD%96%E7%95%A5.png" alt="img.png"></a></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>线程池隔离策略：
+    1. 调用线程和 HystrixCommand 不是同一个线程、并发请求受线程池（不是tomcat的线程池，是HystrixCommand的线程池）中的线程数限制，默认是10
+    2. 默认的隔离策略
+    3. HystrixCommand 线程无法获取到调用线程中 ThreadLocal 中的值
+
+信号量隔离策略：
+    1. 调用线程和 HystrixCommand 线程是同一个线程，默认最大并发请求数是10
+    2. 调用速度块，开销小，由于和调用线程处于同一个线程，所以必须确保调用的服务可用性足够高且返回快
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>注意： 如果发生找不到上下文运行时候的异常，可以考虑将隔离策略设置为：信号量隔离策略
+或者自定义隔离策略，重写请求，参考:<a href="/mengqizhang/java/springboot/#springboot-mdc-全链路调用日志追踪">全链路调用日志追踪</a></p> <ul><li>适用场景</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>线程池隔离策略：适合绝大多数的场景，最大的好处对于网络请求的时候，如果有超时的话可以避免线程阻塞。比如对调用服务的请求服务，需要设置调用的 timeout 设置，
+信号量隔离策略：适合颞部访问，而且对内部一些较复杂的业务逻辑进行访问，并且系统内部的代码，其实并不涉及任何的网络请求，只要做普通的信号量限流就可以了。
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>代码展示</li></ul> <ol><li>线程池控制资源隔离</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>package com.qingwang.user.web.controller;
+
+import com.netflix.hystrix.*;
+
+/**
+ * 版权所有  copyright© 蒙大拿
+ *
+ * @author mqz
+ * @date 2023/2/23
+ * @about https://www.gitee.com/DemoMeng
+ * @description
+ */
+public class HystrixIsolationThreadTest extends HystrixCommand {
+
+
+    protected HystrixIsolationThreadTest() {
+        super(
+                HystrixCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey(&quot;thread-isolation-1&quot;))
+                .andCommandKey(HystrixCommandKey.Factory.asKey(&quot;thread-isolation-k1&quot;))
+                .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey(&quot;thread-isolation-thread-pool-key&quot;))
+                .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
+                                .withCoreSize(5)// 核心的线程数
+                                .withKeepAliveTimeMinutes(60)//当线程池线程数大于核心线程数，此是多余空闲线程在终止前等待新任务的最长时间
+                                .withMaxQueueSize(5)// 最大队列数
+                                .withQueueSizeRejectionThreshold(2)//拒绝处理策略
+                )
+                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                        .withCircuitBreakerEnabled(true)//是否开启熔断机制
+                        .withCircuitBreakerSleepWindowInMilliseconds(3000)//熔断器开启3秒后关闭
+                        .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD)// 资源隔离策略
+                )
+        );
+    }
+
+
+    
+    @Override
+    protected Object run() throws Exception {
+        // 具体调用服务的代码写在这里
+    
+        return null;
+    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br></div></div><ol start="2"><li>信号量控制资源隔离</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>package com.qingwang.user.web.controller;
+
+import com.netflix.hystrix.HystrixCommand;
+import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandKey;
+import com.netflix.hystrix.HystrixCommandProperties;
+
+/**
+ * 版权所有  copyright© 蒙大拿
+ *
+ * @author mqz
+ * @date 2023/2/23
+ * @about https://www.gitee.com/DemoMeng
+ * @description
+ */
+public class HystrixIsolationSemaphoreTest extends HystrixCommand {
+    protected HystrixIsolationSemaphoreTest() {
+        super(HystrixCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey(&quot;semaphore-isolation-1&quot;))
+                .andCommandKey(HystrixCommandKey.Factory.asKey(&quot;semaphore-isolation-k1&quot;))
+                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
+                        // 开启熔断机制
+                        .withCircuitBreakerEnabled(true)
+                        // 熔断器开启3s后关闭
+                        .withCircuitBreakerSleepWindowInMilliseconds(3000)
+                        // 设置隔离策略
+                        .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.SEMAPHORE)));
+    }
+
+    @Override
+    protected Object run() throws Exception {
+        // 具体调用服务的代码写在这里
+        return null;
+    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><h2 id="hystrix-内部原理-工作流程"><a href="#hystrix-内部原理-工作流程" class="header-anchor">#</a> Hystrix 内部原理/工作流程</h2> <p><a data-fancybox="" title="hystrix工作流程" href="hystrix工作流程.png"><img src="hystrix%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png" alt="img.png"></a></p> <ul><li><ol><li>构建一个command 对象: HystrixCommand 或者 HystrixObservableCommand ，将请求封装到 Command对象中</li></ol></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>HystrixCommand :  调用请求逻辑写在 run() 方法，并且由新创建的线程执行，并且只能发送单条数据结果。
+HystrixObservableCommand : 请求逻辑写在 construct() 方法，并且由调用线程执行，并且可以返回多条数据结果。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li><ol start="2"><li>执行 command : 执行 command 就可以发起一次依赖服务的调用，需要执行如下的方法的其中一个即可：</li></ol></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>     HystrixCommand.execute(); // 同步调用，需要等被调用服务全部返回，才能得到结果
+     HystrixCommand.queue(); //异步调用，返回 Future 可以获取到单条结果
+     
+     // Hot Observable 命令会立即执行，当 observable 每次订阅的时候都会重放他的行为
+     // 订阅一个 observable 对象，observable代表是依赖服务返回的结果，获取到一个那个代表结果的 observable 对象的拷贝对象
+     HystrixObservableCommand.observe(); 
+     
+     // Code Observable:命令不会被立即执行，只有当所有的订阅者都订阅它之后才会执行 
+     //返回一个 Observable 对象，如果我们订阅这个对象，就会执行 command 并且获取返回结果
+     HystrixObservableCommand.toObservable(); 
+     
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li><ol start="3"><li>检查是否开启缓存 ： 如果 command 开启了请求缓存 Request Cache 而且这个调用的结果也在缓存中存在，那么直接将缓存结果返回，否则执行接下来的流程</li></ol></li> <li><ol start="4"><li>断路器检查： 包含了是否开启了短路器、 断路器健康检查（统计所有结果）。也就是这个断路器打开了，那么Hystrix就不会执行这个command，而是直接执行fallback机制，返回降级结果。</li></ol></li> <li><ol start="5"><li>检查线程池、信号量是否满：如果这个 command 线程池和队列队列已经满了，或者semaphore 信号量已满，那么也不会执行command，而是直接执行fallback机制，返回降级结果，同时会将该信息发送给 断路器健康检查 进行统计</li></ol></li> <li><ol start="6"><li>执行 command 方法：
+HystrixObservableCommand.construct()
+HystrixCommand.run()
+如果是采用线程池的方式，并且 construct() 方法 或 run() 方法执行超过了 timeout 的时长，那么command所在的线程会抛出一个 TimeoutException
+这时候会执行 fallback 降级机制。另外一种情况是 construct() 方法 和 run() 方法抛出了其他异常，那么也会走fallback降级机制，且所有的异常情况、成功情况均发给短路器进行健康统计</li></ol></li> <li><ol start="7"><li>断路器健康检查
+Hystrix 会把每一次依赖服务的调用成功、失败、异常、超时异常的情况发送给 circuit breaker 断路器。断路器就会根据这些时间进行统计，根据异常事件发生的比例来决定是否要进行短路（熔断）。
+如果打开了断路器，那么在接下来的一段时间内，会直接短路，并且走fallback 机制
+如果在之后，断路器尝试执行 command ，调用没有出错，返回了正常结果，那么断路器就会把短路关闭。</li></ol></li> <li><ol start="8"><li>fallback 降级机制</li></ol></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    1. 触发降级机制的情况：
+        断路器处于打开的状态
+        线程池/队列/semaphore 满了 
+        command执行超时
+        run/construct 方法执行抛出了异常
+     
+    2. 实现方法：
+        HystrixCommand 中 重写 getFallback() 方法
+        HystrixObservableCommand 中 resumeWithFallback() 方法
+        
+        如果没有实现 fallback 方法，或者fallback抛出了异常，Hystrix会返回一个空的 Observable ，但是没有任何数据。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li><ol start="9"><li>timeout超时机制</li></ol></li></ul> <p>yml配置文件</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>hystrix:
+  command:
+    default: #设置所有服务 也可以针对某个模块
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000 # 设置hystrix的超时时间为4000ms
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/分布式系统/springcloud/Eureka.html" class="prev">
+        Eureka
+      </a></span> <span class="next"><a href="/mengqizhang/分布式系统/springcloud/SpringCloudConfig.html">
+        SpringCloudConfig
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/48.bad75ece.js" defer></script>
+  </body>
+</html>

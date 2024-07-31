@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Prometheus | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/107.545ffb45.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/10.11174a82.js"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable"><span>数据层 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ELK 🔍</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>监控告警</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/%E7%9B%91%E6%8E%A7%E5%91%8A%E8%AD%A6/" aria-current="page" class="sidebar-link">介绍</a></li><li><a href="/mengqizhang/监控告警/prometheus.html" class="active sidebar-link">prometheus</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/监控告警/prometheus.html#prometheus-架构" class="sidebar-link">Prometheus 架构</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/监控告警/prometheus.html#prometheus简介" class="sidebar-link">Prometheus简介</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/监控告警/prometheus.html#监控的目标" class="sidebar-link">监控的目标</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/监控告警/prometheus.html#prometheus-的优势" class="sidebar-link">Prometheus 的优势</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/监控告警/prometheus.html#exporter" class="sidebar-link">Exporter</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/监控告警/prometheus.html#prometheus-安装" class="sidebar-link">prometheus 安装</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/监控告警/prometheus.html#使用-node-exporter-采集主机运行数据" class="sidebar-link">使用 Node Exporter 采集主机运行数据</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/监控告警/prometheus.html#docker-安装-mysql-exporter" class="sidebar-link">docker 安装 mysql-exporter</a></li></ul></li><li><a href="/mengqizhang/监控告警/grafana.html" class="sidebar-link">grafana</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="prometheus"><a href="#prometheus" class="header-anchor">#</a> Prometheus</h1> <p>Prometheus 是一个开放性的监控解决方案，用户可以非常方便的安装和使用 Prometheus 并且能够非常方便的对其进行扩展。
+Prometheus基于Golang编写，编译后的软件包，不依赖于任何的第三方依赖。用户只需要下载对应平台的二进制包，解压并且添加基本的配置即可正常启动Prometheus Server。</p> <h2 id="prometheus-架构"><a href="#prometheus-架构" class="header-anchor">#</a> Prometheus 架构</h2> <p><a data-fancybox="" title="Prometheus架构" href="Prometheus架构.png"><img src="Prometheus%E6%9E%B6%E6%9E%84.png" alt="img.png"></a></p> <ul><li><p>Prometheus Server：
+Prometheus Server 是 Prometheus的核心组件，负责实现对监控数据的获取，存储以及查询。Prometheus Server 可以通过静态配置管理监控目标，也可以配合使用 Service Discovery
+的方式动态管理监控目标，并从这些监控目标中获取监控数据，其次Prometheus Server需要对采集的监控数据进行存储。
+Prometheus Server 本身就是一个时序数据库，将采集的监控数据按照时间顺序存储在本地磁盘中，最后 Prometheus Server 对外提供了自定义的 PromQL语言，实现对数据的查询和分析
+Prometheus Server内置的Express Browser UI，通过这个UI可以直接通过PromQL实现数据的查询以及可视化。
+Prometheus Server的联邦集群能力可以使其从其他的Prometheus Server实例中获取数据，因此在大规模监控的情况下，可以通过联邦集群以及功能分区的方式对Prometheus Server进行扩展。</p></li> <li><p>Exporter：
+Exporter将监控数据采集的断电通过HTTP服务形式暴露给 Prometheus Server ，Prometheus Server通过访问该 Exporter提供的 Endpoint断点，即可获取到监控的数据。
+Exporter分类：
+1. 直接采集：这一类Exporter直接内置了对Prometheus监控的支持，比如cAdvisor，Kubernetes，Etcd，Gokit等，都直接内置了用于向Prometheus暴露监控数据的端点。
+2. 间接采集：间接采集，原有监控目标并不直接支持Prometheus，因此我们需要通过Prometheus提供的Client Library编写该监控目标的监控采集程序。例如： Mysql Exporter，JMX Exporter，Consul Exporter等。</p></li> <li><p>AlterManager：
+在Prometheus Server中支持基于PromQL创建告警规则，如果满足PromQL定义的规则，则会产生一条告警，而告警的后续处理流程则由AlertManager进行管理。
+在AlertManager中我们可以与邮件，Slack等等内置的通知方式进行集成，也可以通过Webhook自定义告警处理方式。AlertManager即Prometheus体系中的告警处理中心。</p></li> <li><p>PushGateway
+由于Prometheus数据采集基于Pull模型进行设计，因此在网络环境的配置上必须要让Prometheus Server能够直接与Exporter进行通信。
+当这种网络需求无法直接满足时，就可以利用PushGateway来进行中转。可以通过PushGateway将内部网络的监控数据主动Push到Gateway当中。
+而Prometheus Server则可以采用同样Pull的方式从PushGateway中获取到监控数据</p></li></ul> <h2 id="prometheus简介"><a href="#prometheus简介" class="header-anchor">#</a> Prometheus简介</h2> <p>Prometheus受启发于Google的Brogmon监控系统（相似的Kubernetes是从Google的Brog系统演变而来），
+从2012年开始由前Google工程师在Soundcloud以开源软件的形式进行研发，并且于2015年早期对外发布早期版本。
+2016年5月继Kubernetes之后成为第二个正式加入CNCF基金会的项目，同年6月正式发布1.0版本。
+2017年底发布了基于全新存储层的2.0版本，能更好地与容器平台、云平台配合。</p> <h2 id="监控的目标"><a href="#监控的目标" class="header-anchor">#</a> 监控的目标</h2> <p>监控系统需要能够有效的支持白盒监控和黑盒监控，通过白盒能够了解其内部实际的运行状态，通过监控指标的观察能够预判可能出现的问题，
+从而对潜在不确定因素进行优化，而黑盒监控，常见的HTTP探针、TCP探针等。可以在系统或者服务在发生故障时能够快速通知相关人员进行处理。
+通过建立完善的监控体系，从而达到以下目的：<br>
+长期趋势分析：通过对监控样本数据的持续收集和统计，对监控指标进行长期趋势分析。例如，通过对磁盘空间增长率的判断，我们可以提前预测在未来什么时间节点上需要对资源进行扩容。
+对照分析：两个版本的系统运行资源使用情况的差异如何？在不同容量情况下系统的并发和负载变化如何？通过监控能够方便的对系统进行跟踪和比较。
+告警：当系统出现或者即将出现故障时，监控系统需要迅速反应并通知管理员，从而能够对问题进行快速的处理或者提前预防问题的发生，避免出现对业务的影响。
+故障分析与定位：当问题发生后，需要对问题进行调查和处理。通过对不同监控监控以及历史数据的分析，能够找到并解决根源问题。
+数据可视化：通过可视化仪表盘能够直接获取系统的运行状态、资源使用情况、以及服务运行状态等直观的信息。</p> <h2 id="prometheus-的优势"><a href="#prometheus-的优势" class="header-anchor">#</a> Prometheus 的优势</h2> <p>1.易于管理： Prometheus 核心部分只有一个单独的二进制，不存在任何第三方依赖（数据库、缓存等）。唯一需要的就是本地磁盘，因此不存在潜在的级联故障风险。
+Prometheus 基于 Pull模型的架构方法，可以在任何地方（本地电脑、开发环境、测试环境）搭建我们的监控系统，对于一些复杂的情况，还可以使用Prometheus服务发现（Service Discovery）的能力动态管理监控目标</p> <p>2.监控服务的内部运行状态： Prometheus 用户可以监控服务内部状态，基于Prometheus丰富的Client库，用户可以轻松的在应用程序中添加对 Prometheus的支持，从而让用户可以获取服务和应用内部的真正运行状态。
+<a data-fancybox="" title="111" href="Prometheus监控服务内部状态.png"><img src="Prometheus%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1%E5%86%85%E9%83%A8%E7%8A%B6%E6%80%81.png" alt="img.png"></a></p> <p>3.强大的数据模型： 所有采集的监控数据均以指标（metric）的形式保存在内置的时间序列数据库中（TSDB）。
+所有的样本除了基本的指标名称之外，还包含一组用于描述该样本的特征的标签
+如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>http_request_status{code='200',content_path='/api/path', environment='produment'} =&gt; [value1@timestamp1,value2@timestamp2...]
+http_request_status{code='200',content_path='/api/path2', environment='produment'} =&gt; [value1@timestamp1,value2@timestamp2...]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>每一条时间序列由指标名称（Metric Name） 和 一组标签 （Labels）唯一标识，每条时间序列按照时间的先后顺序存储一系列的样本值。
+表示纬度的标签可能来源于你监控对象的状态，比如 code=404 或者 content_path = '/api/path2' 。也可能来源你的环境定义，比如 environment=produment，基于这些标签（Labels）我们可以方便对监控数据进行聚合、裁剪、过滤</p> <ol start="4"><li>强大的查询语言 PromQL
+Prometheus内置强大的数据查询语言 PromQL。通过PromQL可以实现对监控数据的查询、聚合。同时 PromQL也被应用于数据可视化（Grafana）及告警中。
+通过PromQL可以轻松回答类似于以下问题：</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>在过去一段时间中95%应用延迟时间的分布范围？
+预测在4小时后，磁盘空间占用大致会是什么情况？
+CPU占用率前5位的服务有哪些？(过滤)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ol start="5"><li>高效
+对于监控系统而言，大量的监控任务必然导致有大量的数据产生。而Prometheus可以高效地处理这些数据，对于单一Prometheus Server实例而言它可以处理：</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>数以百万的监控指标
+每秒处理数十万的数据点。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ol start="6"><li><p>可扩展
+Prometheus是如此简单，因此你可以在每个数据中心、每个团队运行独立的Prometheus Sevrer。
+Prometheus对于联邦集群的支持，可以让多个Prometheus实例产生一个逻辑集群，当单实例Prometheus Server处理的任务量过大时，
+通过使用功能分区(sharding)+联邦集群(federation)可以对其进行扩展。</p></li> <li><p>易于集成
+使用 Prometheus 可以快速搭建监控服务，并且可以非常方便的在应用程序中进行集成。目前支持： Java 、 JMX 、 Python 、GO 、Ruby 、 .Net 、Node.js等语言的客户端SDK。
+基于这些SDK可以快速让应用程序纳入到 Prometheus的监控当中，或者开发自己的监控数据收集程序。同时这些客户端收集的监控数据，不仅仅支持 Prometheus，还能支持 Graphite 这些其他的监控工具
+同时Prometheus还支持与其他的监控系统进行集成：Graphite， Statsd， Collected， Scollector， muini， Nagios等。
+Prometheus 还提供了大量第三方实现的监控数据采集支持： MySQL ，RabbitMQ， Redis， JMX， CloudWatch， EC2， PostgresSQL， Haskell， Bash， SNMP， Consul， Haproxy， Mesos， Bind， CouchDB， Django， Memcached，  RethinkDB， Rsyslog</p></li> <li><p>可视化
+Prometheus Server中自带了一个 Prometheus UI ，通过这个UI可以很方便的直接对数据进行查询、并且支持以图形化的形式展示数据，同时 Prometheus 还提供了一个独立完整的基于 Ruby On Rails的 Dashboard 解决方案 Promdash。
+最新的 Grafana 可视化工具也已经提供了完整的 Prometheus 支持，基于 Grafana可以创建更加精美的监控图标，基于 Prometheus 提供的 API还可以实现自己的监控可视化 UI</p></li></ol> <p>9.开放性
+通常来说当我们需要监控一个应用程序时，一般需要该应用程序提供对相应监控系统协议的支持。因此应用程序会与所选择的监控系统进行绑定。为了减少这种绑定所带来的限制。对于决策者而言要么你就直接在应用中集成该监控系统的支持，要么就在外部创建单独的服务来适配不同的监控系统。
+而对于Prometheus来说，使用Prometheus的client library的输出格式不止支持Prometheus的格式化数据，也可以输出支持其它监控系统的格式化数据，比如Graphite。
+因此你甚至可以在不使用Prometheus的情况下，采用Prometheus的client library来让你的应用程序支持监控数据采集。</p> <h2 id="exporter"><a href="#exporter" class="header-anchor">#</a> Exporter</h2> <p>在 Prometheus 的架构设计中，Prometheus Server并不能直接服务监控特定的目标，其主要任务是负责数据的收集和存储，并且对外提供数据查询支持。
+因此为了能监控到某些特定的东西，如主机的CPU使用率，我们需要使用到Exporter。Prometheus会周期性的从Exporter暴露的HTTP服务地址（通常是 /metrics）
+拉取监控样本数据。 Exporter是一个相对开放的概念，其可以是独立与性能的程序，并且能独立于监控目标之外，也可以是在监控目标中。
+只要能够向Prometheus提供标准格式的监控样本数据即可。</p> <h2 id="prometheus-安装"><a href="#prometheus-安装" class="header-anchor">#</a> prometheus 安装</h2> <ul><li><p>二进制包安装
+非Docker用户，可以从https://prometheus.io/download/找到最新版本的Prometheus Sevrer软件包</p></li> <li><p>docker run 启动容器 安装：</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker run -p 9090:9090 -v /etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus:latest
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>docker-compose 启动容器，配置文件yml：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>version: &quot;3&quot;
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus-mqz
+    ports:
+      - &quot;9090:9090&quot;
+    volumes:
+      - /etc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    privileged: true
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>配置文件 prometheus.yml</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># my global config
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - &quot;first_rules.yml&quot;
+  # - &quot;second_rules.yml&quot;
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.
+  - job_name: &quot;prometheus&quot;
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+      - targets: [&quot;localhost:9090&quot;]
+  - job_name: &quot;node&quot;
+    static_configs:
+      - targets: [&quot;192.168.2.11:9100&quot;]
+  - job_name: &quot;node-mysql&quot;
+    static_configs:
+      - targets: [&quot;192.168.2.11:9104&quot;]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><p><a data-fancybox="" title="111" href="Prometheus主界面.png"><img src="Prometheus%E4%B8%BB%E7%95%8C%E9%9D%A2.png" alt="img.png"></a></p> <p><a data-fancybox="" title="111" href="Prometheus-target监控界面.png"><img src="Prometheus-target%E7%9B%91%E6%8E%A7%E7%95%8C%E9%9D%A2.png" alt="img.png"></a></p> <h2 id="使用-node-exporter-采集主机运行数据"><a href="#使用-node-exporter-采集主机运行数据" class="header-anchor">#</a> 使用 Node Exporter 采集主机运行数据</h2> <ul><li><p>定义：
+node_exporter 是 Prometheus的一个 exporter，主要用来收集服务器硬件资源的使用情况。
+这个会部署在被监控的服务器上，即 Grafana 和 Prometheus会独立部署在一台服务器上（这个服务器可以昨来当监控系统的服务器），
+node_exporter则被部署在被监控的服务器上，收集监控数据给 Prometheus，然后 Grafana通过这些数据根据制定的 dashboard 展示出来。</p></li> <li><p>安装：</p></li></ul> <ol><li>安装包安装：</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. node_export 全部版本下载地址： https://github.com/prometheus/node_exporter/releases?utm_source=testingpai.com
+2. 选择对应服务器所需版本下载，然后解压
+3. 执行 ./node_exporter 启动node_exporter程序，默认端口 9100
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ol start="2"><li>docker容器安装</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>version: &quot;3&quot;
+services:
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter-mqz
+    ports:
+      - &quot;9100:9100&quot;
+    volumes:
+      - &quot;/proc:/host/proc:ro&quot;
+      - &quot;/sys:/host/sys:ro&quot;
+      - &quot;/:/rootfs:ro&quot;
+    privileged: true
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>安装成功控制台输出：
+<a data-fancybox="" title="111" href="node-exporter安装成功.png"><img src="node-exporter%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F.png" alt="img.png"></a>
+访问 http://192.168.2.11:9100/metric 获取到当前主机的所有监控看数据，如下结果：
+<a data-fancybox="" title="111" href="node-exporter访问地址.png"><img src="node-exporter%E8%AE%BF%E9%97%AE%E5%9C%B0%E5%9D%80.png" alt="img.png"></a></p> <ul><li>Prometheus 从 Node Exporter收集监控数据
+1.修改 Prometheus配置文件 ： /etc/prometheus/prometheus.yml ，配置完后需要重新启动服务（容器）。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>scrape_configs:
+  # The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.
+  - job_name: &quot;prometheus&quot;
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: [&quot;localhost:9090&quot;]
+  - job_name: &quot;node&quot;
+    static_configs:
+      - targets: [&quot;192.168.2.11:9100&quot;]
+  - job_name: &quot;node-mysql&quot;
+    static_configs:
+      - targets: [&quot;192.168.2.11:9104&quot;]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ol start="2"><li>Prometheus控制台查看是否成功添加了收集数据的配置
+<a data-fancybox="" title="111" href="Prometheus查看新加的配置监控任务.png"><img src="Prometheus%E6%9F%A5%E7%9C%8B%E6%96%B0%E5%8A%A0%E7%9A%84%E9%85%8D%E7%BD%AE%E7%9B%91%E6%8E%A7%E4%BB%BB%E5%8A%A1.png" alt="img.png"></a></li></ol> <p>当我们需要采集不同的监控指标，如：主机、Mysql、Nginx时，我们只需要运行相对应的监控采集程序，并且让 Prometheus Server 知道这些Exporter实例访问的地址。
+在 Prometheus 中，每一个暴露监控样本数据的 HTTP 服务称为一个实例。例如当前主机上运行的 Node-Exporter可以被称为一个实例。
+而一组用于相同采集目的的实例，或者同一个采集进程的多个副本则通过一个一个任务(Job)进行管理。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>* job: node
+    * instance 2: 1.2.3.4:9100
+    * instance 4: 5.6.7.8:9100
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="docker-安装-mysql-exporter"><a href="#docker-安装-mysql-exporter" class="header-anchor">#</a> docker 安装 mysql-exporter</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>version: '2'
+networks:
+    monitor:
+        driver: bridge
+services:
+    mysql-exporter:
+        image: prom/mysqld-exporter
+        container_name: mysql-exporter
+        hostname: mysql-exporter
+        restart: always
+        ports:
+            - &quot;9104:9104&quot;
+        networks:
+            - my-mysql-network
+        environment:
+            DATA_SOURCE_NAME: &quot;root:mengqizhang@(192.168.2.11:3306)/&quot;
+networks:
+        my-mysql-network:
+            driver: bridge
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/%E7%9B%91%E6%8E%A7%E5%91%8A%E8%AD%A6/" class="prev router-link-active">
+        介绍
+      </a></span> <span class="next"><a href="/mengqizhang/监控告警/grafana.html">
+        grafana
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/107.545ffb45.js" defer></script>
+  </body>
+</html>

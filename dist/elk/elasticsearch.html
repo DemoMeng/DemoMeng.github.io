@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>elasticsearch | 蒙大拿</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script charset="utf-8" src="https://my.openwrite.cn/js/readmore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="蒙大拿的博客">
+    
+    <link rel="preload" href="/mengqizhang/assets/css/0.styles.a1d09170.css" as="style"><link rel="preload" href="/mengqizhang/assets/js/app.a8d21a83.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/2.e69c46bd.js" as="script"><link rel="preload" href="/mengqizhang/assets/js/10.11174a82.js" as="script"><link rel="prefetch" href="/mengqizhang/assets/js/100.bd6553c3.js"><link rel="prefetch" href="/mengqizhang/assets/js/101.ac07962b.js"><link rel="prefetch" href="/mengqizhang/assets/js/102.79bec0af.js"><link rel="prefetch" href="/mengqizhang/assets/js/103.0c0a0808.js"><link rel="prefetch" href="/mengqizhang/assets/js/104.3ed6d392.js"><link rel="prefetch" href="/mengqizhang/assets/js/105.be22e8c8.js"><link rel="prefetch" href="/mengqizhang/assets/js/106.efa39ac4.js"><link rel="prefetch" href="/mengqizhang/assets/js/107.545ffb45.js"><link rel="prefetch" href="/mengqizhang/assets/js/108.cf23c097.js"><link rel="prefetch" href="/mengqizhang/assets/js/109.3339ffad.js"><link rel="prefetch" href="/mengqizhang/assets/js/11.08defbae.js"><link rel="prefetch" href="/mengqizhang/assets/js/110.bafd2f00.js"><link rel="prefetch" href="/mengqizhang/assets/js/12.25a3365c.js"><link rel="prefetch" href="/mengqizhang/assets/js/13.9b88bf7d.js"><link rel="prefetch" href="/mengqizhang/assets/js/14.c4d7ed3a.js"><link rel="prefetch" href="/mengqizhang/assets/js/15.b407b696.js"><link rel="prefetch" href="/mengqizhang/assets/js/16.1c08698a.js"><link rel="prefetch" href="/mengqizhang/assets/js/17.8a25e983.js"><link rel="prefetch" href="/mengqizhang/assets/js/18.e34bf6a6.js"><link rel="prefetch" href="/mengqizhang/assets/js/19.68d7669f.js"><link rel="prefetch" href="/mengqizhang/assets/js/20.de14558d.js"><link rel="prefetch" href="/mengqizhang/assets/js/21.56869e5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/22.aea26c9b.js"><link rel="prefetch" href="/mengqizhang/assets/js/23.4a0b2ea3.js"><link rel="prefetch" href="/mengqizhang/assets/js/24.58c270f0.js"><link rel="prefetch" href="/mengqizhang/assets/js/25.413aed44.js"><link rel="prefetch" href="/mengqizhang/assets/js/26.5ebfde8b.js"><link rel="prefetch" href="/mengqizhang/assets/js/27.48dd442a.js"><link rel="prefetch" href="/mengqizhang/assets/js/28.d2afcf03.js"><link rel="prefetch" href="/mengqizhang/assets/js/29.b928e199.js"><link rel="prefetch" href="/mengqizhang/assets/js/3.7aafc190.js"><link rel="prefetch" href="/mengqizhang/assets/js/30.4c1cbe1a.js"><link rel="prefetch" href="/mengqizhang/assets/js/31.77073e2d.js"><link rel="prefetch" href="/mengqizhang/assets/js/32.5f66f7a2.js"><link rel="prefetch" href="/mengqizhang/assets/js/33.a8272e84.js"><link rel="prefetch" href="/mengqizhang/assets/js/34.3b8ea135.js"><link rel="prefetch" href="/mengqizhang/assets/js/35.100b34a0.js"><link rel="prefetch" href="/mengqizhang/assets/js/36.06cb633d.js"><link rel="prefetch" href="/mengqizhang/assets/js/37.f3d4b763.js"><link rel="prefetch" href="/mengqizhang/assets/js/38.733d311d.js"><link rel="prefetch" href="/mengqizhang/assets/js/39.8434909a.js"><link rel="prefetch" href="/mengqizhang/assets/js/4.000c3dbd.js"><link rel="prefetch" href="/mengqizhang/assets/js/40.dd341745.js"><link rel="prefetch" href="/mengqizhang/assets/js/41.1fcf309c.js"><link rel="prefetch" href="/mengqizhang/assets/js/42.1cc69bad.js"><link rel="prefetch" href="/mengqizhang/assets/js/43.fefa3ac7.js"><link rel="prefetch" href="/mengqizhang/assets/js/44.d284f8c1.js"><link rel="prefetch" href="/mengqizhang/assets/js/45.2564339d.js"><link rel="prefetch" href="/mengqizhang/assets/js/46.23627a8c.js"><link rel="prefetch" href="/mengqizhang/assets/js/47.cecbf290.js"><link rel="prefetch" href="/mengqizhang/assets/js/48.bad75ece.js"><link rel="prefetch" href="/mengqizhang/assets/js/49.2fa60a3e.js"><link rel="prefetch" href="/mengqizhang/assets/js/5.9832e234.js"><link rel="prefetch" href="/mengqizhang/assets/js/50.f3159852.js"><link rel="prefetch" href="/mengqizhang/assets/js/51.738bce4a.js"><link rel="prefetch" href="/mengqizhang/assets/js/52.efc0fa7e.js"><link rel="prefetch" href="/mengqizhang/assets/js/53.8d0c00f1.js"><link rel="prefetch" href="/mengqizhang/assets/js/54.a519e682.js"><link rel="prefetch" href="/mengqizhang/assets/js/55.9652e586.js"><link rel="prefetch" href="/mengqizhang/assets/js/56.c88f759b.js"><link rel="prefetch" href="/mengqizhang/assets/js/57.c6f3cd20.js"><link rel="prefetch" href="/mengqizhang/assets/js/58.0c040aca.js"><link rel="prefetch" href="/mengqizhang/assets/js/59.fc5ce388.js"><link rel="prefetch" href="/mengqizhang/assets/js/6.48810bdc.js"><link rel="prefetch" href="/mengqizhang/assets/js/60.a50c0285.js"><link rel="prefetch" href="/mengqizhang/assets/js/61.ab6648f5.js"><link rel="prefetch" href="/mengqizhang/assets/js/62.f589c0b8.js"><link rel="prefetch" href="/mengqizhang/assets/js/63.df4a0587.js"><link rel="prefetch" href="/mengqizhang/assets/js/64.e5f1a0d6.js"><link rel="prefetch" href="/mengqizhang/assets/js/65.94e94ec2.js"><link rel="prefetch" href="/mengqizhang/assets/js/66.9a0f92dc.js"><link rel="prefetch" href="/mengqizhang/assets/js/67.15d5b718.js"><link rel="prefetch" href="/mengqizhang/assets/js/68.ca0d798d.js"><link rel="prefetch" href="/mengqizhang/assets/js/69.4de863fa.js"><link rel="prefetch" href="/mengqizhang/assets/js/7.2f8cbddd.js"><link rel="prefetch" href="/mengqizhang/assets/js/70.7c1bcd59.js"><link rel="prefetch" href="/mengqizhang/assets/js/71.70f3e9ec.js"><link rel="prefetch" href="/mengqizhang/assets/js/72.ca361407.js"><link rel="prefetch" href="/mengqizhang/assets/js/73.95c0b000.js"><link rel="prefetch" href="/mengqizhang/assets/js/74.673e240c.js"><link rel="prefetch" href="/mengqizhang/assets/js/75.f5cf8815.js"><link rel="prefetch" href="/mengqizhang/assets/js/76.30b8a8fb.js"><link rel="prefetch" href="/mengqizhang/assets/js/77.0bdfd82b.js"><link rel="prefetch" href="/mengqizhang/assets/js/78.a21a9dee.js"><link rel="prefetch" href="/mengqizhang/assets/js/79.5c55aff9.js"><link rel="prefetch" href="/mengqizhang/assets/js/8.507fce61.js"><link rel="prefetch" href="/mengqizhang/assets/js/80.aa70b0e8.js"><link rel="prefetch" href="/mengqizhang/assets/js/81.1cb55142.js"><link rel="prefetch" href="/mengqizhang/assets/js/82.50b720b1.js"><link rel="prefetch" href="/mengqizhang/assets/js/83.85834849.js"><link rel="prefetch" href="/mengqizhang/assets/js/84.e2f1cab8.js"><link rel="prefetch" href="/mengqizhang/assets/js/85.c154565c.js"><link rel="prefetch" href="/mengqizhang/assets/js/86.c5dbbd95.js"><link rel="prefetch" href="/mengqizhang/assets/js/87.2b62cc5e.js"><link rel="prefetch" href="/mengqizhang/assets/js/88.5deb957d.js"><link rel="prefetch" href="/mengqizhang/assets/js/89.fbed7b0f.js"><link rel="prefetch" href="/mengqizhang/assets/js/9.70c1c418.js"><link rel="prefetch" href="/mengqizhang/assets/js/90.8efb35d5.js"><link rel="prefetch" href="/mengqizhang/assets/js/91.a3da2ba6.js"><link rel="prefetch" href="/mengqizhang/assets/js/92.1f9bf6c0.js"><link rel="prefetch" href="/mengqizhang/assets/js/93.862f4101.js"><link rel="prefetch" href="/mengqizhang/assets/js/94.1a0c5762.js"><link rel="prefetch" href="/mengqizhang/assets/js/95.6df0f77b.js"><link rel="prefetch" href="/mengqizhang/assets/js/96.90bef310.js"><link rel="prefetch" href="/mengqizhang/assets/js/97.fa2b5f10.js"><link rel="prefetch" href="/mengqizhang/assets/js/98.d84c6b84.js"><link rel="prefetch" href="/mengqizhang/assets/js/99.785b4a31.js">
+    <link rel="stylesheet" href="/mengqizhang/assets/css/0.styles.a1d09170.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mengqizhang/" class="home-link router-link-active"><!----> <span class="site-name">蒙大拿</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mengqizhang/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="https://gitee.com/DemoMeng" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  关于我
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试 📖🔥🔥</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/环境配置/" class="sidebar-heading clickable"><span>环境配置 🔧</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/消息队列/" class="sidebar-heading clickable"><span>消息队列 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/数据层/" class="sidebar-heading clickable"><span>数据层 🔥🔥🔥</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/mengqizhang/容器化/" class="sidebar-heading clickable"><span>容器化 🐳</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Java ☕️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式事务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>分布式系统 ☁️</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webSocket</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>ELK 🔍</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mengqizhang/elk/" aria-current="page" class="sidebar-link">介绍</a></li><li><a href="/mengqizhang/elk/elasticsearch.html" aria-current="page" class="active sidebar-link">elasticsearch</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/mengqizhang/elk/elasticsearch.html#" class="sidebar-link"></a></li><li class="sidebar-sub-header"><a href="/mengqizhang/elk/elasticsearch.html#docker-compose安装elasticsearch" class="sidebar-link">docker-compose安装elasticsearch</a></li><li class="sidebar-sub-header"><a href="/mengqizhang/elk/elasticsearch.html#elasticsearch的dsl操作" class="sidebar-link">elasticsearch的DSL操作</a></li></ul></li><li><a href="/mengqizhang/elk/filebeat.html" class="sidebar-link">filebeat</a></li><li><a href="/mengqizhang/elk/kibana.html" class="sidebar-link">kibana</a></li><li><a href="/mengqizhang/elk/logstash.html" class="sidebar-link">logstash</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nginx 🇷🇺</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>jenkins 👴</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>服务器 💰</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试 😓</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控告警</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="elasticsearch"><a href="#elasticsearch" class="header-anchor">#</a> elasticsearch</h1> <h2 id=""><a href="#" class="header-anchor">#</a></h2> <h2 id="docker-compose安装elasticsearch"><a href="#docker-compose安装elasticsearch" class="header-anchor">#</a> docker-compose安装elasticsearch</h2> <ul><li><ol><li>elasticsearch.yml配置文件</li></ol></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>#挂在目录的时候需要把这个文件挂在进去，下面内容可以修改，下面内容是默认配置
+cluster.name: &quot;docker-cluster&quot;
+network.host: 0.0.0.0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li><ol start="2"><li>docker-compose 安装 elasticsearch</li></ol></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>version: &quot;3.3&quot;
+services:
+  es:
+    image: elasticsearch:7.13.2
+    container_name: es1
+    environment:
+      - discovery.type=single-node
+      # 必须设置虚拟机参数，否则无法运行
+      - &quot;ES_JAVA_OPTS=-Xms512m -Xmx512m&quot;
+      # 宿主机没有容器文件权限的配置
+      - &quot;TAKE_FILE_OWNERSHIP=true&quot;
+    volumes:
+      # elasticsearch.yml需要配置，参考 ./es/elasticsearch.yml
+      - /logs/es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - /logs/es/data:/usr/share/elasticsearch/data/nodes/0
+    ports:
+      # 9200是web管理端口，9300 是transport端口，也是springboot连接es操作的端口
+      - &quot;9200:9200&quot;
+      - &quot;9300:9300&quot;
+    networks:
+      - elastic
+    privileged: true
+networks:
+  elastic:
+    driver: bridge
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><h2 id="elasticsearch的dsl操作"><a href="#elasticsearch的dsl操作" class="header-anchor">#</a> elasticsearch的DSL操作</h2> <h3 id="删除文档"><a href="#删除文档" class="header-anchor">#</a> 删除文档</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>DELETE simple_system_user/user/mengqizhang
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="删除索引"><a href="#删除索引" class="header-anchor">#</a> 删除索引</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>DELETE simple_system_user
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="创建tpye-user-文档-mengqizhang"><a href="#创建tpye-user-文档-mengqizhang" class="header-anchor">#</a> 创建tpye=user,文档=mengqizhang</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>POST simple_system_user/user/mengqizhang
+{
+&quot;id&quot;: 1,
+&quot;loginName&quot;: &quot;mengqizhang&quot;,
+&quot;password&quot;: &quot;123123&quot;,
+&quot;salt&quot;: &quot;撒打算2撒打算的&quot;,
+&quot;name&quot;: &quot;蒙奇长&quot;,
+&quot;userType&quot;: 1,
+&quot;area&quot;: &quot;12&quot;,
+&quot;loginIp&quot;: &quot;192.168.33.23&quot;,
+&quot;enable&quot;: 1,
+&quot;loginFlag&quot;: 1,
+&quot;createBy&quot;: 1,
+&quot;updateBy&quot;: 1,
+&quot;remarks&quot;: &quot;测试es&quot;,
+&quot;delFlag&quot;: 1
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h3 id="获取文档-mengqizhang"><a href="#获取文档-mengqizhang" class="header-anchor">#</a> 获取文档=mengqizhang</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET simple_system_user/user/mengqizhang
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="创建tpye-user-文档-lixinghua"><a href="#创建tpye-user-文档-lixinghua" class="header-anchor">#</a> 创建tpye=user,文档=lixinghua</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>POST simple_system_user/user/lixinghua
+{
+&quot;id&quot;: 1,
+&quot;loginName&quot;: &quot;lixinghua&quot;,
+&quot;password&quot;: &quot;111啊啊啊啊啊啊啊&quot;,
+&quot;salt&quot;: &quot;水电费水电费的身份重新出现&quot;,
+&quot;name&quot;: &quot;理性化&quot;,
+&quot;userType&quot;: 2,
+&quot;area&quot;: &quot;12&quot;,
+&quot;loginIp&quot;: &quot;99.168.33.23&quot;,
+&quot;enable&quot;: 1,
+&quot;loginFlag&quot;: 1,
+&quot;createBy&quot;: 1,
+&quot;updateBy&quot;: 1,
+&quot;remarks&quot;: &quot;撒打算的都是对的&quot;,
+&quot;delFlag&quot;: 1
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h3 id="获取文档-lixinghua"><a href="#获取文档-lixinghua" class="header-anchor">#</a> 获取文档=lixinghua</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET simple_system_user/user/lixinghua
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="创建tpye-user-文档-zhangsan"><a href="#创建tpye-user-文档-zhangsan" class="header-anchor">#</a> 创建tpye=user,文档=zhangsan</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>POST simple_system_user/user/zhangsan
+{
+&quot;id&quot;: 1,
+&quot;loginName&quot;: &quot;zhangsan&quot;,
+&quot;password&quot;: &quot;123123啊啊啊啊啊&quot;,
+&quot;salt&quot;: &quot;123123啊啊啊啊滴滴答答滴滴答答滴滴答答滴滴答答的&quot;,
+&quot;name&quot;: &quot;张三&quot;,
+&quot;userType&quot;: 1,
+&quot;area&quot;: &quot;12&quot;,
+&quot;loginIp&quot;: &quot;172.168.33.23&quot;,
+&quot;enable&quot;: 1,
+&quot;loginFlag&quot;: 1,
+&quot;createBy&quot;: 1,
+&quot;updateBy&quot;: 1,
+&quot;remarks&quot;: &quot;水电费水电费桑多瓦尔为&quot;,
+&quot;delFlag&quot;: 1
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h3 id="获取文档-zhangsan"><a href="#获取文档-zhangsan" class="header-anchor">#</a> 获取文档=zhangsan</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET simple_system_user/user/zhangsan
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="搜索simple-system-user索引下的user类型所有的数据"><a href="#搜索simple-system-user索引下的user类型所有的数据" class="header-anchor">#</a> 搜索simple_system_user索引下的user类型所有的数据</h3> <p>带JSON条件搜索， query ，sort：排序</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET simple_system_user/user/_search
+{
+    &quot;query&quot;: {
+        &quot;match&quot;: {
+        &quot;name&quot;: &quot;蒙&quot;
+        }
+    },
+    &quot;sort&quot;: [
+        {
+        &quot;delFlag&quot;: &quot;desc&quot;
+        }
+    ]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="搜索索引-simple-system-user-所有的数据"><a href="#搜索索引-simple-system-user-所有的数据" class="header-anchor">#</a> 搜索索引 simple_system_user 所有的数据</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET simple_system_user/_search
+{
+&quot;from&quot;:0,
+&quot;size&quot;:200
+}
+
+GET simple_system_user/_search
+{
+    &quot;query&quot;: {
+        &quot;bool&quot;: {
+            &quot;must&quot;:[{
+                &quot;match&quot;: {
+                    &quot;name&quot;:&quot;蒙&quot;
+                }
+            }],
+            &quot;should&quot;: [{
+                &quot;match&quot;: {
+                    &quot;name&quot;: &quot;理&quot;
+                }
+            }]
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><ul><li>must：　　表示一定要满足；</li> <li>should：　　表示可以满足也可以不满足；</li> <li>must_not：　　表示不能满足该条件；</li> <li>minimum_should_match:1 ：表示最小匹配度，可以设置为百分之百，设置了这个值的时候就必须满足should里面的设置了，</li> <li>另外注意这边should里面同一字段设置的多个值，意思是当这个值等于X或者等于Y都成立，务必注意格式。</li></ul> <h3 id="搜索索引-simple-system-user-所有的数据-2"><a href="#搜索索引-simple-system-user-所有的数据-2" class="header-anchor">#</a> 搜索索引 simple_system_user 所有的数据</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET simple_system_user/_search
+{
+&quot;from&quot;:0,
+&quot;size&quot;:45
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="高亮搜索-需要加入highlight参数进行查询"><a href="#高亮搜索-需要加入highlight参数进行查询" class="header-anchor">#</a> 高亮搜索，需要加入highlight参数进行查询</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET simple_system_user/user/_search
+{
+    &quot;query&quot;: {
+        &quot;match_phrase&quot;: {
+        &quot;remarks&quot;: &quot;李清照&quot;
+        }
+    },
+    &quot;highlight&quot;: {
+        &quot;fields&quot;: {
+        &quot;remarks&quot;: {}
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="高亮搜索-需要加入highlight参数进行查询-自定义高亮显示的关键字标签"><a href="#高亮搜索-需要加入highlight参数进行查询-自定义高亮显示的关键字标签" class="header-anchor">#</a> 高亮搜索，需要加入highlight参数进行查询，自定义高亮显示的关键字标签</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET simple_system_user/user/_search
+{
+    &quot;query&quot;: {
+        &quot;match&quot;: {
+        &quot;remarks&quot;: &quot;李清照&quot;
+        }
+    },
+    &quot;highlight&quot;: {
+        &quot;pre_tags&quot;: &quot;&lt;b color='read'&gt;&quot;,
+        &quot;post_tags&quot;:&quot; &lt;/b&gt;&quot;,
+        &quot;fields&quot;: {
+        &quot;remarks&quot;: {}
+        }
+    }
+}
+
+GET info-2021.07.19/_search
+{
+
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h3 id="创建索引"><a href="#创建索引" class="header-anchor">#</a> 创建索引</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>PUT d_l_location
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>索引： 类似mysql的database</li> <li>类型： 类似mysql的table</li> <li>文档： 类似mysql的记录</li></ul> <h3 id="创建文档-并且插入数据"><a href="#创建文档-并且插入数据" class="header-anchor">#</a> 创建文档，并且插入数据</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>POST d_l_location/mydoc/d1
+{
+    &quot;location&quot;: &quot;52.374081,4.912350&quot;,
+    &quot;geohash&quot;: &quot;u173zy3j4h3dsdk&quot;,
+    &quot;name&quot;: &quot;NEMO Science Museum&quot;
+}
+POST d_l_location/mydoc/d2
+{
+    &quot;location&quot;: &quot;52.369219,4.901618&quot;,
+    &quot;geohash&quot;: &quot;u173zt90zczr95s&quot;,
+    &quot;name&quot;: &quot;Museum Het Rembrandthuis&quot;
+}
+POST d_l_location/mydoc/d3
+{
+    &quot;location&quot;: &quot;52.371667,4.914722&quot;,
+    &quot;geohash&quot;: &quot;u173zvfz1666db0&quot;,
+    &quot;name&quot;: &quot;Nederlands Scheepvaartmuseum&quot;
+}
+
+
+POST d_l_location/mydoc/d4
+{
+    &quot;location&quot;: &quot;51.222900,4.405200&quot;,
+    &quot;geohash&quot;: &quot;u155khzg08ehqm9&quot;,
+    &quot;name&quot;: &quot;Letterenhuis&quot;
+}
+
+
+POST d_l_location/mydoc/d5
+{
+    &quot;location&quot;: &quot;48.861111,2.336389&quot;,
+    &quot;geohash&quot;: &quot;u09tvnvk9g3bm03&quot;,
+    &quot;name&quot;: &quot;Musée du Louvre&quot;
+}
+
+
+POST d_l_location/mydoc/d6
+{
+    &quot;location&quot;: &quot;48.860000,2.327000&quot;,
+    &quot;geohash&quot;: &quot;u09tuywqph0uyu8&quot;,
+    &quot;name&quot;: &quot;Musée d'Orsay&quot;
+}
+
+
+GET info-2021.07.20/_doc/_search
+{
+    &quot;query&quot;: {
+        &quot;match&quot;: {
+        &quot;message&quot;: &quot;【信息】&quot;
+        }
+    }
+
+}
+
+
+
+PUT d_l_location2
+DELETE d_l_location2
+
+POST d_l_location2/mydoc/1
+{
+
+    &quot;geo&quot; : {
+      &quot;properties&quot; : {
+        &quot;coordinates&quot; : {
+          &quot;type&quot; : &quot;geo_point&quot;
+        },
+        &quot;dest&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;
+        },
+        &quot;src&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;
+        },
+        &quot;srcdest&quot; : {
+          &quot;type&quot; : &quot;keyword&quot;
+        }
+      }
+    }
+}
+
+DELETE %%{appname}-2021.07.21
+
+put poem
+
+GET poem/_mapping
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br></div></div><h3 id="设置mapper-和"><a href="#设置mapper-和" class="header-anchor">#</a> 设置mapper 和</h3> <h3 id="定义成completion的字段无法应用highlight返回-这里和原来索引一样"><a href="#定义成completion的字段无法应用highlight返回-这里和原来索引一样" class="header-anchor">#</a> 定义成completion的字段无法应用highlight返回，这里和原来索引一样</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>PUT /poem_completion
+{
+    &quot;mappings&quot; : {
+        &quot;properties&quot; : {
+            &quot;userRemark&quot; : {
+            &quot;type&quot; :    &quot;completion&quot;
+            },
+            &quot;id&quot; : {
+            &quot;type&quot; :   &quot;text&quot;
+            }      
+        }
+    }
+}
+
+DELETE poem_completion
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h3 id="查看索引的映射情况"><a href="#查看索引的映射情况" class="header-anchor">#</a> 查看索引的映射情况</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET poem_completion/_mapping
+
+GET poem_completion/_search
+{
+
+}
+
+
+
+
+DELETE poem_completion
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="需要配置es的ik分词器插件"><a href="#需要配置es的ik分词器插件" class="header-anchor">#</a> 需要配置es的ik分词器插件</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>PUT /poem_completion
+{
+    &quot;mappings&quot; : {
+        &quot;properties&quot; : {
+            &quot;userRemark&quot; : {
+            &quot;type&quot; :    &quot;text&quot;
+            },
+            &quot;id&quot; : {
+                &quot;type&quot; :   &quot;text&quot;
+            },
+            &quot;content&quot; : {
+                &quot;type&quot; :   &quot;text&quot;
+            },
+            &quot;completionKey&quot; : {
+                &quot;type&quot; :   &quot;completion&quot;
+            }
+        }
+    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h3 id="添加id为1的一个文档"><a href="#添加id为1的一个文档" class="header-anchor">#</a> 添加id为1的一个文档</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>PUT poem/test/1
+{
+&quot;id&quot;: &quot;demoData&quot;,
+&quot;userRemark&quot;: &quot;demoData&quot;,
+&quot;content&quot;: &quot;demoData&quot;
+}
+PUT poem/test/2
+{
+&quot;id&quot;: &quot;1&quot;,
+&quot;userRemark&quot;: &quot;你好es&quot;,
+&quot;content&quot;: &quot;我来了&quot;
+}
+PUT poem/test/3
+{
+&quot;id&quot;: &quot;3&quot;,
+&quot;userRemark&quot;: &quot;demoData ok &quot;,
+&quot;content&quot;: &quot;demoData nice&quot;
+}
+PUT poem/test/4
+{
+&quot;id&quot;: &quot;4&quot;,
+&quot;userRemark&quot;: &quot;ok everyone&quot;,
+&quot;content&quot;: &quot;哈哈哈哈哈哈哈&quot;
+}
+
+PUT poem/test/5
+{
+&quot;id&quot;: &quot;5&quot;,
+&quot;userRemark&quot;: &quot;索引中的version字段&quot;,
+&quot;content&quot;: &quot;是乐观锁，保证数据并发情况下的准确性&quot;
+}
+
+PUT poem/test/6
+{
+&quot;id&quot;: &quot;6&quot;,
+&quot;userRemark&quot;: &quot;索引中的version字段-相同的id就是update文档&quot;,
+&quot;content&quot;: &quot;是乐观锁，保证数据并发情况下的准确性-相同的id就是update文档&quot;
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br></div></div><h3 id="查询指定id的文档"><a href="#查询指定id的文档" class="header-anchor">#</a> 查询指定id的文档</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET poem/test/122?pretty
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="查询指定id的文档并且返回指定部分"><a href="#查询指定id的文档并且返回指定部分" class="header-anchor">#</a> 查询指定id的文档并且返回指定部分</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET poem/test/1/_source
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="查询索引的全部数据"><a href="#查询索引的全部数据" class="header-anchor">#</a> 查询索引的全部数据</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET poem/_search
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="关键字查询-query-string-这个查询是全匹配"><a href="#关键字查询-query-string-这个查询是全匹配" class="header-anchor">#</a> 关键字查询 （query-string），这个查询是全匹配</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET poem/test/_search?q=userRemark:demoData
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="更多-query-string-的搜索-https-www-elastic-co-guide-cn-elasticsearch-guide-current-search-lite-html"><a href="#更多-query-string-的搜索-https-www-elastic-co-guide-cn-elasticsearch-guide-current-search-lite-html" class="header-anchor">#</a> 更多 query-string 的搜索： https://www.elastic.co/guide/cn/elasticsearch/guide/current/search-lite.html</h3> <h3 id="请求体构建查询-模糊匹配-demodata-和-ok"><a href="#请求体构建查询-模糊匹配-demodata-和-ok" class="header-anchor">#</a> 请求体构建查询，模糊匹配，demoData 和 ok</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET poem/test/_search
+{
+    &quot;query&quot;:{   
+        &quot;match&quot;: {
+        &quot;userRemark&quot;: &quot;demoData ok&quot;
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="配置短语-只匹配-demodata-ok-的词组"><a href="#配置短语-只匹配-demodata-ok-的词组" class="header-anchor">#</a> 配置短语，只匹配 demoData ok 的词组</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET poem/test/_search
+{
+    &quot;query&quot;:{
+        &quot;match_phrase&quot;: {
+        &quot;userRemark&quot;: &quot;demoData ok&quot;
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="高亮搜索-自定义高亮前缀和后缀标签"><a href="#高亮搜索-自定义高亮前缀和后缀标签" class="header-anchor">#</a> 高亮搜索，自定义高亮前缀和后缀标签</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET poem/test/_search
+{
+    &quot;query&quot;:{
+        &quot;match_phrase&quot;: {
+        &quot;userRemark&quot;: &quot;demoData ok&quot;
+        }
+    },
+    &quot;highlight&quot;:{
+    &quot;pre_tags&quot;: &quot;&lt;b color='read'&gt;&quot;,
+    &quot;post_tags&quot;:&quot; &lt;/b&gt;&quot;,
+        &quot;fields&quot;: {
+        &quot;userRemark&quot;: {}
+        }
+    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h3 id="返回集群中所有索引下的所有文档"><a href="#返回集群中所有索引下的所有文档" class="header-anchor">#</a> 返回集群中所有索引下的所有文档</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET _search
+{
+    &quot;from&quot;: 0,
+    &quot;size&quot;: 50
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="获取索引的映射"><a href="#获取索引的映射" class="header-anchor">#</a> 获取索引的映射</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET poem/_mapping
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="分析词条"><a href="#分析词条" class="header-anchor">#</a> 分析词条</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>GET /_analyze
+{
+&quot;analyzer&quot;: &quot;standard&quot;,
+&quot;text&quot;: &quot;demoMeng is a handson gentleman!&quot;
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mengqizhang/elk/" class="prev router-link-active">
+        介绍
+      </a></span> <span class="next"><a href="/mengqizhang/elk/filebeat.html">
+        filebeat
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mengqizhang/assets/js/app.a8d21a83.js" defer></script><script src="/mengqizhang/assets/js/2.e69c46bd.js" defer></script><script src="/mengqizhang/assets/js/10.11174a82.js" defer></script>
+  </body>
+</html>
